@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Event extends Model
 {
     protected $dates = ['created_at'];
 
@@ -23,6 +23,6 @@ class Message extends Model
      */
     public function path()
     {
-        return "/message/{$this->id}";
+        return "/event/{$this->id}";
     }
 }

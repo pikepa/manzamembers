@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterProductTable extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AlterProductTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->text('featured_img')->after('description')->nullable()->change();
+        Schema::create('events', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->text('name');
+            $table->text('description');
+            $table->date('event_date');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AlterProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->text('featured_img')->before('title')->change();
-        });
+        Schema::dropIfExists('messages');
     }
 }

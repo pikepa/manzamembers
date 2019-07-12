@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
 
-class MessageController extends Controller
+class EventController extends Controller
 {
     /**
      * Restricting certain functions to Auth Users only.
@@ -24,9 +24,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::get();
+        $events = Event::get();
 
-        return view('messages.index', compact('messages'));
+        return view('events.index', compact('events'));
     }
 
     /**

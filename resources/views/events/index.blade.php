@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Me')
+@section('title', 'Events')
 
 @section('content')
 
@@ -14,7 +14,7 @@
             
             <div class="container mx-auto pb-4">
                 <div class="text-center">
-                    <h1 class="font-bold text-3xl m-2 ">Messages</h1>
+                    <h1 class="font-bold text-3xl m-2 ">Events</h1>
                 </div>
                 <div class="flex flex-col ">
                     <div class="w-4/5 mx-auto">
@@ -29,11 +29,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($messages as $message)
+                        @foreach($events as $event)
                         <tr class="hover:bg-grey-lighter">
-                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $message->created_date }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $message->name }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $message->email }}</td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->created_date }}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->name }}</td>
                           <td class="flex justify-center py-4  border-b border-r  border-grey-light">
                             <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $message->path() }}" ><i class="fab fa-readme"> Read</i></a></div>
                             <div class="text-grey-lighter text-sm mr-2 ">

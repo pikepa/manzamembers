@@ -7,7 +7,7 @@
             </div>
             @else
             <div class="class='w-1/3' -mb-2 pb-2 font-bold  min-w-0 border-b-4 border-pink-600">
-                    <p class="text-grey-dark">  @yield('title') </p>
+                <p class="text-grey-dark">  @yield('title') </p>
             </div>
             @endif
             
