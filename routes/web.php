@@ -12,17 +12,8 @@
 */
 
 Route::get('/', 'ProductController@index')->name('root');
-Route::get('/theartist', function () {
-    return view('homepages.theartist');
-});
-Route::get('/whyborneo', function () {
-    return view('homepages.whyborneo');
-});
-Route::get('/materials', function () {
-    return view('homepages.materials');
-});
-Route::get('/contactme', function () {
-    return view('messages.create');
+Route::get('/aboutus', function () {
+    return view('homepages.aboutus');
 });
 
 Route::get('/coming_soon', function () {

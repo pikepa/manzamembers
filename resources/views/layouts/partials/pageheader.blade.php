@@ -3,7 +3,7 @@
         <div class="flex justify-between text-center md:text-left  py-2  text-xl">
             @if (\Route::current()->getName() == 'bycategory')
             <div class="class='w-1/3' -mb-2 pb-2 font-bold  min-w-0 border-b-4 border-pink-600">
-                    <p class="text-grey-dark"> Artwork By Category - {{ $cat->category }}</p>
+                    <p class="text-grey-dark"> Update me - {{ $cat->category }}</p>
             </div>
             @else
             <div class="class='w-1/3' -mb-2 pb-2 font-bold  min-w-0 border-b-4 border-pink-600">
