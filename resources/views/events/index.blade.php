@@ -34,15 +34,21 @@
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->Date_of_event }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light">RM {{ number_format($event->price/100,2,'.', ',')}}</td>
-                          <td class="flex justify-center py-4  border-b border-r  border-grey-light">
-                            <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $event->path() }}" ><i class="fab fa-readme"> Read</i></a></div>
-                            <div class="text-grey-lighter text-sm mr-2 ">
+                          <td class=" border-b border-r  border-grey-light">
+                              <div class="text-center mx-auto ">
+                                  <a class="button bg-blue-500 hover:bg-blue-700 text-white" href="/coming_soon">Book Me</a>
+                              </div>
+
+{{--  
+                          <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $event->path() }}" ><i class="fab fa-readme"> Read</i></a></div>
+
+                          <div class="text-grey-lighter text-sm mr-2 ">
                                 <form method="POST" action="{{ $event->path() }}" >
                                     @method('DELETE')
                                     @csrf
                                     <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i> Delete</button>
                                 </form>
-                            </div>
+                            </div>--}}
                           </td>
                         </tr>
                         @endforeach

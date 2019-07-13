@@ -18,7 +18,10 @@
                 </div>
                 <div class=" mb-4  mx-auto ">
                     <img class="  " src="{{URL::asset( '/images/smiley.jpg')}}">
-                </div>                
+                </div> 
+                <div class="text-center">
+                  <a href="{{ url()->previous() }}"> <h1 class="font-bold text-3xl m-2 ">Back</h1></a>
+                </div>               
             </div>
 
          </div>
