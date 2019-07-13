@@ -14,7 +14,7 @@
             
             <div class="container mx-auto pb-4">
                 <div class="text-center">
-                    <h1 class="font-bold text-3xl m-2 ">Events</h1>
+                    <h1 class="font-bold text-3xl m-2 ">Upcoming Events</h1>
                 </div>
                 <div class="flex flex-col ">
                     <div class="w-4/5 mx-auto">
