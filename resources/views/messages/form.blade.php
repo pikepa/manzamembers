@@ -48,7 +48,7 @@
       <span class="text-gray-700">Question for Humans</span>
         <input  type="text" class="form-input mt-1 block w-full" 
                 name='my_question'
-                placeholder="Please enter the nationality of the artist stated in the title."
+                placeholder="What's the first word of the title of this site."
                 value="{{old('my_question', $message->my_question)}}">
     </label>
 </div>

@@ -63,7 +63,7 @@ class MessageController extends Controller
         $message->subject = $request->subject;
         $message->content = Purifier::clean($request->content);
 
-        if (strtoupper($request->my_question) === 'DUTCH') {
+        if (strtoupper($request->my_question) === 'MALAYSIAN') {
             $message->save();
 
             return redirect('/')->with('success', 'Message has been sent');
