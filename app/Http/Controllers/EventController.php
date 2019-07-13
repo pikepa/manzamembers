@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
+use App\Event;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
@@ -25,7 +25,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::get();
-
+             
         return view('events.index', compact('events'));
     }
 
@@ -38,7 +38,7 @@ class EventController extends Controller
     {
         $assignedCats = [];
 
-        return view('messages.create', compact('assignedCats'));
+        return view('event.create', compact('assignedCats'));
     }
 
     /**

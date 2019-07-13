@@ -23,8 +23,8 @@
                       <thead>
                         <tr>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Date</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">From</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Email</th>
+                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Title</th>
+                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Price</th>
                           <th class="py-4  bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                         </tr>
                       </thead>
@@ -32,11 +32,12 @@
                         @foreach($events as $event)
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->created_date }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->name }}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">RM {{ number_format($event->price/100,2,'.', ',')}}</td>
                           <td class="flex justify-center py-4  border-b border-r  border-grey-light">
-                            <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $message->path() }}" ><i class="fab fa-readme"> Read</i></a></div>
+                            <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $event->path() }}" ><i class="fab fa-readme"> Read</i></a></div>
                             <div class="text-grey-lighter text-sm mr-2 ">
-                                <form method="POST" action="{{ $message->path() }}" >
+                                <form method="POST" action="{{ $event->path() }}" >
                                     @method('DELETE')
                                     @csrf
                                     <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i> Delete</button>

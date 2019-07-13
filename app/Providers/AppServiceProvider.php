@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         view()->composer(['dashboard.components.dash_left',
-                           'products.form',
+                           'events.form',
                            ], function ($view) {
                                $view->with('categories', Category::where('active', 1)
                                            ->where('type','EVT')
@@ -37,7 +37,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(['categories.index',
                                                 ], function ($view) {
-                                                    $view->with('categories', Category::orderBy('type', 'asc')->orderBy('category', 'asc')->get());
+                                                    $view->with('categories', Category::orderBy('type', 'asc')
+                                                                ->orderBy('category', 'asc')->get());
                                                 });
     }
 }

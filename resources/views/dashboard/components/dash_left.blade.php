@@ -37,8 +37,8 @@
        {{--      <li><a href="{{ url('/') }}" class="hover:font-semibold no-underline">All works of Art</a></li>
             <li><a href="{{ url('/status/For Sale') }}" class="hover:font-semibold">Available for Sale</a></li>
             <li><a href="{{ url('/status/Sold') }}" class="hover:font-semibold">Sorry Sold Already</a></li>
-            <li><a href="{{ url('/status/Not for Sale') }}" class="hover:font-semibold no-underline">Not for Sale</a></li>
---}} 
+ --}}       <li><a href="{{ url('/event') }}" class="hover:font-semibold no-underline">Event Listing</a></li>
+ 
             <br>
             @guest
                 <li class="hover:font-semibold"><a href="{{ url('login') }}"></i>Sign In</a></li>
