@@ -4,10 +4,11 @@
         <ul class="">
             <li><a href="{{ url('/') }}" class="my-2 font-semibold hover:font-bold no-underline">Home</a></li>
             <li><a href="{{ url('/aboutus') }}" class="hover:font-semibold no-underline">About Us</a></li>
+            <li><a href="{{ url('/message/create') }}" class="hover:font-semibold no-underline">Contact Us</a></li>   
+
     {{--          <li><a href="{{ url('/whyborneo') }}" class="hover:font-semibold no-underline">Why Borneo</a></li>
             <li><a href="{{ url('/materials') }}" class="hover:font-semibold no-underline">Use of Materials</a></li>
-            <li><a href="{{ url('/message/create') }}" class="hover:font-semibold no-underline">Contact Me</a></li>   --}}
-        </ul>
+    --}}    </ul>
     </div>
    <div class="mb-2">
         <div>
@@ -15,14 +16,17 @@
                 Membership
             </h4>
         </div>
-{{--         <ul class="">
+         <ul class="">
+                <li><a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   
+{{--
           @forelse($categories as $category) 
             <li><a href="{{ url('/bycategory/'. $category->id ) }}" class="hover:font-semibold">{{ $category->category }}</li></a>
           @empty
             <div class=" mx-2"> No Pictures Yet</div>
           @endforelse 
+              --}}
         </ul>    
-    </div> --}}
+ 
     <div class="mb-2">
         <div>
             <h4 class="my-2 font-bold">

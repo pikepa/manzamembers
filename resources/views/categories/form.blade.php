@@ -11,18 +11,37 @@
     </label>
 </div>
 
-<input type="hidden" name="active" value="0">
+<div class="block mb-4">
+  <span class="text-gray-700">Type</span>
+  <div class="mt-2">
+    <div class="flex flex-wrap ">
+      <div class="inline-block relative w-64">
+        <select name="type" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value=''>Select a Type</option>
+          <option value='MEM' @if (old('type') == "MEM" | $category->type == "MEM") {{ 'selected' }} @endif>Membership Type</option>
+          <option value="EVT" @if (old('type') == "EVT"| $category->type == "EVT") {{ 'selected' }} @endif>Event Type</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="block mb-4">
   <span class="text-gray-700">Active</span>
   <div class="mt-2">
     <div class="flex flex-wrap ">
-        <label class="mx-2 inline-flex items-center">
-          <input class="form-checkbox text-indigo-600"
-                  type="checkbox" 
-                  name='active' @if(old('active',$category->active)=="1") checked @endif
-                  value='1' />
-          <span class="ml-2"></span>
-        </label>
+      <div class="inline-block relative w-64">
+        <select name="active" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+          <option value='1'>Active</option>
+          <option value="0">Inactive</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
     </div>
   </div>
 </div>

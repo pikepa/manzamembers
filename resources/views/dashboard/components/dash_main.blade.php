@@ -1,6 +1,6 @@
 <main class=" flex flex-1  flex-wrap justify-between -mx-2 px-2 py-4">
- 
-@foreach ($products as $product)
+<h1> This is the main Homepage <_dash_main> </h1>
+{{--@foreach ($products as $product)
     <div class="flex flex-col card  mb-2 " style=" width:325px">
             @if(isset($product->featured_img))
                 <div class="mx-auto text-center">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-@endforeach
+@endforeach--}}
 
 
 

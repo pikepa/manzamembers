@@ -23,7 +23,7 @@
                       <thead>
                         <tr>
                           <th class="py-2 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Category</th>
-                     {{--      <th class="text-center py-2 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Type</th>  --}} 
+                          <th class="text-center py-2 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Type</th>   
                           <th class="text-center py-2 px-6 font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Active</th>
                           <th class="py-2  bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                         </tr>
@@ -32,7 +32,7 @@
                         @foreach($categories as $category)
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-2 px-6 border-b border-r border-grey-light">{{ $category->category }}</td>
-                      {{--      <td class="text-center py-2 px-6 border-b border-r  border-grey-light">{{ $category->type }}</td>  --}} 
+                          <td class="text-center py-2 px-6 border-b border-r  border-grey-light">{{ $category->type }}</td> 
                           @if( $category->active ===1)
                               <td class="text-center border-b border-r  border-grey-light"><i class="far fa-check-circle"></i></td>
                           @else

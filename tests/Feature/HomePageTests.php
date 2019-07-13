@@ -14,32 +14,21 @@ class HomePageTests extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function anyone_can_read_the_home_page()
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('Hellen Dutch Art');
+        $response->assertSee('Malaysian');
     }
 
     /** @test */
-    public function the_static_pages_are_loaded_when_guest_clicks_menu_link()
+    public function the_static_pages_are_loaded_anyone_clicks_menu_link()
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->get('/theartist');
+        $response = $this->get('/aboutus');
         $response->assertStatus(200);
-        $response->assertSee('Hellen Dutch');
+        $response->assertSee('About MANZA');
 
-        $response = $this->get('/whyborneo');
-        $response->assertStatus(200);
-        $response->assertSee('Why Borneo ?');
-
-        $response = $this->get('/materials');
-        $response->assertStatus(200);
-        $response->assertSee('Use of Materials');
-
-        $response = $this->get('/contactme');
-        $response->assertStatus(200);
-        $response->assertSee('New Message');
     }
 }

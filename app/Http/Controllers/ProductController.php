@@ -25,9 +25,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('publish_at', 'desc')->get();
+     //   $products = Product::orderBy('publish_at', 'desc')->get();
 
-        return view('dashboard.home', compact('products'));
+        return view('dashboard.home');
     }
 
     /**
