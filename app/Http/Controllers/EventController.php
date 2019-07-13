@@ -14,7 +14,7 @@ class EventController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['index', 'destroy', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::get();
+        $events = Event::orderBy('event_date','asc')->get();
              
         return view('events.index', compact('events'));
     }

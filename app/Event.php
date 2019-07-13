@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at','event_date'];
 
     protected $guarded = [];
 
     /**
      * Format the message created date.
      */
-    public function getCreatedDateAttribute()
+    public function getDateOfEventAttribute()
     {
-        return $this->created_at->format('M j, Y');
+        return $this->event_date->format('M j, Y');
     }
 
     /**

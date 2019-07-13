@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->text('featured_img');
             $table->text('title');
             $table->text('description');
+            $table->date('event_date');
             $table->integer('price')->unsigned();
             $table->integer('discount')->unsigned();
             $table->text('status');
