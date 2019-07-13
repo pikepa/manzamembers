@@ -2,13 +2,17 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Message;
+use App\Event;
 use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'description' => $faker->unique()->safeEmail,
-        'date' => $faker->date,
-        ];
+        'featured_img' => $faker->url,
+        'title' => $faker->name,
+        'description' =>$faker->paragraph,
+        'status' =>$faker->randomElement(['For Sale', 'Sold', 'Not for Sale']),
+        'price' =>$faker->numberBetween(12300, 50000),
+        'discount' =>'0',
+        'publish_at' =>$faker->date,
+    ];
 });

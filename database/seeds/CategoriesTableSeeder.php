@@ -47,5 +47,14 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
 
+
+        DB::table('categories')->insert([
+            'category' => 'AGM',
+            'type' => 'EVT',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+
     }
 }

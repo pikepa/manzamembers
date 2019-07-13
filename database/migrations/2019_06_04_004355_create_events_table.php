@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->integer('discount')->unsigned();
             $table->text('status');
             $table->timestamp('publish_at')->nullable();
-            $table->integer('owner_id')->unsigned();
+            $table->integer('owner_id')->unsigned()->default(1);
             $table->timestamps();
         });
     }
