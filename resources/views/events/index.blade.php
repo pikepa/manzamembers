@@ -36,7 +36,7 @@
                           <td class="py-4 px-6 border-b border-r  border-grey-light">RM {{ number_format($event->price/100,2,'.', ',')}}</td>
                           <td class=" border-b border-r  border-grey-light">
                               <div class="text-center mx-auto ">
-                                  <a class="button bg-blue-500 hover:bg-blue-700 text-white" href="/coming_soon">Book Me</a>
+                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="/coming_soon">Book Me</a>
                               </div>
 
 {{--  
