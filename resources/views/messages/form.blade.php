@@ -53,40 +53,6 @@
     </label>
 </div>
 
-{{-- 
-<div class="field mb-6">
-    <div class="block">
-      <span class="text-gray-700">Status</span>
-          <div class="mt-2 flex">
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-indigo-600" 
-                name="status"  @if(old('status',$message->status)=="For Sale") checked @endif
-                checked 
-                value = 'For Sale'/>
-                <span class="ml-2">For Sale</span>
-              </label>
-            </div>
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-pink-600" 
-                name="status" @if(old('status',$message->status)=="Not For Sale") checked @endif
-                value = 'Not For Sale'/>
-                <span class="ml-2">Not for Sale</span>
-              </label>
-            </div>
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-red-600" 
-                name="status" @if(old('status',$message->status)=="Sold") checked @endif
-                value='Sold'/>
-                <span class="ml-2">Sold</span>
-              </label>
-            </div>
-        </div>
-    </div>
-</div>
- --}}
 <div class="field">
     <div class="control">
         <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>

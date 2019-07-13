@@ -11,9 +11,9 @@ class Category extends Model
     protected $guarded = [];
 
     //
-    public function products()
+    public function events()
     {
-        return $this->belongsToMany(Product::class)->orderBy('publish_at', 'desc');
+        return $this->belongsToMany(Event::class)->orderBy('publish_at', 'desc');
     }
 
     public function path()

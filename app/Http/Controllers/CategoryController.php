@@ -22,9 +22,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('category', 'desc')->get();
-
-        return view('categories.index', compact('categories'));
+        // category loaded via appServiceProvider    
+        return view('categories.index');
     }
 
     /**
@@ -60,13 +59,14 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
                 'category' => 'required',
+                'type' => 'required|in:"MEM,EVT',
                 'active' => 'required',
             ]);
 
         $category = new Category;
 
         $category->category = $request->category;
-        $category->type = 'SBJ';  //this is to avoid the db rejecting
+        $category->type = $request->type;  //this is to avoid the db rejecting
         $category->active = $request->active;
 
         $category->save();

@@ -15,9 +15,14 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name');
+            $table->text('featured_img');
+            $table->text('title');
             $table->text('description');
-            $table->date('event_date');
+            $table->integer('price')->unsigned();
+            $table->integer('discount')->unsigned();
+            $table->text('status');
+            $table->timestamp('publish_at')->nullable();
+            $table->integer('owner_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('events');
     }
 }

@@ -25,4 +25,28 @@ class Event extends Model
     {
         return "/event/{$this->id}";
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    // Media Definitions
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+              ->width(300)
+              ->height(300)
+              ->sharpen(10);
+
+        $this->addMediaConversion('full')
+              ->width(800)
+              ->height(800)
+              ->sharpen(10);
+    }
 }

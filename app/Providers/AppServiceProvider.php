@@ -30,12 +30,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['dashboard.components.dash_left',
                            'products.form',
                            ], function ($view) {
-                               $view->with('categories', Category::where('active', 1)->orderBy('category', 'asc')->get());
+                               $view->with('categories', Category::where('active', 1)
+                                           ->where('type','EVT')
+                                           ->orderBy('category', 'asc')->get());
                            });
 
         view()->composer(['categories.index',
                                                 ], function ($view) {
-                                                    $view->with('categories', Category::orderBy('category', 'asc')->get());
+                                                    $view->with('categories', Category::orderBy('type', 'asc')->orderBy('category', 'asc')->get());
                                                 });
     }
 }
