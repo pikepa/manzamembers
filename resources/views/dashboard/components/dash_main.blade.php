@@ -1,5 +1,7 @@
-<main class=" flex flex-1  flex-wrap justify-between -mx-2 px-2 py-4">
-<h1> This is the main Homepage <_dash_main> </h1>
+<main class=" flex flex-col flex-1   -mx-2 px-2 py-4">
+<div class="mx-auto"><a  href="https://en.calameo.com/read/00506399529496a1e7d5c" target="_blank" rel="noopener"><img src="http://www.manza.org/wp-content/uploads/2019/02/MANZA-June-cover-616x436.jpg"></a></div>
+<div class="text-red-800 font-semibold mx-auto text-3xl"><h1 class="mx-auto">Click the Magazine cover to open.</h1></div>
+
 {{--@foreach ($products as $product)
     <div class="flex flex-col card  mb-2 " style=" width:325px">
             @if(isset($product->featured_img))
