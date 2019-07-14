@@ -32,7 +32,7 @@
                         @foreach($events as $event)
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->Date_of_event }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $event->path() }}">{{ $event->title }}</a></td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light">RM {{ number_format($event->price/100,2,'.', ',')}}</td>
                           <td class=" border-b border-r  border-grey-light">
                               <div class="text-center mx-auto ">

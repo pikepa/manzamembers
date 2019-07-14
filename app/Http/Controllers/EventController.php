@@ -78,11 +78,11 @@ class EventController extends Controller
      * @param  \App\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(Event $event)
     {
-        $message = Message::find($message->id);
+        $event = Event::find($event->id);
 
-        return view('messages.show', compact('message'));
+        return view('events.show', compact('event'));
     }
 
     /**

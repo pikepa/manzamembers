@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+
         view()->composer(['dashboard.components.dash_left',
                            'events.form',
                            ], function ($view) {
@@ -36,9 +37,16 @@ class AppServiceProvider extends ServiceProvider
                            });
 
         view()->composer(['categories.index',
-                                                ], function ($view) {
-                                                    $view->with('categories', Category::orderBy('type', 'asc')
-                                                                ->orderBy('category', 'asc')->get());
-                                                });
+            ], function ($view) {
+                $view->with('categories', Category::orderBy('type', 'asc')
+                            ->orderBy('category', 'asc')->get());
+            });
+
+        view()->composer(['priceitems.form',
+            ], function ($view) {
+                $view->with('categories', Category::orderBy('type', 'asc')
+                            ->where('type','PRI')
+                            ->orderBy('category', 'asc')->get());
+            });
     }
 }

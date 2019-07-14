@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\SpecialClasses\Category_Type;
 
 class CategoryController extends Controller
 {
@@ -14,6 +16,7 @@ class CategoryController extends Controller
     {
         $this->middleware('auth', ['except' => ['bycategory']]);
     }
+
 
     /**
      * Display a listing of categories.
@@ -46,8 +49,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {           
+                     
+      //  $type= new Category_Type;
+      //  $types=$type->gettypes();
+
         return view('categories.create');
+
     }
 
     /**
@@ -59,7 +67,7 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
                 'category' => 'required',
-                'type' => 'required|in:"MEM,EVT',
+                'type' => 'required |in:EVT,MEM,PRI',
                 'active' => 'required',
             ]);
 
@@ -95,7 +103,7 @@ class CategoryController extends Controller
     {
         $attributes = request()->validate([
                 'category' => 'required',
-                'type' => '',
+                'type' => 'required |in:EVT,MEM,PRI',
                 'active' => 'required|in:1,0',
         ]);
 
