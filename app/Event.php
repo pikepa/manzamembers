@@ -36,6 +36,12 @@ class Event extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function priceitems()
+    {
+        return $this->hasMany(priceitem::class, 'event_id');
+    }
+
+
     // Media Definitions
     public function registerMediaConversions(Media $media = null)
     {
