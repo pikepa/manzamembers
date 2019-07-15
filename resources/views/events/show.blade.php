@@ -13,7 +13,7 @@
                 {{ $event->title }}
             </h1>
         </div>
-        <div class="text-xl bg-blue-100  ">
+        <div class="text-lg bg-blue-100  ">
             <div class="flex mb-2 ">
               <div class="flex-1 pl-4 ">{{ $event->description }}</div>  
             </div>
@@ -23,20 +23,34 @@
             </div>
             <div class="flex mb-2">
               <div class="w-1/6  text-right font-semibold ">Date: </div>
-              <div class="ml-4">{{ $event->date_of_event }}</div>  
-              <div class="ml-4  text-left font-semibold ">From: </div>
+              <div class="ml-4">{{ $event->date_of_event }}</div>
+            </div>
+            <div class="flex mb-2">  
+              <div class="w-1/6  text-right font-semibold ">From: </div>
               <div class="ml-4">2pm</div>  
               <div class="ml-1  text-left font-semibold ">-</div>
               <div class="ml-2">7pm</div>  
             </div>
-            <div class="w-1/4 pl-4 text-left  font-semibold ">Ticket Prices: </div>
-            <div class="ml-12 flex items-center">
-                <div class="py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create" ><i class="fas fa-plus"></i></a></div>
-                <div class="py-2 px-6 border-b border-r border-grey-light bg-red-400">
-                  Ticket Type
-                </div>
-                <div class="py-2 px-6 border-b border-r border-grey-light bg-blue-400">RM 200</div>
+            <div class="w-1/2 pl-4 text-left  font-semibold ">Ticket Prices: </div>
+            <div class=" ml-12 flex items-center">
+                <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
+                  Ticket Type</div>
+                <div class="bg-gray-400 w-1/4 text-center py-2 px-6 border-b border-r border-grey-light font-semibold">Price</div>
+                 <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
             </div>
+            @foreach($priceitems as $item)
+            <div class="ml-12 flex items-center">
+                <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
+                <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
+                <div class="py-2 px-6 border-b border-r border-grey-light">
+                    <form method="POST" action="{{ $item->path() }}" >
+                        @method('DELETE')
+                        @csrf
+                        <button class=" hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+            @endforeach
             <div class="flex-1 text-sm ml-4 py-4">
                 <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/event' }}" ><i class="fas fa-backward"></i> Back</a></p>
             </div>

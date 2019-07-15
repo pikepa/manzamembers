@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Priceitem;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
@@ -81,8 +82,10 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event = Event::find($event->id);
-
-        return view('events.show', compact('event'));
+        $priceitems=Priceitem::with('category')
+        ->where('event_id',$event->id)->get();
+                                                                                                            
+        return view('events.show', compact('event','priceitems'));
     }
 
     /**

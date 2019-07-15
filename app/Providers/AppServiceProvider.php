@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(['priceitems.form',
             ], function ($view) {
-                $view->with('categories', Category::orderBy('type', 'asc')
+                $view->with('tickettypes', Category::orderBy('type', 'asc')
                             ->where('type','PRI')
                             ->orderBy('category', 'asc')->get());
             });

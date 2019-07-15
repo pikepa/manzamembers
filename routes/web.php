@@ -21,11 +21,12 @@ Route::get('/coming_soon', function () {
 });
 
 
-// Route::get('/bycategory/{id}', 'CategoryController@bycategory')->name('bycategory');
+  Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
 
-Route::resource('event', 'EventController');
-Route::resource('message', 'MessageController');
-Route::resource('category', 'CategoryController');
+    Route::resource('event', 'EventController');
+    Route::resource('message', 'MessageController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('priceitem', 'PriceitemController');
 
 Auth::routes();
     Route::get('/images', 'UploadImageController@index');
@@ -35,8 +36,8 @@ Auth::routes();
     Route::get('/images/{image}', 'UploadImageController@show');
     Route::post('/images/upload', 'UploadImageController@upload');
 
+
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');
-  //  Route::get('/category/{id}/edit', 'CategoryController@edit')->name('category.edit');
   //  Route::get('/category/create', 'CategoryController@create')->name('category.create');
 });

@@ -18,6 +18,7 @@ class CreatePriceitemsTable extends Migration
             $table->integer('price_type_id')->unsigned();
             $table->integer('event_id')->unsigned();
             $table->integer('price')->unsigned();
+          //  $table->unique(['price_type_id', 'event_id']);
             $table->timestamps();
         });
     }

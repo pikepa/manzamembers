@@ -47,10 +47,38 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
 
-
         DB::table('categories')->insert([
             'category' => 'AGM',
             'type' => 'EVT',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+
+        DB::table('categories')->insert([
+            'category' => 'Family',
+            'type' => 'PRI',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => 'Family - Non Members',
+            'type' => 'PRI',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);         
+
+        DB::table('categories')->insert([
+            'category' => 'Single Adult',
+            'type' => 'PRI',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => 'Single Adult Member',
+            'type' => 'PRI',
             'active' => 1,
             'created_at' => new DateTime,
         ]);

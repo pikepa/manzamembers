@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Event;
+use App\Priceitem;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -18,7 +20,7 @@ class Category extends Model
 
     public function priceitems()
     {
-        return $this->hasMany(priceitem::class, 'price_item_id');
+        return $this->hasMany(Priceitem::class, 'price_type_id');
     }
 
     public function path()
