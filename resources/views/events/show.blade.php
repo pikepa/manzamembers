@@ -27,7 +27,7 @@
                   <div class="flex-1 pl-4 ">{{ $event->description }}</div>  
                 </div>
             </div>
-            <div class="flex mb-2">
+            <div class="flex mb-2 pt-2">
               <div class="w-1/6 text-right font-semibold ">Venue: </div>
               <div class="ml-4">SAO NAM BUKIT BINTANG
             </div>
@@ -63,7 +63,7 @@
             </div>
             @endforeach
             <div class="flex-1 text-sm ml-4 py-4">
-                <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/event' }}" ><i class="fas fa-backward"></i> Back</a></p>
+                <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/' }}" ><i class="fas fa-backward"></i> Back</a></p>
             </div>
         </div>
     </div>

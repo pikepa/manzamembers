@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+
 class HomeController extends Controller
 {
     /**
@@ -21,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.home');
+     //   return view('dashboard.home');
+        $events = Event::orderBy('event_date','asc')->get();
+             
+        return view('dashboard.home', compact('events'));
+        
     }
 }
