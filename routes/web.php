@@ -27,6 +27,8 @@ Route::get('/coming_soon', function () {
     Route::resource('message', 'MessageController');
     Route::resource('category', 'CategoryController');
     Route::resource('priceitem', 'PriceitemController');
+    Route::resource('membership', 'MembershipController');
+    Route::resource('member', 'MemberController');
 
 Auth::routes();
     Route::get('/images', 'UploadImageController@index');
