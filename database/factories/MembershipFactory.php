@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Membership::class, function (Faker $faker) {
     return [
         'date_joined' => $faker->date,
+        'status' => 'Pending',
         'surname' => $faker->lastname,
         'membership_type' =>1,
         'term' => 99,

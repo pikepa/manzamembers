@@ -15,8 +15,7 @@ $factory->define(Member::class, function (Faker $faker) {
         'gender' => $gender,
         'occupation' => $faker->jobTitle,
         'nationality' =>'Australian',
-        'bloodtype' => 'O',
-        'phone' =>$faker->phoneNumber ,
+        'mobile' =>$faker->phoneNumber ,
         'email' =>$faker->unique()->safeEmail,   
         ];
 });
