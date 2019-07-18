@@ -67,7 +67,7 @@ class CategoryController extends Controller
     {
         $this->validate(request(), [
                 'category' => 'required',
-                'type' => 'required |in:EVT,MEM,PRI',
+                'type' => 'required |in:EVT,MEM,PRI,TRM',
                 'active' => 'required',
             ]);
 
@@ -103,7 +103,7 @@ class CategoryController extends Controller
     {
         $attributes = request()->validate([
                 'category' => 'required',
-                'type' => 'required |in:EVT,MEM,PRI',
+                'type' => 'required |in:EVT,MEM,PRI,TRM',
                 'active' => 'required|in:1,0',
         ]);
 

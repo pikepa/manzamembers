@@ -15,8 +15,9 @@
         </div>
         <ul class="">
             <li class="ml-4"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   
-            <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">Membership Listing</a></li>
-
+            @auth
+                <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">List Membership</a></li>
+            @endauth
         </ul>    
  
     <div class="mb-2">
