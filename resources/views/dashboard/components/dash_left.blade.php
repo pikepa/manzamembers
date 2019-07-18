@@ -15,6 +15,7 @@
         </div>
         <ul class="">
             <li class="ml-4"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   
+            <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">Membership Listing</a></li>
 
         </ul>    
  
@@ -41,7 +42,10 @@
         </div>
             <ul>
                 <li class="hover:font-semibold ml-4">
-                    <a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Add New Event.</a>
+                    <a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">New Member.</a>
+                </li>
+                <li class="hover:font-semibold ml-4">
+                    <a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">New Event.</a>
                 </li>
                 <li class="hover:font-semibold ml-4">
                     <a href="{{ url('/message') }}" class="hover:font-semibold no-underline">Show Messages.</a>
@@ -59,6 +63,7 @@
                     {{ csrf_field() }}
                 </form>  
             @endauth
+
     </div>
 </div>
 </div>

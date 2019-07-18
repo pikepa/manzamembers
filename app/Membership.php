@@ -11,10 +11,14 @@ class Membership extends Model
 
     protected $guarded = [];
 
-    public function memb_no()
+    public function getMembNoattribute()
     {
+        return (10000+$this->id);
+    }
 
-        return "{$this->date_joined->year}{$this->id}";
+    public function getDateJoinedAttribute()
+    {
+            return $this->created_at->format('M j, Y'); 
     }
 
     public function path()
@@ -22,4 +26,8 @@ class Membership extends Model
         return "/membership/{$this->id}";
     }
 
+    public function members()
+    {
+        return $this->hasMany(Member::class, 'membership_id');
+    }
 }

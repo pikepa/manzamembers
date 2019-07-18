@@ -22,8 +22,9 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $memberships = Membership::get();
+             
+        return view('memberships.index', compact('memberships'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +55,9 @@ class MembershipController extends Controller
      */
     public function show(Membership $membership)
     {
-        //
+        $membership=Membership::find($membership->id);
+        
+        return view('memberships.show');
     }
 
     /**
@@ -88,6 +91,9 @@ class MembershipController extends Controller
      */
     public function destroy(Membership $membership)
     {
-        //
+        $membership = Membership::find($membership->id);
+        $membership->delete();
+
+        return redirect('membership')->with('Success', 'Membership has been deleted');
     }
 }
