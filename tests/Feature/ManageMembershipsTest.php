@@ -20,7 +20,8 @@ class ManageMembershipsTest extends TestCase
 
     /** @test */
     public function a_membership_can_be_added_to_the_database()
-    {
+    {   
+
         $membership = factory(Membership::class)->make();
         $membership->save();
         $this->assertDatabaseHas('Memberships', ['term' => $membership['term']]);
@@ -34,7 +35,7 @@ class ManageMembershipsTest extends TestCase
         $response->assertRedirect('/login');
     }
       /** @test */
-    public function a_SignedIn_user_can_view_the_membership_index()
+    public function a_signedIn_user_can_view_the_membership_index()
     {
         $this->signIn();
         $membership = factory(Membership::class)->create();
