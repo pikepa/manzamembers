@@ -9,6 +9,7 @@ class Category_Type {
         'MEM'=>'Membership Type',
         'EVT'=>'Event Type',
         'PRI'=>'Pricing Type',
+        'TRM'=>'Membership Term',
         ];
         }
 }
