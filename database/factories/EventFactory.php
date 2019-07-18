@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Event::class, function (Faker $faker) {
     return [
-        'featured_img' => $faker->url,
-        'title' => $faker->sentence($nbWords = 3, $variableNbWords = true),
+        'featured_img' => '/images/uploads/MANZA-Dinner-Club-Flyer-Aug19.jpg',
+        'title' => $faker->words($nb = 2, $asText = true) ,
         'description' =>$faker->paragraph,
         'event_date' => $faker->dateTimeBetween('+1 week', '+1 month'),
         'status' =>$faker->randomElement(['For Sale', 'Sold', 'Not for Sale']),

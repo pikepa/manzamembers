@@ -12,7 +12,7 @@ class EventTableSeeder extends Seeder
     public function run()
     {
         // Populate events
-        factory(App\Event::class, 15)->create();
+        factory(App\Event::class, 8)->create();
 
         // Get all the roles attaching up to 3 random roles to each user
         $categories = App\Category::where('type','EVT')->get();
