@@ -38,13 +38,13 @@
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $membership->date_joined }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->memb_no }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->status }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->type }}</a></td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->mship->category }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->phone }}</a></td>
                           <td class=" border-b border-r  border-grey-light">
                             <div class="flex justify-around px-4">
                                 <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}" ><i class="far fa-arrow-alt-circle-up"></i></a></div>
-                                <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="#" ><i class="far fa-edit"></i></a></div>
+                                <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}/edit" ><i class="far fa-edit"></i></a></div>
                                 <div class="text-grey-lighter text-sm mr-2 ">
                                     <form method="POST" action="{{ $membership->path() }}" >
                                         @method('DELETE')
