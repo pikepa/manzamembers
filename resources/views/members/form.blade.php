@@ -6,7 +6,7 @@
 <div class="flex justify-between">
         <div class="w-1/2 field mb-6">
             <label class="block">
-              <span class="text-gray-700">Surname</span>
+              <span class="-ml-1 form_label font-bold"><span class='text-red-500 '>* </span>Surname</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='surname'
                         placeholder="Please enter your Family name."
@@ -16,7 +16,7 @@
 
         <div class="w-1/2 ml-4 field mb-6">
             <label class="block">
-              <span class="text-gray-700">First Name</span>
+              <span class="form_label font-bold"><span class='text-red-500 '>* </span>First Name</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='firstname'
                         placeholder="Please enter your first name."
@@ -28,7 +28,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <label class="block">
-          <span class="text-gray-700">Email</span>
+          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Email</span>
             <input  type="Email" class="form-input mt-1 block w-full"
                     name='email'
                     placeholder="Please enter your email address."
@@ -38,7 +38,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class="text-gray-700">Mobile</span>
+          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Mobile</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='mobile'
                     placeholder="Please enter your mobile."
@@ -47,37 +47,61 @@
     </div>
 </div>
 
-<div class="field mb-6">
-    <label class="w-1/2 block">
-      <span class="text-gray-700">Nationality</span>
-        <input  type="text" class="form-input mt-1 block w-full" 
-                name='nationality'
-                placeholder="Please enter your nationality."
-                value="{{old('nationality', $member->nationality)}}">
-    </label>
-</div>
-
-<div class="w-1/2 field mb-6">
-    <div class="block">
-      <span class="text-gray-700">Gender</span>
-          <div class="mt-2 flex">
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-indigo-600" 
-                name="gender"  @if(old('gender',$member->gender)=="Male") checked @endif 
-                value = 'Male'/>
-                <span class="ml-2">Male</span>
-              </label>
-            </div>
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-pink-600" 
-                name="gender" @if(old('gender',$member->gender)=="Female") checked @endif
-                value = 'Female'/>
-                <span class="ml-2">Female</span>
-              </label>
+<div class="flex justify-between">
+    <div class="w-1/2 field mb-6">
+        <div class="block">
+          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Gender</span>
+              <div class="mt-2 flex">
+                <div>
+                  <label class="inline-flex items-center mr-4">
+                    <input type="radio" class="form-radio text-indigo-600" 
+                    name="gender"  @if(old('gender',$member->gender)=="Male") checked @endif 
+                    value = 'Male'/>
+                    <span class="ml-2">Male</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mr-4">
+                    <input type="radio" class="form-radio text-pink-600" 
+                    name="gender" @if(old('gender',$member->gender)=="Female") checked @endif
+                    value = 'Female'/>
+                    <span class="ml-2">Female</span>
+                  </label>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="w-1/2 ml-4 field mb-6">
+        <label class="block">
+          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Nationality</span>
+            <input  type="text" class="form-input mt-1 block w-full" 
+                    name='nationality'
+                    placeholder="Please enter your nationality."
+                    value="{{old('nationality', $member->nationality)}}">
+        </label>
+    </div>
+</div>
+
+<div class="flex justify-between">
+    <div class="w-1/2 field mb-6">
+        <label class="block">
+          <span class="form_label font-bold">Occupation</span>
+            <input  type="text" class="form-input mt-1 block w-full" 
+                    name='occupation'
+                    placeholder="Please enter your Occupation."
+                    value="{{old('nationality', $member->occupation)}}">
+        </label>
+    </div>
+
+    <div class="w-1/2 ml-4 field mb-6">
+        <label class="block">
+          <span class="form_label font-bold ">Company</span>
+            <input  type="text" class="form-input mt-1 block w-full" 
+                    name='nationality'
+                    placeholder="Please enter your company."
+                    value="{{old('nationality', $member->company)}}">
+        </label>
     </div>
 </div>
 
