@@ -2,87 +2,37 @@
 
 @include ('errors')
 
-<div class="field mb-6">
-    <label class="block">
-      <span class="text-gray-700">Surname</span>
-        <input  type="text" class="form-input mt-1 block w-full" 
-                name='surname'
-                placeholder="Please enter your Surname / Family name."
-                value="{{old('surname', $member->surname)}}">
-    </label>
-</div>
+<div class="flex mx-auto card w-3/4 text-lg">
+    <div class="w-1/2 mx-auto  flex  flex-col ">
+        <div class="flex flex-row">
+            <div class="w-1/3 ml-4 font-bold text-gray-700">Status</div>
+            <div class="ml-2">: {{ $membership->status }}</div> 
+        </div>   
+        <div class="flex flex-row">
+            <div class="w-1/3 ml-4 font-bold text-gray-700">M'ship Type</div>
+            <div class="ml-2">: {{ $membership->mship->category }}</div> 
+        </div>       
+        <div class="flex flex-row">
+            <div class="w-1/3 ml-4 font-bold text-gray-700">M'ship Term</div>
+            <div class="ml-2">: {{ $membership->term->category}}</div> 
+        </div>       
+    </div>    
 
-<div class="field mb-6">
-    <label class="block">
-      <span class="text-gray-700">First Name</span>
-        <input  type="text" class="form-input mt-1 block w-full" 
-                name='firstname'
-                placeholder="Please enter your first name."
-                value="{{old('firstname', $member->firstname)}}">
-    </label>
-</div>
-
-<div class="field mb-6">
-    <label class="block">
-      <span class="text-gray-700">Nationality</span>
-        <input  type="text" class="form-input mt-1 block w-full" 
-                name='nationality'
-                placeholder="Please enter your nationality."
-                value="{{old('nationality', $member->nationality)}}">
-    </label>
-</div>
-
-<div class="field mb-6">
-    <label class="block">
-      <span class="text-gray-700">Email</span>
-        <input  type="Email" class="form-input mt-1 block w-full"
-                name='email'
-                placeholder="Please enter your email address."
-                value="{{old('email', $member->email)}}">
-    </label>
-</div>
-
-<div class="field mb-6">
-    <label class="block">
-      <span class="text-gray-700">Mobile</span>
-        <input  type="text" class="form-input mt-1 block w-full" 
-                name='mobile'
-                placeholder="Please enter your mobile."
-                value="{{old('subject', $member->mobile)}}">
-    </label>
-</div>
-
-<div class="field mb-6">
-    <div class="block">
-      <span class="text-gray-700">Gender</span>
-          <div class="mt-2 flex">
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-indigo-600" 
-                name="gender"  @if(old('gender',$member->gender)=="Male") checked @endif 
-                value = 'Male'/>
-                <span class="ml-2">Male</span>
-              </label>
-            </div>
-            <div>
-              <label class="inline-flex items-center mr-4">
-                <input type="radio" class="form-radio text-pink-600" 
-                name="gender" @if(old('gender',$member->gender)=="Female") checked @endif
-                value = 'Female'/>
-                <span class="ml-2">Female</span>
-              </label>
-            </div>
-        </div>
+    <div class="w-1/2 mx-auto  flex  flex-col ">
+        <div class="flex flex-row">
+            <div class="w-1/2 ml-4 font-bold text-gray-700">Date 1st Joined</div>
+            <div class="ml-2">: {{ $membership->date_joined }}</div> 
+        </div>   
+        <div class="flex flex-row">
+            <div class="w-1/2 ml-4 font-bold text-gray-700">-</div>
+            <div class="ml-2">: {{ $membership->mship->category }}</div> 
+        </div>       
+        <div class="flex flex-row">
+            <div class="w-1/2 ml-4 font-bold text-gray-700">-</div>
+            <div class="ml-2">: {{ $membership->term->category}}</div> 
+        </div>       
     </div>
+
 </div>
-
-
-
-<div class="field">
-    <div class="control">
-        <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>
-
-        <a href="{{ '/' }}" class="text-default">Cancel</a>
-    </div>
-</div>
+@include('memberships.memb_index')
 
