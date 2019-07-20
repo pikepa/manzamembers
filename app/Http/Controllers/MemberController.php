@@ -22,7 +22,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members=Member::get();
+        return view('members.index',compact('members'));
     }
 
     /**
@@ -30,9 +31,18 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id = null)
     {
-        return view('members.create');
+        if(isset($id))
+        {
+            $membership = $id;
+        }
+        else
+        {
+            $membership = null;
+        }
+      
+        return view('members.create',compact('membership'));
     }                
 
     /**
@@ -43,20 +53,27 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+                     
         $this->validate(request(), [
             'surname' => 'required|min:4',
             'firstname' => 'required|min:5',
+            'mobile' => 'required',
             'gender' => 'required',
             'email' => 'email|required',
         ]);
-             
+         if(!isset($request->membership))
+         {    
         $membership = new Membership;
         $membership->surname = $request->surname;
         $membership->phone = $request->mobile;
         $membership->email = $request->email;
         
         $membership->save();
-
+        }
+        else
+        {
+            $membership = Membership::find($request->membership);
+        }
         $member = new Member;
 
         $member->membership_id = $membership->id;
@@ -69,7 +86,7 @@ class MemberController extends Controller
         
         $member->save();
 
-       return redirect('/membership/')->with('success', 'Member has been set up.');
+       return redirect('/membership/')->with('message', 'Member has been added.');
 
     }
 

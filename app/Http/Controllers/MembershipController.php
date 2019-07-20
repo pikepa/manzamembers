@@ -22,8 +22,8 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::get();
-             
+        $memberships = Membership::orderBy('id','desc')->get();
+          
         return view('memberships.index', compact('memberships'));    }
 
     /**
@@ -55,9 +55,9 @@ class MembershipController extends Controller
      */
     public function show(Membership $membership)
     {
-        $membership=Membership::find($membership->id);
-        
-        return view('memberships.show');
+        $membership=Membership::with(['mship','term'])->find($membership->id);  
+        $members=$membership->members;
+        return view('memberships.show',compact('membership','members'));
     }
 
     /**
@@ -94,6 +94,6 @@ class MembershipController extends Controller
         $membership = Membership::find($membership->id);
         $membership->delete();
 
-        return redirect('membership')->with('Success', 'Membership has been deleted');
+        return redirect('membership')->with('message', 'Membership '.$membership->memb_no.' has been deleted');
     }
 }

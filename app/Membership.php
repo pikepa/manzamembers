@@ -26,6 +26,12 @@ class Membership extends Model
         return "/membership/{$this->id}";
     }
 
+    public function mship(){
+            return $this->belongsTo(Category::class,'mship_type_id','id');}
+
+    public function term(){
+            return $this->belongsTo(Category::class,'mship_term_id','id');}
+
     public function members()
     {
         return $this->hasMany(Member::class, 'membership_id');

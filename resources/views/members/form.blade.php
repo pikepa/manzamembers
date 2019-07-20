@@ -1,6 +1,8 @@
 @csrf
 
 @include ('errors')
+<input type="hidden" value='{{ $membership }}' name=membership>
+
 <div class="flex justify-between">
         <div class="w-1/2 field mb-6">
             <label class="block">

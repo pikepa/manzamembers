@@ -23,6 +23,16 @@ class Category extends Model
         return $this->hasMany(Priceitem::class, 'price_type_id');
     }
 
+    public function mship_types()
+    {
+            return $this->hasMany(Membership::class,'id','mship_term_id');
+    }
+   
+    public function mshipterms()
+    {
+            return $this->hasMany(Membership::class,'id', 'mship_type_id');
+    }
+
     public function path()
     {
         return "/category/{$this->id}";

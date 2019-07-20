@@ -15,12 +15,13 @@ class CreateMembershipsTable extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('surname');
-            $table->integer('membership_type')->unsigned;
-            $table->integer('term')->unsigned;
-            $table->text('phone');
-            $table->text('email');
-            $table->timestamp('date_joined');
+            $table->string('status')->default('Pending');
+            $table->string('surname');
+            $table->integer('mship_type_id')->unsigned()->nullable();
+            $table->integer('mship_term_id')->unsigned()->nullable();
+            $table->string('phone');
+            $table->string('email');
+            $table->timestamp('date_joined')->nullable();
             $table->timestamps();
         });
     }
