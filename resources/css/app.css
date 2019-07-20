@@ -1,3 +1,6 @@
+
+
+
 /**
  * This injects Tailwind's base styles, which is a combination of
  * Normalize.css and some additional base styles.
@@ -90,5 +93,11 @@ html {
     overflow: hidden;
     background-size: cover;
     background-position: center;
-}
+  }
+
+  .form_label {
+     @apply .capitalize .text-red-100 .font-bold ;
+  }
+ 
+
 

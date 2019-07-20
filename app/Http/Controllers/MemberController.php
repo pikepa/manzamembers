@@ -60,6 +60,7 @@ class MemberController extends Controller
             'mobile' => 'required',
             'gender' => 'required',
             'email' => 'email|required',
+            'nationality'=> 'required',
         ]);
          if(!isset($request->membership))
          {    
@@ -83,6 +84,9 @@ class MemberController extends Controller
         $member->email = $request->email;
         $member->gender = $request->gender;
         $member->nationality = $request->nationality;
+        $member->occupation = $request->occupation;
+        $member->company = $request->company;
+
         
         $member->save();
 

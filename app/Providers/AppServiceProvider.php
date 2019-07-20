@@ -48,5 +48,18 @@ class AppServiceProvider extends ServiceProvider
                             ->where('type','PRI')
                             ->orderBy('category', 'asc')->get());
             });
+
+        view()->composer(['memberships.edit_form',
+            ], function ($view) {
+                $view->with('memb_types', Category::orderBy('type', 'asc')
+                            ->where('type','MEM')
+                            ->orderBy('category', 'asc')->get());
+            });
+        view()->composer(['memberships.edit_form',
+            ], function ($view) {
+                $view->with('memb_terms', Category::orderBy('type', 'asc')
+                            ->where('type','TRM')
+                            ->orderBy('category', 'asc')->get());
+            });
     }
 }

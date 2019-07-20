@@ -7816,6 +7816,12 @@ html {
   background-position: center;
 }
 
+.form_label {
+  text-transform: capitalize;
+  color: #fff5f5;
+  font-weight: 700;
+}
+
 @media (min-width: 320px) {
   .xs\:appearance-none {
     -webkit-appearance: none;
@@ -42445,4 +42451,6 @@ html {
     z-index: auto;
   }
 }
+ 
+
 
