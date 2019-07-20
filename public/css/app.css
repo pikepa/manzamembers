@@ -658,6 +658,7 @@ html {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  box-shadow: none;
   display: inline-block;
   height: 1em;
   width: 1em;
@@ -703,6 +704,7 @@ html {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  box-shadow: none;
   display: inline-block;
   height: 1em;
   width: 1em;
@@ -752,6 +754,7 @@ html {
   border-color: #e2e8f0;
   border-width: 1px;
   border-radius: 0.25rem;
+  box-shadow: none;
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -768,6 +771,7 @@ html {
   border-color: #e2e8f0;
   border-width: 1px;
   border-radius: 0.25rem;
+  box-shadow: none;
   padding-top: 0.5rem;
   padding-right: calc(0.5rem * 2 + 1.5em);
   padding-bottom: 0.5rem;
