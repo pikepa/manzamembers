@@ -4,7 +4,27 @@
 <input type="hidden" value='{{ $membership }}' name=membership >
 
 <div class="flex justify-between">
-    <div class="w-1/2  block mb-4">
+    <div class="w-1/2 field mb-6">
+        <label class="block">
+          <span class=" font-bold text-gray-800">Date Joined</span>
+            <input  type="date_joined" class="form-input mt-1 block w-full" 
+                    name='date_joined'
+                    placeholder="Enter the date joined."
+                    value="{{old('date_joined', $member->date_joined)}}">
+        </label>
+    </div>
+    <div class="w-1/2 ml-4 field mb-6">
+        <label class="block">
+          <span class=" font-bold text-gray-800">Orig Memb No.</span>
+            <input  type="text" class="form-input mt-1 block w-full" 
+                    name='old_membership_no'
+                    placeholder="Enter the old Member No."
+                    value="{{old('old_membership_no', $member->old_membership_no)}}">
+        </label>
+    </div>
+</div>
+
+<div class="w-1/2  block mb-4">
       <span class=" font-bold text-gray-800">Title </span>
       <div class="mt-1">
         <div class=" flex flex-wrap ">
@@ -21,20 +41,8 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="w-1/2 ml-6 field mb-6">
-        <label class="block">
-          <span class=" font-bold text-gray-800">Old Memb No</span>
-            <input  type="text" class="form-input mt-1 block w-full" 
-                    name='old_membership_no'
-                    placeholder="The old Memb No. (if applicable)."
-                    value="{{old('company', $member->old_membership_no)}}">
-        </label>
-    </div>
 </div>
 <div class="flex justify-between">
-
         <div class="w-1/2  field mb-6">
             <label class="block">
               <span class=" font-bold text-gray-800"><span class='text-red-500 '>* </span>First Name</span>

@@ -19,14 +19,14 @@ class CategoriesTableSeeder extends Seeder
         ]);         
 
         DB::table('categories')->insert([
-            'category' => 'Annual',
+            'category' => 'Ordinary',
             'type' => 'MEM',
             'active' => 1,
             'created_at' => new DateTime,
         ]);         
 
         DB::table('categories')->insert([
-            'category' => 'Half Yearly',
+            'category' => 'Associate',
             'type' => 'MEM',
             'active' => 1,
             'created_at' => new DateTime,
@@ -79,6 +79,34 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             'category' => 'Single Adult Member',
             'type' => 'PRI',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => 'Annual',
+            'type' => 'TRM',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => '1st Half Year',
+            'type' => 'TRM',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => '2nd Half Year',
+            'type' => 'TRM',
+            'active' => 1,
+            'created_at' => new DateTime,
+        ]);
+
+        DB::table('categories')->insert([
+            'category' => 'Lifetime',
+            'type' => 'TRM',
             'active' => 1,
             'created_at' => new DateTime,
         ]);

@@ -13,12 +13,17 @@ class Membership extends Model
 
     public function getMembNoattribute()
     {
+        if(isset($this->old_membership_no))
+        {
+            return $this->old_membership_no;
+        }
+        
         return (10000+$this->id);
     }
 
-    public function getDateJoinedAttribute()
+    public function getFormattedDateJoinedAttribute()
     {
-            return $this->created_at->format('M j, Y'); 
+            return $this->date_joined->format('M j, Y'); 
     }
 
     public function path()

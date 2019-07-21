@@ -73,6 +73,7 @@ class MemberController extends Controller
         $membership = new Membership;
         $membership->old_membership_no = $request->old_membership_no;
         $membership->surname = $request->surname;
+        $membership->date_joined = $request->date_joined;
         $membership->phone = $request->mobile;
         $membership->mship_type_id = 11;
         $membership->mship_term_id = 2;
@@ -86,10 +87,11 @@ class MemberController extends Controller
         {
             $membership = Membership::find($request->membership);
         }
-
+             
         $member = new Member;
 
         $member->membership_id = $membership->id;
+        $member->date_joined = $request->date_joined;
         $member->title = $request->title;
         $member->surname = $request->surname;
         $member->firstname = $request->firstname;

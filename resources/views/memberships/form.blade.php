@@ -21,7 +21,7 @@
     <div class="w-1/2 mx-auto  flex  flex-col ">
         <div class="flex flex-row">
             <div class="w-1/2 ml-4  font-bold">Date 1st Joined</div>
-            <div class="ml-2">: {{ $membership->date_joined }}</div> 
+            <div class="ml-2">: {{ $membership->formatted_date_joined }}</div> 
         </div>   
         <div class="flex flex-row">
             <div class="w-1/6 ml-4  font-bold">Email  </div>

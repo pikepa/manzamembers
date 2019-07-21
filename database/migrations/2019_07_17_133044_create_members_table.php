@@ -23,6 +23,7 @@ class CreateMembersTable extends Migration
             $table->string('email');
             $table->string('gender');
             $table->string('nationality');
+            $table->timestamp('date_joined');
             $table->string('occupation')->nullable();
             $table->string('company')->nullable();
             $table->timestamps();

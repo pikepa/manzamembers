@@ -10,9 +10,9 @@ class Member extends Model
 
     protected $guarded = [];
 
-    public function getDateJoinedAttribute()
+    public function getFormattedDateJoinedAttribute()
     {
-            return $this->created_at->format('M j, Y'); 
+            return $this->date_joined->format('M j, Y'); 
     }
 
     public function getFullnameAttribute()
