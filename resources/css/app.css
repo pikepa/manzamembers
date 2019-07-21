@@ -48,7 +48,7 @@ html {
   }
 
 .form_label {
-     @apply .capitalize .text-red-100 .font-bold ;
+     @apply  .text-gray-700 .font-bold ;
   }
  
 .pending {
