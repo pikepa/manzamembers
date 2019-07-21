@@ -19,7 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('type');
             $table->string('addr1');
             $table->string('addr2');
-            $table->string('addr3');
+            $table->string('addr3')->nullable();
             $table->string('city');
             $table->string('postcode');
             $table->string('country');
