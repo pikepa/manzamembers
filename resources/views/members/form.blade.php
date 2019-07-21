@@ -7,7 +7,7 @@
 
         <div class="w-1/2  field mb-6">
             <label class="block">
-              <span class="form_label font-bold"><span class='text-red-500 '>* </span>First Name</span>
+              <span class=" font-bold"><span class='text-red-500 '>* </span>First Name</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='firstname'
                         placeholder="Please enter your first name."
@@ -17,7 +17,7 @@
 
         <div class="w-1/2 ml-4 field mb-6">
             <label class="block">
-              <span class="-ml-1 form_label font-bold"><span class='text-red-500 '>* </span>Surname</span>
+              <span class="-ml-1  font-bold"><span class='text-red-500 '>* </span>Surname</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='surname'
                         placeholder="Please enter your Family name."
@@ -30,7 +30,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <label class="block">
-          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Email</span>
+          <span class=" font-bold"><span class='text-red-500 '>* </span>Email</span>
             <input  type="Email" class="form-input mt-1 block w-full"
                     name='email'
                     placeholder="Please enter your email address."
@@ -40,7 +40,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Mobile</span>
+          <span class=" font-bold"><span class='text-red-500 '>* </span>Mobile</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='mobile'
                     placeholder="Please enter your mobile."
@@ -52,7 +52,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <div class="block">
-          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Gender</span>
+          <span class=" font-bold"><span class='text-red-500 '>* </span>Gender</span>
               <div class="mt-2 flex">
                 <div>
                   <label class="inline-flex items-center mr-4">
@@ -76,7 +76,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class="form_label font-bold"><span class='text-red-500 '>* </span>Nationality</span>
+          <span class=" font-bold"><span class='text-red-500 '>* </span>Nationality</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='nationality'
                     placeholder="Please enter your nationality."
@@ -88,7 +88,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <label class="block">
-          <span class="form_label font-bold">Occupation</span>
+          <span class=" font-bold">Occupation</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='occupation'
                     placeholder="Please enter your Occupation."
@@ -98,7 +98,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class="form_label font-bold ">Company</span>
+          <span class=" font-bold ">Company</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='company'
                     placeholder="Please enter your company."
