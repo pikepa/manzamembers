@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Member;
 use App\Membership;
 use Illuminate\Http\Request;
+use App\SpecialClasses\Category_Type;
 
 class MemberController extends Controller
 {
@@ -33,6 +34,10 @@ class MemberController extends Controller
      */
     public function create($id = null)
     {
+        
+        $title=new Category_Type;
+        $titles=$title->gettitles();
+             
         if(isset($id))
         {
             $membership = $id;
@@ -42,7 +47,7 @@ class MemberController extends Controller
             $membership = null;
         }
       
-        return view('members.create',compact('membership'));
+        return view('members.create',compact('membership','titles'));
     }                
 
     /**
@@ -60,11 +65,13 @@ class MemberController extends Controller
             'mobile' => 'required',
             'gender' => 'required',
             'nationality'=> 'required',
+            'old_membership_no'=> 'integer',
         ]);
                      
          if(!isset($request->membership))
          {    
         $membership = new Membership;
+        $membership->old_membership_no = $request->old_membership_no;
         $membership->surname = $request->surname;
         $membership->phone = $request->mobile;
         $membership->mship_type_id = 11;
@@ -83,6 +90,7 @@ class MemberController extends Controller
         $member = new Member;
 
         $member->membership_id = $membership->id;
+        $member->title = $request->title;
         $member->surname = $request->surname;
         $member->firstname = $request->firstname;
         $member->mobile = $request->mobile;

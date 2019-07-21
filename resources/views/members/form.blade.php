@@ -4,10 +4,40 @@
 <input type="hidden" value='{{ $membership }}' name=membership >
 
 <div class="flex justify-between">
+    <div class="w-1/2  block mb-4">
+      <span class=" font-bold text-gray-800">Title </span>
+      <div class="mt-1">
+        <div class=" flex flex-wrap ">
+          <div class="inline-block relative w-full">
+            <select name="title" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <option value=''>Select a title (Optional)</option>
+              @foreach($titles as $title)
+              <option value="{{ $title }}" @if (old('title') ==  $title |  $member->title  ==  $title ) {{ 'selected' }} @endif>{{ $title }}</option>
+            @endforeach
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-1/2 ml-6 field mb-6">
+        <label class="block">
+          <span class=" font-bold text-gray-800">Old Memb No</span>
+            <input  type="text" class="form-input mt-1 block w-full" 
+                    name='old_membership_no'
+                    placeholder="The old Memb No. (if applicable)."
+                    value="{{old('company', $member->old_membership_no)}}">
+        </label>
+    </div>
+</div>
+<div class="flex justify-between">
 
         <div class="w-1/2  field mb-6">
             <label class="block">
-              <span class=" font-bold"><span class='text-red-500 '>* </span>First Name</span>
+              <span class=" font-bold text-gray-800"><span class='text-red-500 '>* </span>First Name</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='firstname'
                         placeholder="Please enter your first name."
@@ -17,7 +47,7 @@
 
         <div class="w-1/2 ml-4 field mb-6">
             <label class="block">
-              <span class="-ml-1  font-bold"><span class='text-red-500 '>* </span>Surname</span>
+              <span class="-ml-1  font-bold text-gray-800"><span class='text-red-500 '>* </span>Surname</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='surname'
                         placeholder="Please enter your Family name."
@@ -30,7 +60,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <label class="block">
-          <span class=" font-bold"><span class='text-red-500 '>* </span>Email</span>
+          <span class=" font-bold text-gray-800"><span class='text-red-500 '>* </span>Email</span>
             <input  type="Email" class="form-input mt-1 block w-full"
                     name='email'
                     placeholder="Please enter your email address."
@@ -40,7 +70,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class=" font-bold"><span class='text-red-500 '>* </span>Mobile</span>
+          <span class=" font-bold text-gray-800"><span class='text-red-500 '>* </span>Mobile</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='mobile'
                     placeholder="Please enter your mobile."
@@ -52,7 +82,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <div class="block">
-          <span class=" font-bold"><span class='text-red-500 '>* </span>Gender</span>
+          <span class="font-bold text-gray-800"><span class='text-red-500 '>* </span>Gender</span>
               <div class="mt-2 flex">
                 <div>
                   <label class="inline-flex items-center mr-4">
@@ -76,7 +106,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class=" font-bold"><span class='text-red-500 '>* </span>Nationality</span>
+          <span class=" font-bold text-gray-800"><span class='text-red-500 '>* </span>Nationality</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='nationality'
                     placeholder="Please enter your nationality."
@@ -88,7 +118,7 @@
 <div class="flex justify-between">
     <div class="w-1/2 field mb-6">
         <label class="block">
-          <span class=" font-bold">Occupation</span>
+          <span class=" font-bold text-gray-800">Occupation</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='occupation'
                     placeholder="Please enter your Occupation."
@@ -98,7 +128,7 @@
 
     <div class="w-1/2 ml-4 field mb-6">
         <label class="block">
-          <span class=" font-bold ">Company</span>
+          <span class=" font-bold text-gray-800">Company</span>
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='company'
                     placeholder="Please enter your company."
@@ -106,6 +136,7 @@
         </label>
     </div>
 </div>
+
 
 <div class="field">
     <div class="control">

@@ -11,5 +11,15 @@ class Category_Type {
         'PRI'=>'Pricing Type',
         'TRM'=>'Membership Term',
         ];
+        }     
+
+        public function gettitles() {
+        return [
+        'Mr',
+        'Mrs',
+        'Ms',
+        'His Excellency',
+        'His Excellency, The Ambassador',
+        ];
         }
 }
