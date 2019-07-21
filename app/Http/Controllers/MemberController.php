@@ -69,10 +69,8 @@ class MemberController extends Controller
         ]);
         if(!isset($request->date_joined)){
             $request->date_joined=now();
-        } else
-        {
-            $request->date_joined=Carbon::parse($request->date_joined);
-        }       
+        } 
+             
          if(!isset($request->membership))
          {    
         $membership = new Membership;

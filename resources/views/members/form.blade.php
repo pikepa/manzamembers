@@ -7,7 +7,7 @@
     <div class="w-1/2 field mb-6">
         <label class="block">
           <span class=" font-bold text-gray-800">Date Joined</span>
-            <input  type="date_joined" class="form-input mt-1 block w-full" 
+            <input  type="date" class="form-input mt-1 block w-full" 
                     name='date_joined'
                     placeholder="Enter the date joined."
                     value="{{old('date_joined', $member->date_joined)}}">
