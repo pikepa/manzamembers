@@ -18,8 +18,9 @@ class Category_Type {
         'Mr',
         'Mrs',
         'Ms',
-        'His Excellency',
-        'His Excellency, The Ambassador',
+        'HE',
+        'HE, The Australian High Commissioner',
+        'HE, The New Zealand High Commissioner',
         ];
         }
 }
