@@ -67,7 +67,9 @@ class MemberController extends Controller
             'nationality'=> 'required',
             'old_membership_no'=> 'integer',
         ]);
-                     
+        if(!isset($request->date_joined)){
+            $request->date_joined=now();
+        }        
          if(!isset($request->membership))
          {    
         $membership = new Membership;
