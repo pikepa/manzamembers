@@ -40,5 +40,10 @@ class Membership extends Model
     public function members()
     {
         return $this->hasMany(Member::class, 'membership_id');
+    }    
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'membership_id');
     }
 }

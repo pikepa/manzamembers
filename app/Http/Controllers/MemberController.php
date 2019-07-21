@@ -102,11 +102,13 @@ class MemberController extends Controller
         $member->occupation = $request->occupation;
         $member->company = $request->company;
 
-        
-            //       dd($member);
-                     
         $member->save();
+
+        $count=$membership->addresses->count();
+        if($count>0){         
         return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
+        }
+        return redirect('address/create')->with('message', 'Member '.$member->id.' has been added.');
 
     }
 
