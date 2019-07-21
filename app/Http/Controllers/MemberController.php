@@ -65,7 +65,6 @@ class MemberController extends Controller
             'mobile' => 'required',
             'gender' => 'required',
             'nationality'=> 'required',
-            'old_membership_no'=> 'integer',
         ]);
         if(!isset($request->date_joined)){
             $request->date_joined=now();
