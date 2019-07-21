@@ -1,7 +1,7 @@
 @csrf
 
 @include ('errors')
-<input type="hidden" value='{{ $membership }}' name=membership>
+<input type="hidden" value='{{ $membership }}' name=membership >
 
 <div class="flex justify-between">
         <div class="w-1/2 field mb-6">
@@ -42,7 +42,7 @@
             <input  type="text" class="form-input mt-1 block w-full" 
                     name='mobile'
                     placeholder="Please enter your mobile."
-                    value="{{old('subject', $member->mobile)}}">
+                    value="{{old('mobile', $member->mobile)}}">
         </label>
     </div>
 </div>

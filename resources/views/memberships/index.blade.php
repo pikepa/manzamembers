@@ -31,7 +31,7 @@
                           <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-r  border-grey-light">Mobile</th>
                           <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                         </tr>
-                      </thead
+                      </thead>
                       <tbody>
                         @foreach($memberships as $membership)
                         <tr class="hover:bg-grey-lighter">

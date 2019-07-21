@@ -15,6 +15,7 @@ class CreateMembershipsTable extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('old_membership_no');
             $table->string('status')->default('Pending');
             $table->string('surname');
             $table->integer('mship_type_id')->unsigned()->nullable();

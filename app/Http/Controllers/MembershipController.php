@@ -74,7 +74,8 @@ class MembershipController extends Controller
     {
        $membership=Membership::find($membership->id);  
                        
-        return view('memberships.edit',compact('membership'));    }
+        return view('memberships.edit',compact('membership'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -96,7 +97,8 @@ class MembershipController extends Controller
         ]);
         $membership->update($attributes);
 
-            return redirect('membership');
+            return redirect('membership')
+            ->with('message', 'Membership '.$membership->memb_no.' has been updated.');;
     }
 
     /**

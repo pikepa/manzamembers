@@ -53,10 +53,12 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-                     
+             
+        
+                                          
         $this->validate(request(), [
-            'surname' => 'required|min:4',
-            'firstname' => 'required|min:5',
+            'surname' => 'required|min:3',
+            'firstname' => 'required|min:1',
             'mobile' => 'required',
             'gender' => 'required',
             'email' => 'email|required',
@@ -66,6 +68,9 @@ class MemberController extends Controller
          {    
         $membership = new Membership;
         $membership->surname = $request->surname;
+        $membership->phone = $request->mobile;
+        $membership->mship_type_id = 11;
+        $membership->mship_term_id = 2;
         $membership->phone = $request->mobile;
         $membership->email = $request->email;
         
@@ -88,9 +93,10 @@ class MemberController extends Controller
         $member->company = $request->company;
 
         
+            //       dd($member);
+                     
         $member->save();
-
-       return redirect('/membership/')->with('message', 'Member has been added.');
+        return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
 
     }
 
@@ -136,7 +142,10 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Member $member)
-    {
-        //
+     {
+        $member->delete();
+
+        return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been deleted');
+    
     }
 }

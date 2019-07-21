@@ -8,7 +8,7 @@
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='status'
                         value="{{old('surname', $membership->status)}}"
-                        readonly>
+                        disabled>
             </label>
         </div>        
         <div class="w-1/2 ml-4 field">
@@ -17,7 +17,7 @@
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='memb_no'
                         value="{{old('surname', $membership->memb_no)}}"
-                        readonly>
+                        disabled>
             </label>
         </div>
 </div>
