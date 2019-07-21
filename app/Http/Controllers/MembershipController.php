@@ -60,8 +60,8 @@ class MembershipController extends Controller
         $membership=Membership::with(['mship','term'])->find($membership->id);  
 
         $members=$membership->members;
-     
-        return view('memberships.show',compact('membership','members'));
+        $receipts=$membership->receipts;
+        return view('memberships.show',compact('membership','members', 'receipts'));
     }
 
     /**

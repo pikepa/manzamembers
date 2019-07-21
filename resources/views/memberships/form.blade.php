@@ -35,8 +35,10 @@
     </div>
     <div class="flex mt-4 justify-between mx-auto text-lg">
         <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/membership' }}" ><i class="fas fa-backward"></i> Back</a></p>
+        <p><a class="no-underline hover:font-semibold"  href="#" ><i class="fa fa-plus" aria-hidden="true"></i> Receipt</a></p>
         <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}/edit" ><i class="far fa-edit"></i></a></div>
     </div>
 </div>
 @include('memberships.memb_index')
+@include('receipts.receipt_index')
 

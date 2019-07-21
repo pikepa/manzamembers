@@ -23,6 +23,7 @@ Route::get('/coming_soon', function () {
 
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
+  Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
 
     Route::resource('address', 'AddressController');
     Route::resource('event', 'EventController');
@@ -31,6 +32,7 @@ Route::get('/coming_soon', function () {
     Route::resource('priceitem', 'PriceitemController');
     Route::resource('membership', 'MembershipController');
     Route::resource('member', 'MemberController');
+    Route::resource('receipt', 'ReceiptController');
 
 Auth::routes();
     Route::get('/images', 'UploadImageController@index');

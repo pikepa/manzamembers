@@ -46,4 +46,9 @@ class Membership extends Model
     {
         return $this->hasMany(Address::class, 'membership_id');
     }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class, 'membership_id');
+    }
 }
