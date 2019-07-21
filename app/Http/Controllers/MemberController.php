@@ -52,18 +52,16 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-             
-        
-                                          
+    {                   
         $this->validate(request(), [
             'surname' => 'required|min:3',
             'firstname' => 'required|min:1',
+            'email' => 'email|required',
             'mobile' => 'required',
             'gender' => 'required',
-            'email' => 'email|required',
             'nationality'=> 'required',
         ]);
+                     
          if(!isset($request->membership))
          {    
         $membership = new Membership;
@@ -75,11 +73,13 @@ class MemberController extends Controller
         $membership->email = $request->email;
         
         $membership->save();
+
         }
         else
         {
             $membership = Membership::find($request->membership);
         }
+
         $member = new Member;
 
         $member->membership_id = $membership->id;

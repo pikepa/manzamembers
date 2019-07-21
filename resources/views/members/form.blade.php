@@ -4,7 +4,18 @@
 <input type="hidden" value='{{ $membership }}' name=membership >
 
 <div class="flex justify-between">
-        <div class="w-1/2 field mb-6">
+
+        <div class="w-1/2  field mb-6">
+            <label class="block">
+              <span class="form_label font-bold"><span class='text-red-500 '>* </span>First Name</span>
+                <input  type="text" class="form-input mt-1 block w-full" 
+                        name='firstname'
+                        placeholder="Please enter your first name."
+                        value="{{old('firstname', $member->firstname)}}">
+            </label>
+        </div>
+
+        <div class="w-1/2 ml-4 field mb-6">
             <label class="block">
               <span class="-ml-1 form_label font-bold"><span class='text-red-500 '>* </span>Surname</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
@@ -14,15 +25,6 @@
             </label>
         </div>
 
-        <div class="w-1/2 ml-4 field mb-6">
-            <label class="block">
-              <span class="form_label font-bold"><span class='text-red-500 '>* </span>First Name</span>
-                <input  type="text" class="form-input mt-1 block w-full" 
-                        name='firstname'
-                        placeholder="Please enter your first name."
-                        value="{{old('firstname', $member->firstname)}}">
-            </label>
-        </div>
 </div>
 
 <div class="flex justify-between">
@@ -98,9 +100,9 @@
         <label class="block">
           <span class="form_label font-bold ">Company</span>
             <input  type="text" class="form-input mt-1 block w-full" 
-                    name='nationality'
+                    name='company'
                     placeholder="Please enter your company."
-                    value="{{old('nationality', $member->company)}}">
+                    value="{{old('company', $member->company)}}">
         </label>
     </div>
 </div>
