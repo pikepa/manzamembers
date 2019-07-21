@@ -105,10 +105,14 @@ class MemberController extends Controller
         $member->save();
 
         $count=$membership->addresses->count();
-        if($count>0){         
+
+        if($count > 0){         
         return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
         }
-        return redirect('address/create')->with('message', 'Member '.$member->id.' has been added.');
+        else{
+                      
+        return view('addresses.create',compact('membership'));
+        }
 
     }
 

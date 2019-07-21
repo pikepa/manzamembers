@@ -24,7 +24,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('addresses.create');
     }
 
     /**
@@ -35,7 +35,30 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validate(request(), [
+                'type' => 'required',
+                'addr1' => 'required',
+                'addr2' => 'required',
+                'city' => 'required',
+                'postcode' => 'required',
+                'country'=> 'required',
+                'membership_id'=> 'integer',
+            ]);
+        $address = new Address;
+
+        $address->membership_id = $request->membership_id;
+        $address->type = $request->type;
+        $address->addr1 = $request->addr1;
+        $address->addr2 = $request->addr2;
+        $address->addr3 = $request->addr3;
+        $address->city = $request->city;
+        $address->postcode = $request->postcode;
+        $address->country = $request->country;
+
+        $address->save();
+
+        return redirect('membership/'.$address->membership_id)->with('message', 'An address has been added.');
+
     }
 
     /**

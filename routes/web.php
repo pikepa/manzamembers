@@ -24,6 +24,7 @@ Route::get('/coming_soon', function () {
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
 
+    Route::resource('address', 'AddressController');
     Route::resource('event', 'EventController');
     Route::resource('message', 'MessageController');
     Route::resource('category', 'CategoryController');
