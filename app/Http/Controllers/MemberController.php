@@ -78,8 +78,8 @@ class MemberController extends Controller
         $membership->surname = $request->surname;
         $membership->date_joined = $request->date_joined;
         $membership->phone = $request->mobile;
-        $membership->mship_type_id = 11;
-        $membership->mship_term_id = 2;
+        $membership->mship_type_id = 2;
+        $membership->mship_term_id = 11;
         $membership->phone = $request->mobile;
         $membership->email = $request->email;
         
@@ -138,8 +138,11 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Member $member)
-    {
-        //
+    {                     
+        $title=new Category_Type;
+        $titles=$title->gettitles();
+        $membership=$member->membership->id;
+        return view('members.edit',compact('member','membership','titles'));
     }
 
     /**
@@ -151,8 +154,19 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
-    }
+          $this->validate(request(), [
+                    'surname' => 'required|min:3',
+                    'firstname' => 'required|min:1',
+                    'email' => 'email|required',
+                    'mobile' => 'required',
+                    'gender' => 'required',
+                    'nationality'=> 'required',
+                ]); 
+
+
+                               dd($request);
+                                        
+      }
 
     /**
      * Remove the specified resource from storage.
