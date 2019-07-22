@@ -15,7 +15,7 @@
         </div>
             @include('memberships.form')
         <div class="flex-1 text-sm ml-4 py-4">
-            <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/membership' }}" ><i class="fas fa-backward"></i> Back</a></p>
+            <p><a class="no-underline hover:font-semibold"  href="{{ url()->previous() }}" ><i class="fas fa-backward"></i> Back</a></p>
         </div>
     </div>
 </div>
