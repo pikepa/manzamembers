@@ -67,6 +67,6 @@
             </div>
 
          </div>
+
     </div>
-{{ $memberships->links() }}
 @endsection
