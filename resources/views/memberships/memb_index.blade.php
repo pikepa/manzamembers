@@ -23,7 +23,7 @@
                 @foreach($members as $member)
                 <tr class="hover:bg-grey-lighter">
                   <td class="py-4 px-6 border-b border-r border-grey-light">{{ $member->formatted_date_joined }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{  str_limit( $member->fullname, 20)}}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{  str_limit( $member->fullname, 30)}}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->nationality }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->mobile }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->email }}</td>
