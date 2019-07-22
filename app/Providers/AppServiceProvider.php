@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        URL::forceScheme('https');
 
 
         view()->composer(['dashboard.components.dash_left',
