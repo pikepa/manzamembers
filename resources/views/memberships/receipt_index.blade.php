@@ -46,7 +46,6 @@
               </tbody>
             </table>
                    </div>
-                  <p>{{ $receipts->count() }}</p>
                 </div>
                 </div>
             </div>
