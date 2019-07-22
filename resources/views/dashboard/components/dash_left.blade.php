@@ -17,6 +17,7 @@
             <li class="ml-4"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   
             @auth
                 <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">List Membership</a></li>
+                <li class="ml-4"><a href="{{ url('/memberlisting') }}" class="hover:font-semibold no-underline">List Members</a></li>
             @endauth
         </ul>    
  

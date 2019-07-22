@@ -36,8 +36,8 @@
                       <tbody>
                         @foreach($members as $member)
                         <tr class="hover:bg-grey-lighter">
-                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $member->created_at }}</td>
-                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $member->memb_no }}</td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $member->formatted_date_joined }}</td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $member->membership->memb_no }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->fullname }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->nationality }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->mobile }}</td>
