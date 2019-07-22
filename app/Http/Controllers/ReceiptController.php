@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Receipt;
+use App\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,9 @@ class ReceiptController extends Controller
     public function create($id)
     {
         $membership_id = $id;
-        return view('receipts.create',compact('membership_id'));
+        $receipt=Membership::with('receipts','term')->find($id);
+         $receipt->date_joined='2019-01-30' ;                                
+        return view('receipts.create',compact('membership_id','receipt'));
     }
 
     /**

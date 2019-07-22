@@ -9,7 +9,7 @@
         <input  type="date" class="form-input mt-1 block w-full" 
                 name='date'
                 placeholder="Enter the date of the category."
-                value="{{old('date', $receipt->date)}}">
+                value="{{old('date', $receipt->date_joined->format('Y-m-d') )}}"> 
     </label>
 </div>
 
@@ -19,7 +19,7 @@
         <input  type="text" class="form-input mt-1 block w-full" 
                 name='payee'
                 placeholder="Enter the Payee name."
-                value="{{old('payee', $receipt->payee)}}">
+                value="{{old('payee', $receipt->surname)}}">
     </label>
 </div>
 

@@ -17,7 +17,7 @@
             action="/receipt"
         >
             @include ('receipts.form', [
-                'receipt' => new App\Receipt,
+         /*    'receipt' => new App\Receipt, */
                 'buttonText' => 'Save'
             ])
         </form>
