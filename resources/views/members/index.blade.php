@@ -11,7 +11,7 @@
 
          <div class="flex flex-col md:flex-row justify-between">
 
-            @include('dashboard.components.dash_left')
+       {{--     @include('dashboard.components.dash_left')  --}}  
             
             <div class="container mx-auto pb-4">
                 <div class="text-center">
