@@ -10,7 +10,7 @@
             <input  type="date" class="form-input mt-1 block w-full" 
                     name='date_joined'
                     placeholder="Enter the date joined."
-                    value="{{old('date_joined', $member->date_joined)}}">
+                    value="{{old('date_joined', $member->formatted_date_joined)}}">
         </label>
     </div>
     <div class="w-1/2 ml-4 field mb-6">
@@ -150,7 +150,7 @@
     <div class="control">
         <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>
 
-        <a href="{{ '/' }}" class="text-default">Cancel</a>
+        <a href="{{ url()->previous() }}" class="text-default">Cancel</a>
     </div>
 </div>
 

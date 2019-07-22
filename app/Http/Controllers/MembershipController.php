@@ -15,11 +15,6 @@ class MembershipController extends Controller
         $this->middleware('auth', ['except' => ['show']]);
     }
 
-    /**date_joined
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $memberships = Membership::with(['mship','term'])->orderBy('date_joined','desc')->get();
@@ -57,10 +52,12 @@ class MembershipController extends Controller
      */
     public function show(Membership $membership)
     {
+                 
         $membership=Membership::with(['mship','term'])->find($membership->id);  
 
         $members=$membership->members;
         $receipts=$membership->receipts;
+
         return view('memberships.show',compact('membership','members', 'receipts'));
     }
 

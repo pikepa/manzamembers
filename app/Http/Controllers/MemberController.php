@@ -163,8 +163,20 @@ class MemberController extends Controller
                     'nationality'=> 'required',
                 ]); 
 
+        $member->date_joined = $request->date_joined;
+        $member->title = $request->title;
+        $member->surname = $request->surname;
+        $member->firstname = $request->firstname;
+        $member->mobile = $request->mobile;
+        $member->email = $request->email;
+        $member->gender = $request->gender;
+        $member->nationality = $request->nationality;
+        $member->occupation = $request->occupation;
+        $member->company = $request->company;
+dd($member);
+        $member->update();
 
-                               dd($request);
+        return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
                                         
       }
 
