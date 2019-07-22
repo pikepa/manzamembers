@@ -27,6 +27,7 @@
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Member No.</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Status</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Membership</th>
+                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Term</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Name</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Mobile</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Actions</th>
@@ -39,6 +40,7 @@
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->memb_no }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->status }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->mship->category }}</td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->term->category }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->phone }}</a></td>
                           <td class=" border-b border-r  border-grey-light">

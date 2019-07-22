@@ -22,8 +22,8 @@ class MembershipController extends Controller
      */
     public function index()
     {
-        $memberships = Membership::with(['mship'])->orderBy('date_joined','desc')->get();
-          
+        $memberships = Membership::with(['mship','term'])->orderBy('date_joined','desc')->get();
+                                 
         return view('memberships.index', compact('memberships'));
 
     }
