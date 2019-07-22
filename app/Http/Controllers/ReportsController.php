@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Member;
+use App\Receipt;
+use App\Membership;
 use Illuminate\Http\Request;
 
 class ReportsController extends Controller
@@ -23,8 +25,16 @@ class ReportsController extends Controller
     public function member_listing()
     {
         $members = Member::with('membership')->orderBy('membership_id','desc')->get();
-                                                                  
+                                                                                                                    
         return view('members.index', compact('members'));
 
+    }
+
+    public function receipt_listing()
+    {
+        $receipts = Receipt::with('membership')->get();
+                       
+        return view('receipts.receipt_index', compact('receipts'));
+                
     }
 }

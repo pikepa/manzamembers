@@ -40,5 +40,5 @@
     </div>
 </div>
 @include('memberships.memb_index')
-@include('receipts.receipt_index')
+ @include('memberships.receipt_index')
 

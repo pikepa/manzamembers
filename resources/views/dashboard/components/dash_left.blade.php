@@ -18,6 +18,7 @@
             @auth
                 <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">List Membership</a></li>
                 <li class="ml-4"><a href="{{ url('/memberlisting') }}" class="hover:font-semibold no-underline">List Members</a></li>
+                <li class="ml-4"><a href="{{ url('/receiptlisting') }}" class="hover:font-semibold no-underline">List Receipts</a></li>
             @endauth
         </ul>    
  

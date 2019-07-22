@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Member;
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
@@ -29,7 +30,10 @@ class Receipt extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+       public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
     /**
      * Format the message has a path.
      */

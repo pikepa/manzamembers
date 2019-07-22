@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Receipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
@@ -25,9 +26,13 @@ class Member extends Model
         return "/member/{$this->id}";
     }
 
-
     public function membership()
     {
         return $this->belongsTo(Membership::class);
+    }
+
+    public function receipts()
+    {
+        return $this->belongsTo(Receipt::class, 'membership_id');
     }
 }

@@ -1,15 +1,4 @@
 {{-- views/members/index.blade.php --}}
-@extends('layouts.app')
-
-@section('title', 'Memberships')
-
-@section('content')
-
-@include('layouts.partials.pageheader')
-
-    <div class="container mx-auto pb-4">
-
-         <div class="flex flex-col md:flex-row justify-between">
 
        {{--     @include('dashboard.components.dash_left')  --}}  
             
@@ -24,8 +13,6 @@
             <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
               <thead>
                 <tr>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb _no</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb Name</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Rcpt Date</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Receipt No.</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Payee</th>
@@ -37,8 +24,6 @@
               <tbody>
                 @foreach($receipts as $receipt)
                 <tr class="hover:bg-grey-lighter">
-                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->membership->memb_no}}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->membership->surname }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->formatted_receipt_date }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->receipt_no }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->payee }}</td>
@@ -65,8 +50,3 @@
                 </div>
                 </div>
             </div>
-
-         </div>
-    </div>
-
-@endsection

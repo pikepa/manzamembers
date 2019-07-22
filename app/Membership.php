@@ -17,7 +17,6 @@ class Membership extends Model
         {
             return $this->old_membership_no;
         }
-        
         return (10000+$this->id);
     }
 

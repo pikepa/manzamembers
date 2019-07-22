@@ -43,6 +43,7 @@ Auth::routes();
     Route::post('/images/upload', 'UploadImageController@upload');
 
     Route::get('/memberlisting','ReportsController@member_listing');
+    Route::get('/receiptlisting','ReportsController@receipt_listing');
 
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');

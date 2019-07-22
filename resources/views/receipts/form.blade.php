@@ -48,7 +48,7 @@
     <div class="control">
         <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>
 
-        <a href="/membership/{{ $membership_id }}" class="text-default">Cancel</a>
+        <a href="{{ url()->previous() }}" class="text-default">Cancel</a>
     </div>
 </div>
 
