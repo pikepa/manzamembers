@@ -30,7 +30,6 @@
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Nationality</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Mobile</th>
                           <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-r  border-grey-light">Email</th>
-                          <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                         </tr>
                       </thead
                       <tbody>
@@ -43,16 +42,7 @@
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->mobile }}</td>
                           <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->email }}</td>
                           <td class=" border-b border-r  border-grey-light">
-                            <div class="flex justify-around px-4">
-                                <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $member->path() }}" ><i class="far fa-edit"></i></a></div>
-                                <div class="text-grey-lighter text-sm mr-2 ">
-                                    <form method="POST" action="{{ $member->path() }}" >
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                                    </form>
-                                </div>
-                            </div>
+
                           </td>
                         </tr>
                         @endforeach
