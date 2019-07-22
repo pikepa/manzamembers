@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Receipt;
+use Carbon\Carbon;
 use App\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,9 +28,14 @@ class ReceiptController extends Controller
     public function create($id)
     {
         $membership_id = $id;
-        $receipt=Membership::with('receipts','term')->find($id);
-         $receipt->date_joined='2019-01-30' ;                                
-        return view('receipts.create',compact('membership_id','receipt'));
+        $payee=Membership::findorFail($id);
+
+        $receipt= new Receipt;
+
+        $receipt->date = Carbon::now();  
+        $receipt->payee = $payee->surname;  
+                                                                                                                                       
+        return view('receipts.create',compact('membership_id', 'receipt'));
     }
 
     /**
@@ -40,11 +46,12 @@ class ReceiptController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate(request(), [
             'date' => 'required|date',
             'payee' => 'required',
             'receipt_no' => 'required|unique:receipts',
-            'amount' => 'required',
+            'amount' => 'required|numeric|min:0|not_in:0',
         ]);   
               
         $receipt = new Receipt;
@@ -80,8 +87,8 @@ class ReceiptController extends Controller
      */
     public function edit(Receipt $receipt)
     {
-        //
-    }
+        $membership_id=$receipt->membership_id;
+        return view('receipts.edit', compact('receipt','membership_id'));    }
 
     /**
      * Update the specified resource in storage.
@@ -92,8 +99,25 @@ class ReceiptController extends Controller
      */
     public function update(Request $request, Receipt $receipt)
     {
-        //
-    }
+
+       $this->validate(request(), [
+            'date' => 'required|date',
+            'payee' => 'required',
+            'receipt_no' => 'required',
+            'amount' => 'required|numeric|min:0|not_in:0',
+        ]);   
+              
+        $receipt->date = $request->date;
+        $receipt->payee = $request->payee;
+        $receipt->receipt_no = $request->receipt_no;
+        $receipt->amount = $request->amount*100;
+        $receipt->owner_id = Auth::user()->id;
+        $receipt->membership_id = $request->membership_id;
+                             
+        $receipt->update();
+
+        return redirect('membership/'.$receipt->membership_id)->with('message', 'Member '.$receipt->id.' has been saved');
+                    }
 
     /**
      * Remove the specified resource from storage.

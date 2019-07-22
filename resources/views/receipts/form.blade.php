@@ -9,7 +9,7 @@
         <input  type="date" class="form-input mt-1 block w-full" 
                 name='date'
                 placeholder="Enter the date of the category."
-                value="{{old('date', $receipt->date_joined->format('Y-m-d') )}}"> 
+                value="{{old('date', $receipt->date->format('Y-m-d'))}}"> 
     </label>
 </div>
 
@@ -19,7 +19,7 @@
         <input  type="text" class="form-input mt-1 block w-full" 
                 name='payee'
                 placeholder="Enter the Payee name."
-                value="{{old('payee', $receipt->surname)}}">
+                value="{{old('payee', $receipt->payee)}}">
     </label>
 </div>
 
@@ -35,11 +35,11 @@
 
 <div class="field mb-6">
     <label class="block">
-      <span class="text-gray-700">Receipt Amount</span>
+      <span class="text-gray-700">Receipt Amount (RM)</span>
         <input  type="text" class="form-input mt-1 block w-full" 
                 name='amount'
                 placeholder="Enter the amount in RM."
-                value="{{old('amount', $receipt->receipt_amount)}}">
+                value="{{old('amount', $receipt->formatted_amount)}}">
     </label>
 </div>
 
@@ -48,7 +48,7 @@
     <div class="control">
         <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>
 
-        <a href="/category" class="text-default">Cancel</a>
+        <a href="/membership/{{ $membership_id }}" class="text-default">Cancel</a>
     </div>
 </div>
 

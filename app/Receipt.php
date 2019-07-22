@@ -15,6 +15,12 @@ class Receipt extends Model
     }
 
 
+    public function getFormattedAmountAttribute()
+    {
+            return number_format($this->amount/100,2,'.', ',');; 
+    }
+
+
         public function membership()
     {
         return $this->belongsTo(Membership::class);
