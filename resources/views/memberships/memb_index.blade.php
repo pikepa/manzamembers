@@ -29,7 +29,7 @@
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->email }}</td>
                   <td class=" border-b border-r  border-grey-light">
                     <div class="flex justify-around px-4">
-                        <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $member->path() }}" ><i class="far fa-edit"></i></a></div>
+                        <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $member->path() }}/edit" ><i class="far fa-edit"></i></a></div>
                         <div class="text-grey-lighter text-sm mr-2 ">
                             <form method="POST" action="{{ $member->path() }}" >
                                 @method('DELETE')
