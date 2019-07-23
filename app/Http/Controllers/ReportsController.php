@@ -1,13 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Member;
 use App\Receipt;
 use App\Membership;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class ReportsController extends Controller
 {
     /**
@@ -17,7 +14,6 @@ class ReportsController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**date_joined
      * Display a listing of the resource.
      *
@@ -28,20 +24,8 @@ class ReportsController extends Controller
         $members = Member::with('membership')->orderBy('membership_id','desc')->get();
                                                                                                                     
         return view('members.index', compact('members'));
-
     }
-
-       public function receipt_listing()
-    {
-        $memberships=Membership::with('mship','term')->get();
-
-        $memberships->load('receipts')->toArray();
-                                               
-        return view('receipts.receipt_index', compact('memberships'));
-                
-    }
-
-        public function receipt_listing_in_case()
+    public function receipt_listing()
     {
         $receipts = Receipt::with('membership')
         ->orderBy('receipt_no','asc')->get();
@@ -49,5 +33,4 @@ class ReportsController extends Controller
         return view('receipts.receipt_index', compact('receipts'));
                 
     } 
-
 }
