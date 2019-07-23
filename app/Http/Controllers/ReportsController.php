@@ -39,6 +39,7 @@ class ReportsController extends Controller
                        
         return view('receipts.receipt_index', compact('receipts'));
                 
-    }
+    } 
+
 
 }
