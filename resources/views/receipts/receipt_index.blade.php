@@ -31,38 +31,28 @@
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Amount</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb Type</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Term</th>
-                  <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($receipts as $receipt)
+                @foreach($memberships as $membership)
                 <tr class="hover:bg-grey-lighter">
-                  <td class="underline py-4 px-6 border-b border-r border-grey-light"><a href='/membership/{{ $receipt->membership->id }}'>{{ $receipt->membership->memb_no}}</td></a>
-                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->membership->surname }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->formatted_receipt_date }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->receipt_no }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">RM {{ number_format($receipt->amount/100,2,'.', ',')}}</td>
+                  <td class="underline py-4 px-6 border-b border-r border-grey-light"><a href='/membership/{{ $membership->id }}'>{{ $membership->memb_no}}</td></a>
+                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $membership->surname }}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $membership->receipts[0]->formatted_receipt_date}}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $membership->receipts[0]->receipt_no }}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">RM {{ number_format($membership->receipts[0]->amount/100,2,'.', ',')}}</td>
 
-                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->membership->mship['category'] }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $receipt->membership->term['category'] }}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $membership->mship['category'] }}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $membership->term['category'] }}</td>
                   <td class=" border-b border-r  border-grey-light">
-                    <div class="flex justify-around px-4">
-                        <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $receipt->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                        <div class="text-grey-lighter text-sm mr-2 ">
-                            <form method="POST" action="{{ $receipt->path() }}" >
-                                @method('DELETE')
-                                @csrf
-                                <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                            </form>
-                        </div>
-                    </div>
+                    
                   </td>
                 </tr>
                 @endforeach
               </tbody>
             </table>
                    </div>
-                  <p>{{ $receipts->count() }}</p>
+                  <p>{{ $memberships->count() }}</p>
                 </div>
                 </div>
             </div>

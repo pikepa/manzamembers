@@ -31,8 +31,17 @@ class ReportsController extends Controller
 
     }
 
+       public function receipt_listing()
+    {
+        $memberships=Membership::with('mship','term')->get();
 
-    public function receipt_listing()
+        $memberships->load('receipts')->toArray();
+                                               
+        return view('receipts.receipt_index', compact('memberships'));
+                
+    }
+
+        public function receipt_listing_in_case()
     {
         $receipts = Receipt::with('membership')
         ->orderBy('receipt_no','asc')->get();
@@ -40,6 +49,5 @@ class ReportsController extends Controller
         return view('receipts.receipt_index', compact('receipts'));
                 
     } 
-
 
 }
