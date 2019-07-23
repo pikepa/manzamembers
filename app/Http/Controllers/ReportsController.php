@@ -6,6 +6,7 @@ use App\Member;
 use App\Receipt;
 use App\Membership;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller
 {
@@ -30,6 +31,7 @@ class ReportsController extends Controller
 
     }
 
+
     public function receipt_listing()
     {
         $receipts = Receipt::with('membership')->get();
@@ -37,4 +39,5 @@ class ReportsController extends Controller
         return view('receipts.receipt_index', compact('receipts'));
                 
     }
+
 }
