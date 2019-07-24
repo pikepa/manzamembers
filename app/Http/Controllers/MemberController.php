@@ -173,7 +173,7 @@ class MemberController extends Controller
         $member->nationality = $request->nationality;
         $member->occupation = $request->occupation;
         $member->company = $request->company;
-dd($member);
+
         $member->update();
 
         return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
