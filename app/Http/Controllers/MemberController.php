@@ -176,7 +176,7 @@ class MemberController extends Controller
 
         $member->update();
 
-        return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been added.');
+        return redirect('membership/'.$member->membership_id)->with('message', 'Member '.$member->id.' has been updated.');
                                         
       }
 
