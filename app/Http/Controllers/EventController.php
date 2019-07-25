@@ -133,7 +133,7 @@ class EventController extends Controller
         $event->v_address = Purifier::clean($request->v_address);
         $event->date = $request->date;
         $event->timing = $request->timing;
-        $event->featured_img = $request->featured_img;
+  //      $event->featured_img = $request->featured_img;
         $event->status = 'pending';
         $event->published_at = $request->published_at;
 
