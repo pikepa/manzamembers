@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $dates = ['created_at','event_date'];
+    protected $dates = ['created_at','date'];
 
     protected $guarded = [];
 
@@ -15,9 +15,8 @@ class Event extends Model
      */
     public function getDateOfEventAttribute()
     {
-        return $this->event_date->format('M j, Y');
+        return $this->date->format('l \t\h\e jS M, Y');
     }
-
     /**
      * Format the message has a path.
      */

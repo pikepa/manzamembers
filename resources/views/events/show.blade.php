@@ -24,23 +24,26 @@
                 @endif 
               </div>
                 <div class="flex mb-2 ">
-                  <div class="flex-1 pl-4 ">{{ $event->description }}</div>  
+                  <div class="flex-1 pl-4 ">{!! nl2br($event->description) !!}</div>  
                 </div>
             </div>
             <div class="flex mb-2 pt-2">
               <div class="w-1/6 text-right font-semibold ">Venue: </div>
-              <div class="ml-4">SAO NAM BUKIT BINTANG
+              <div class="ml-4">{{ $event->venue}}
             </div>
           </div>
-            <div class="flex mb-2">
+          <div class="flex mb-2 pt-2">
+              <div class="w-1/6 text-right font-semibold ">Address:  </div>
+              <div class="ml-4">{!! nl2br($event->v_address) !!}</div>
+          </div>
+            <div class="flex mb-2 pt-2">
               <div class="w-1/6  text-right font-semibold ">Date: </div>
               <div class="ml-4">{{ $event->date_of_event }}</div>
             </div>
-            <div class="flex mb-2 ">  
+            <div class="flex mb-2 pt-2">
               <div class="w-1/6  text-right font-semibold ">From: </div>
-              <div class="ml-4">7pm</div>  
-              <div class="ml-1  text-left font-semibold ">-</div>
-              <div class="ml-2">till late</div>  
+              <div class="ml-4">{{ $event->timing}}</div>  
+ 
             </div>
             <div class="w-full pt-4 pl-4 mb-4 text-left  font-semibold border-t-2 ">Ticket Prices: </div>
             <div class=" ml-12 flex items-center">

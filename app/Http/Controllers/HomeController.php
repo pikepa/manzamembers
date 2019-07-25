@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
      //   return view('dashboard.home');
-        $events = Event::orderBy('event_date','asc')->get();
+        $events = Event::orderBy('date','asc')->get();
              
         return view('dashboard.home', compact('events'));
         

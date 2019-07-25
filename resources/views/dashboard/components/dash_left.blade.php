@@ -48,7 +48,7 @@
                     <a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">New Member.</a>
                 </li>
                 <li class="hover:font-semibold ml-4">
-                    <a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">New Event.</a>
+                    <a href="{{ url('/event/create') }}" class="hover:font-semibold no-underline">New Event.</a>
                 </li>
                 <li class="hover:font-semibold ml-4">
                     <a href="{{ url('/message') }}" class="hover:font-semibold no-underline">Show Messages.</a>

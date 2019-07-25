@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Priceitem;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
@@ -25,7 +26,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('event_date','asc')->get();
+        $events = Event::orderBy('date','asc')->get();
              
         return view('dashboard.home', compact('events'));
     }
@@ -37,9 +38,10 @@ class EventController extends Controller
      */
     public function create()
     {
-        $assignedCats = [];
+        $event= new Event;
 
-        return view('event.create', compact('assignedCats'));
+        $event->date = Carbon::now(); 
+        return view('events.create', compact('event'));
     }
 
     /**
@@ -50,27 +52,32 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
-            'email' => 'email|required',
-            'name' => 'required|min:5',
-            'subject' => 'required|min:5',
-            'content'=>'required|min:10',
-        ]);
+          $this->validate(request(), [
+                    'title' => 'required|min:3',
+                    'description' => 'required|min:10',
+                    'venue' => 'required',
+                    'v_address' => 'required',
+                    'date' => 'date|required',
+                    'timing'=> 'required',
+                    'featured_img'=>'',
+                    'published_at'=>'',
+                ]); 
 
-        $message = new Message;
+        $event = new Event;
 
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->subject = $request->subject;
-        $message->content = Purifier::clean($request->content);
+        $event->title = $request->title;
+        $event->description = Purifier::clean($request->description);
+        $event->venue = $request->venue;
+        $event->v_address = Purifier::clean($request->v_address);
+        $event->date = $request->date;
+        $event->timing = $request->timing;
+        $event->featured_img = $request->featured_img;
+        $event->status = 'pending';
+        $event->published_at = $request->published_at;
 
-        if (strtoupper($request->my_question) === 'DUTCH') {
-            $message->save();
+        $event->save()  ;         
+        return redirect( $event->path() )->with('success', 'Event has been added');
 
-            return redirect('/')->with('success', 'Message has been sent');
-        } else {
-            return redirect('/')->with('failure', 'No Message has been sent');
-        }
     }
 
     /**
@@ -86,6 +93,55 @@ class EventController extends Controller
         ->where('event_id',$event->id)->get();
         return view('events.show', compact('event','priceitems'));
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Event $event)
+    {                     
+        $event->description=nl2br($event->description);
+        return view('events.edit',compact('event'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Member  $member
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Event $event)
+    {
+         $this->validate(request(), [
+                    'title' => 'required|min:3',
+                    'description' => 'required|min:10',
+                    'venue' => 'required',
+                    'v_address' => 'required',
+                    'date' => 'date|required',
+                    'timing'=> 'required',
+                    'featured_img'=>'',
+                    'published_at'=>'',
+                ]); 
+
+
+        $event->title = $request->title;
+        $event->description = Purifier::clean($request->description);
+        $event->venue = $request->venue;
+        $event->v_address = Purifier::clean($request->v_address);
+        $event->date = $request->date;
+        $event->timing = $request->timing;
+        $event->featured_img = $request->featured_img;
+        $event->status = 'pending';
+        $event->published_at = $request->published_at;
+
+      //  $event->save()  ;  
+                                   
+        return redirect( $event->path() )->with('success', 'Event has been added');
+                                   
+      }
 
     /**
      * Remove the specified resource from storage.
