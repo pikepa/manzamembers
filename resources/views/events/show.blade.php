@@ -40,10 +40,15 @@
               <div class="w-1/6  text-right font-semibold ">Date: </div>
               <div class="ml-4">{{ $event->date_of_event }}</div>
             </div>
-            <div class="flex mb-2 pt-2">
-              <div class="w-1/6  text-right font-semibold ">From: </div>
-              <div class="ml-4">{{ $event->timing}}</div>  
- 
+            <div class='flex justify-between'>
+                <div class="flex w-1/2 mb-2 pt-2">
+                  <div class="w-1/3 text-right font-semibold ">From: </div>
+                  <div class="ml-4">{{ $event->timing}}</div> 
+                </div> 
+                <div>
+                  <a href="{{ $event->path() }}/edit" ><i class="far fa-edit"></i></a>
+                </div>
+            </div>
             </div>
             <div class="w-full pt-4 pl-4 mb-4 text-left  font-semibold border-t-2 ">Ticket Prices: </div>
             <div class=" ml-12 flex items-center">

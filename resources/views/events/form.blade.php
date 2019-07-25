@@ -57,16 +57,16 @@
         </label>
     </div>
 
+        <div class="field w-1/2 ml-4 mb-6">
+            <label class="block">
+              <span class=" font-bold text-gray-800">From :</span>
+                <input  type="text" class="form-input mt-1 block w-full" 
+                        name='timing'
+                        placeholder="Enter the event timing."
+                        value="{{old('timing',$event->timing)}}">
+            </label>
+        </div>
 
-    <div class="field w-1/2 ml-4 mb-6">
-        <label class="block">
-          <span class=" font-bold text-gray-800">From :</span>
-            <input  type="text" class="form-input mt-1 block w-full" 
-                    name='timing'
-                    placeholder="Enter the event timing."
-                    value="{{old('timing',$event->timing)}}">
-        </label>
-    </div>
 </div>
 
 
