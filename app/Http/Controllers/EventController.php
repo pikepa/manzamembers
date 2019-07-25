@@ -137,7 +137,7 @@ class EventController extends Controller
         $event->status = 'pending';
         $event->published_at = $request->published_at;
 
-      //  $event->save()  ;  
+        $event->save()  ;  
                                    
         return redirect( $event->path() )->with('success', 'Event has been added');
                                    
