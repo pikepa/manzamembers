@@ -56,11 +56,9 @@ class PriceitemController extends Controller
 
         $priceitem->event_id = $request->event_id;
         $priceitem->price_type_id = $request->type;
-        $priceitem->price = $request->price;
-
+        $priceitem->price = intval($request->price*100);
         $priceitem->save();   
 
-        $event = Event::find($request->event_id);
         return redirect('event/'.$request->event_id);
     //    return view('events.show', compact('event')); 
     }

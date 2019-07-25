@@ -33,7 +33,7 @@
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->Date_of_event }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $event->path() }}">{{ $event->title }}</a></td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">RM {{ number_format($event->price/100,2,'.', ',')}}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->formatted_price }}</td>
                           <td class=" border-b border-r  border-grey-light">
                               <div class="text-center mx-auto ">
                                   <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="/coming_soon">Book Me</a>

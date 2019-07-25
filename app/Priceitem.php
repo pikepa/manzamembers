@@ -15,7 +15,7 @@ class Priceitem extends Model
     
     public function getFormattedPriceattribute()
     {
-        return 'RM '.number_format(($this->price/100),2,'.', ',');
+        return 'RM '.number_format(($this->price)/100,2,'.', ',');
 
     }
     public function owner()

@@ -84,7 +84,6 @@ class EventController extends Controller
         $event = Event::find($event->id);
         $priceitems=Priceitem::with('category')
         ->where('event_id',$event->id)->get();
-                                                                                                            
         return view('events.show', compact('event','priceitems'));
     }
 
