@@ -11,9 +11,13 @@ class Member extends Model
 
     protected $guarded = [];
 
-    public function getFormattedDateJoinedAttribute()
+    public function getFormatDateJoinedAttribute()
     {
-            return $this->date_joined->format('M j, Y'); 
+        if($this->date_joined !== null){
+            return $this->date_joined->format('Y-m-d'); 
+        }else{
+            return $this->date_joined;
+        }
     }
 
     public function getFullnameAttribute()

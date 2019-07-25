@@ -10,7 +10,7 @@
             <input  type="date" class="form-input mt-1 block w-full" 
                     name='date_joined'
                     placeholder="Enter the date joined."
-                    value="{{old('date_joined',$member->date_joined)}}">
+                    value="{{old('date_joined',$member->format_date_joined)}}">
         </label>
     </div>
     <div class="w-1/2 ml-4 field mb-6">
