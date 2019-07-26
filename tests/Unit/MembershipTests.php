@@ -24,7 +24,7 @@ class MembershipTests extends TestCase
     {
         $this->withoutExceptionHandling();
         $membership = factory(Membership::class)->create();
-        $number=$membership->date_joined->year.$membership->id;
-        $this->assertEquals($number, $membership->memb_no());
+        $number=10000 + $membership->id;
+        $this->assertEquals($number, $membership->memb_no);
     }
 }

@@ -10,8 +10,6 @@ $factory->define(Membership::class, function (Faker $faker) {
         'date_joined' => $faker->date,
         'status' => 'Pending',
         'surname' => $faker->lastname,
-        'membership_type' =>1,
-        'term' => 99,
         'phone' =>$faker->phoneNumber ,
         'email' =>$faker->unique()->safeEmail,
         ];
