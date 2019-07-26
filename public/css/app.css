@@ -814,6 +814,15 @@ html {
   color: #fff;
 }
 
+.btn-manza {
+  background-color: #8C2E51;
+  color: #fff;
+}
+
+.btn-manza:hover {
+  background-color: #e46f9a;
+}
+
 .btn-blue:hover {
   background-color: #2b6cb0;
 }
@@ -841,6 +850,10 @@ html {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+}
+
+.manza-red{
+  color:#8C2E51;
 }
 
 .form_label {

@@ -27,6 +27,14 @@ html {
   .btn-blue {
     @apply bg-blue-500 text-white;
   }
+  .btn-manza {
+    background-color: #8C2E51;
+    @apply text-white;
+  }
+  .btn-manza:hover {
+    background-color: #e46f9a;
+  }
+
   .btn-blue:hover {
     @apply bg-blue-700;
   }
@@ -46,7 +54,9 @@ html {
     background-size: cover;
     background-position: center;
   }
-
+.manza-red{
+  color:#8C2E51;
+}
 .form_label {
      @apply  .text-gray-700 .font-bold ;
   }

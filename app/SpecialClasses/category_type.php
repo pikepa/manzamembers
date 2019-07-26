@@ -23,4 +23,11 @@ class Category_Type {
         'HE, The New Zealand High Commissioner',
         ];
         }
+
+
+        public function bookinginfo() {
+        return [
+        'Car Registration Required',
+        ];
+        }
 }

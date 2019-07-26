@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
+use App\SpecialClasses\Category_Type;
 
 class EventController extends Controller
 {
@@ -38,10 +39,13 @@ class EventController extends Controller
      */
     public function create()
     {
+        $item=new Category_Type;
+        $items=$item->bookinginfo();
+
         $event= new Event;
 
         $event->date = Carbon::now(); 
-        return view('events.create', compact('event'));
+        return view('events.create', compact('event','items'));
     }
 
     /**
@@ -69,6 +73,8 @@ class EventController extends Controller
         $event->description = Purifier::clean($request->description);
         $event->venue = $request->venue;
         $event->v_address = Purifier::clean($request->v_address);
+        $event->bookings_only = $request->bookings_only;
+        $event->add_info = $request->add_info;
         $event->date = $request->date;
         $event->timing = $request->timing;
         $event->featured_img = $request->featured_img;
@@ -103,7 +109,11 @@ class EventController extends Controller
     public function edit(Event $event)
     {                     
         $event->description=nl2br($event->description);
-        return view('events.edit',compact('event'));
+
+        $item=new Category_Type;
+        $items=$item->bookinginfo();
+                     
+        return view('events.edit',compact('event','items'));
     }
 
     /**
@@ -131,6 +141,8 @@ class EventController extends Controller
         $event->description = Purifier::clean($request->description);
         $event->venue = $request->venue;
         $event->v_address = Purifier::clean($request->v_address);
+        $event->bookings_only = $request->bookings_only;
+        $event->add_info = $request->add_info;
         $event->date = $request->date;
         $event->timing = $request->timing;
   //      $event->featured_img = $request->featured_img;

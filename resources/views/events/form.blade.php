@@ -14,7 +14,7 @@
     </div>
 
 
-    <div class="field w-full mb-6">
+    <div class="field w-full mb-4">
          <label class="block">
           <span class=" font-bold text-gray-800">Event Description :</span>
           <textarea class="form-textarea mt-1 block w-full" 
@@ -24,6 +24,51 @@
           </textarea>
         </label>
     </div>
+
+<div class="flex justify-between items-center flex-row">
+
+    <div class="w-1/2  block mb-4">
+          <span class=" font-bold text-gray-800">Additional Info</span>
+          <div class="mt-1">
+            <div class=" flex flex-wrap ">
+              <div class="inline-block relative w-full">
+                <select name="add_info" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                  <option value=''>Select if required</option>
+                  @foreach($items as $item)
+                  <option value="{{ $item }}" @if (old('item') ==  $item |  $event->add_info  ==  $item ) {{ 'selected' }} @endif>{{ $item }}</option>
+                @endforeach
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <div class="field mt-6 mb-6">
+        <div class="block">
+              <div class="mt-2 flex">
+                <div>
+                  <label class="inline-flex items-center mr-4">
+                    <input type="radio" class="form-radio text-pink-600" 
+                    name="bookings_only"  @if(old('status',$event->bookings_only)=="Bookings Only") checked @endif
+                    checked 
+                    value = 'Bookings Only'/>
+                    <span class="ml-2">Bookings Only</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mr-4">
+                    <input type="radio" class="form-radio text-pink-600" 
+                    name="bookings_only"  @if(old('status',$event->bookings_only)=="Booking & Tickets") checked @endif
+                    value = 'Booking & Tickets'/>
+                    <span class="ml-2">Booking & Tickets</span>
+                  </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
 
     <div class="w-full  field mb-6">
         <label class="block">

@@ -20,6 +20,8 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->text('venue');
             $table->text('v_address');
+            $table->text('bookings_only')->nullable();
+            $table->text('add_info')->nullable();    
             $table->date('date');
             $table->string('timing');
             $table->string('status');

@@ -52,28 +52,39 @@
                 @endauth
             </div>
             </div>
-            <div class="w-full pt-4 pl-4 mb-4 text-left  font-semibold border-t-2 ">Ticket Prices: </div>
-            <div class=" ml-12 flex items-center">
-                <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
-                  Ticket Type</div>
-                <div class="bg-gray-400 w-1/4 text-center py-2 px-6 border-b border-r border-grey-light font-semibold">Price</div>
-                @auth
-                 <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
-                @endauth
+            <div class="flex justify-between items-center flex-row border-t-2 ">
+                @if( $event->bookings_only !== "Bookings Only")
+                    <div class=" pt-4 pl-4 mb-4 text-left  font-semibold ">Ticket Prices: </div>
+                    <div class="button btn btn-manza h-10">Book Now</div>
+                @else
+                    <div class="mx-auto mt-4 button btn btn-manza h-10">Book Now</div>
+                @endif
             </div>
-            @foreach($priceitems as $item)
-            <div class="ml-12 flex items-center">
-                <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
-                <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
-                <div class="py-2 px-6 border-b border-r border-grey-light">
-                    <form method="POST" action="{{ $item->path() }}" >
-                        @method('DELETE')
-                        @csrf
-                        <button class=" hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                    </form>
+            @if( $event->bookings_only !== "Bookings Only")
+                <div class=" ml-12 flex items-center">
+                        <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
+                          Ticket Type
+                        </div>
+                        <div class="bg-gray-400 w-1/4 text-center py-2 px-6 border-b border-r border-grey-light font-semibold">Price</div>
+                    @auth
+                     <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
+                    @endauth
                 </div>
-            </div>
-            @endforeach
+                @foreach($priceitems as $item)
+                    <div class="ml-12 flex items-center">
+                        <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
+                        <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
+                        <div class="py-2 px-6 border-b border-r border-grey-light">
+                            <form method="POST" action="{{ $item->path() }}" >
+                                @method('DELETE')
+                                @csrf
+                                <button class=" hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+
             <div class="flex-1 text-sm ml-4 py-4">
                 <p><a class="no-underline hover:font-semibold"  href="{{ $url = '/' }}" ><i class="fas fa-backward"></i> Back</a></p>
             </div>

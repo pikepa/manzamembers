@@ -21,6 +21,7 @@ Route::get('/coming_soon', function () {
 });
 
 
+  Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
@@ -44,6 +45,7 @@ Auth::routes();
 
     Route::get('/memberlisting','ReportsController@member_listing');
     Route::get('/receiptlisting','ReportsController@receipt_listing');
+    Route::get('/noreceipts','ReportsController@no_receipt_listing');
 
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');
