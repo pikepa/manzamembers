@@ -25,7 +25,6 @@ class HomeController extends Controller
     {
      //   return view('dashboard.home');
         $events = Event::orderBy('date','asc')->get();
-             
         return view('dashboard.home', compact('events'));
         
     }

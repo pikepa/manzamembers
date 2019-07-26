@@ -28,7 +28,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('date','asc')->get();
-             
+             dd($events);
         return view('dashboard.home', compact('events'));
     }
 
@@ -79,7 +79,6 @@ class EventController extends Controller
         $event->timing = $request->timing;
         $event->featured_img = $request->featured_img;
         $event->status = 'pending';
-        $event->published_at = $request->published_at;
 
         $event->save()  ;         
         return redirect( $event->path() )->with('success', 'Event has been added');
@@ -95,6 +94,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event = Event::find($event->id);
+
         $priceitems=Priceitem::with('category')
         ->where('event_id',$event->id)->get();
         return view('events.show', compact('event','priceitems'));
@@ -147,8 +147,6 @@ class EventController extends Controller
         $event->timing = $request->timing;
   //      $event->featured_img = $request->featured_img;
         $event->status = 'pending';
-        $event->published_at = $request->published_at;
-
         $event->update()  ;  
                                    
         return redirect( $event->path() )->with('success', 'Event has been added');

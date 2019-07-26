@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $dates = ['created_at','date'];
+    protected $dates = ['published_at','created_at','date'];
 
     protected $guarded = [];
 
@@ -17,6 +17,12 @@ class Event extends Model
     {
         return $this->date->format('l \t\h\e jS M, Y');
     }
+
+    public function isPublished()
+    {
+        return $this->published_at !== null;
+    }
+    
     /**
      * Format the message has a path.
      */
