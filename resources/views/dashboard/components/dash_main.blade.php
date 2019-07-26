@@ -32,7 +32,7 @@
                     @endif
                     @if( !$event->ispublished())
                         <div class="text-center mt-4 text-lg text-indigo-900 font-semibold">
-                            <p>Coming Soon</p>
+                            <p>Bookings Open Soon</p>
                         </div>
                     @endif
                 </div>
