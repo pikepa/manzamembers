@@ -1,7 +1,7 @@
 {
-    "name": "pikepa/hellendutch",
+    "name": "pikepa/manzamembers",
     "type": "project",
-    "description": "Hellen's art Website",
+    "description": "Manza's Membership Website",
     "keywords": [
         "framework",
         "laravel"
@@ -18,7 +18,8 @@
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "league/flysystem-cached-adapter": "^1.0",
-        "mews/purifier": "^2.1"
+        "mews/purifier": "^2.1",
+        "spatie/laravel-medialibrary": "^7.0.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
