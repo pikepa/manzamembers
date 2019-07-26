@@ -44,10 +44,12 @@
                 <div class="flex w-1/2 mb-2 pt-2">
                   <div class="w-1/3 text-right font-semibold ">From: </div>
                   <div class="ml-4">{{ $event->timing}}</div> 
-                </div> 
+                </div>
+                @auth 
                 <div>
                   <a href="{{ $event->path() }}/edit" ><i class="far fa-edit"></i></a>
                 </div>
+                @endauth
             </div>
             </div>
             <div class="w-full pt-4 pl-4 mb-4 text-left  font-semibold border-t-2 ">Ticket Prices: </div>
@@ -55,7 +57,9 @@
                 <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
                   Ticket Type</div>
                 <div class="bg-gray-400 w-1/4 text-center py-2 px-6 border-b border-r border-grey-light font-semibold">Price</div>
+                @auth
                  <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
+                @endauth
             </div>
             @foreach($priceitems as $item)
             <div class="ml-12 flex items-center">

@@ -40,7 +40,7 @@
           <span class=" font-bold text-gray-800">Venue Address :</span>
           <textarea class="form-textarea mt-1 block w-full" 
           name='v_address'
-          rows="2" 
+          rows="1" 
           placeholder="Please enter the venue address.">{{old('v_address', $event->v_address) }}
           </textarea>
         </label>
