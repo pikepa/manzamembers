@@ -17,7 +17,7 @@
         >
             @include ('messages.form', [
                 'message' => new App\Message,
-                'buttonText' => 'Save'
+                'buttonText' => 'Send'
             ])
         </form>
     </div>
