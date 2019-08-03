@@ -13,7 +13,7 @@ class Membership extends Model
 
     public function newmemberno()
     {
-        $last_no = Membership::latest()->first();
+      $last_no = Membership::orderBy('member_no', 'asc')->get()->last();
 
         return $last_no->member_no + 1;
 
