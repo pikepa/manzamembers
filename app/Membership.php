@@ -11,6 +11,12 @@ class Membership extends Model
 
     protected $guarded = [];
 
+    public function newmemberno()
+    {
+dd($membership);
+    }
+
+
     public function getMembNoattribute()
     {
         if(isset($this->old_membership_no))
