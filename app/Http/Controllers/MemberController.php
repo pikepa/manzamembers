@@ -74,6 +74,7 @@ class MemberController extends Controller
          if(!isset($request->membership))
          {    
         $membership = new Membership;
+        $membership->member_no = $membership->newmemberno();
         $membership->old_membership_no = $request->old_membership_no;
         $membership->surname = $request->surname;
         $membership->date_joined = $request->date_joined;

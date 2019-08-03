@@ -11,13 +11,20 @@ class Membership extends Model
 
     protected $guarded = [];
 
+    public function newmemberno()
+    {
+        $last_no = Membership::latest()->first();
+
+        return $last_no->member_no + 1;
+
+     }
+
+
     public function getMembNoattribute()
     {
-        if(isset($this->old_membership_no))
-        {
-            return $this->old_membership_no;
-        }
-        return (10000+$this->id);
+
+            return $this->member_no;
+
     }
 
     public function getFormattedDateJoinedAttribute()
