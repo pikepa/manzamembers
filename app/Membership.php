@@ -11,14 +11,7 @@ class Membership extends Model
 
     protected $guarded = [];
 
-    public function newmemberno()
-    {
-      $last_no = Membership::orderBy('member_no', 'asc')->get()->last();
-
-        return $last_no->member_no + 1;
-
-     }
-
+   
 
     public function getMembNoattribute()
     {
