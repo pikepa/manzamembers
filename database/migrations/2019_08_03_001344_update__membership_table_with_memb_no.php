@@ -14,7 +14,7 @@ class UpdateMembershipTableWithMembNo extends Migration
     public function up()
     {
         Schema::table('memberships', function (Blueprint $table) {
-            $table->bigInteger('memb_no')->nullable()->after('id');  
+            $table->bigInteger('member_no')->nullable()->after('id');  
 
          });      
 
@@ -27,6 +27,6 @@ class UpdateMembershipTableWithMembNo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memberships');
+
     }
 }

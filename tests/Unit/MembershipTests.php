@@ -30,15 +30,13 @@ class MembershipTests extends TestCase
     }
 
     /** @test */
-    public function  a_new_membership_number_is_created()
+    public function a_new_member_no_is_created()
     {
+        $this->withoutExceptionHandling();
         $membership = factory(Membership::class)->create([
-            'memb_no' => 21,
-        ]);
-
-        $newnumber = newmemberno();
-
-        $this->assertEquals(22,$newnumber);
-
+                'member_no' =>21,
+            ]);
+        $new= $membership->newmemberno();
+        $this->assertEquals(22,$new);
     }
 }
