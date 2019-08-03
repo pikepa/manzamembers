@@ -20,23 +20,4 @@ class MembershipTests extends TestCase
         $this->assertEquals('/membership/'.$membership->id, $membership->path());
     }
 
-    /** @test */
-    public function it_has_a_membership_number()
-    {
-        $this->withoutExceptionHandling();
-        $membership = factory(Membership::class)->create();
-        $number=10000 + $membership->id;
-        $this->assertEquals($number, $membership->memb_no);
-    }
-
-    /** @test */
-    public function a_new_member_no_is_created()
-    {
-        $this->withoutExceptionHandling();
-        $membership = factory(Membership::class)->create([
-                'member_no' =>21,
-            ]);
-        $new= $membership->newmemberno();
-        $this->assertEquals(22,$new);
-    }
 }
