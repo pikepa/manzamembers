@@ -58,7 +58,8 @@ class ReceiptController extends Controller
         $this->validate(request(), [
             'date' => 'required|date',
             'payee' => 'required',
-            'receipt_no' => 'required|unique:receipts',
+            'mship_term_id' => 'required|numeric|min:0|not_in:0',
+            'receipt_no' => 'required|unique:receipts|numeric|min:0|not_in:0',
             'amount' => 'required|numeric|min:0|not_in:0',
         ]);   
               
@@ -66,6 +67,7 @@ class ReceiptController extends Controller
 
         $receipt->date = $request->date;
         $receipt->payee = $request->payee;
+        $receipt->mship_term_id = $request->mship_term_id;
         $receipt->receipt_no = $request->receipt_no;
         $receipt->amount = $request->amount*100;
         $receipt->owner_id = Auth::user()->id;
@@ -73,7 +75,9 @@ class ReceiptController extends Controller
                              
         $receipt->save();
 
-        return redirect('membership/'.$receipt->membership_id)->with('message', 'Member '.$receipt->id.' has been saved');
+        //event(new ReceiptCreated($receipt));
+
+        return redirect('membership/'.$receipt->membership_id)->with('message', 'Receipt '.$receipt->receipt_no.' has been saved');
                 
 }
     /**
@@ -107,16 +111,18 @@ class ReceiptController extends Controller
      */
     public function update(Request $request, Receipt $receipt)
     {
-
+dd($request);
        $this->validate(request(), [
             'date' => 'required|date',
             'payee' => 'required',
+            'mship_term_id' => 'required|numeric|min:0|not_in:0',
             'receipt_no' => 'required',
             'amount' => 'required|numeric|min:0|not_in:0',
         ]);   
               
         $receipt->date = $request->date;
         $receipt->payee = $request->payee;
+        $receipt->mship_term_id = $request->mship_term_id;
         $receipt->receipt_no = $request->receipt_no;
         $receipt->amount = $request->amount*100;
         $receipt->owner_id = Auth::user()->id;
