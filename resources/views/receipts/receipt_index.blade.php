@@ -30,7 +30,7 @@
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Receipt No.</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Amount</th>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb Type</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Term</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Rcpt Term</th>
                   <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                 </tr>
               </thead>
@@ -44,7 +44,7 @@
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">RM {{ number_format($receipt->amount/100,2,'.', ',')}}</td>
 
                   <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->membership->mship['category'] }}</td>
-                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $receipt->membership->term['category'] }}</td>
+                  <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $receipt->term['category'] }}</td>
                   <td class=" border-b border-r  border-grey-light">
                     <div class="flex justify-around px-4">
                         <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $receipt->path() }}/edit" ><i class="far fa-edit"></i></a></div>
