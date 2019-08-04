@@ -111,7 +111,6 @@ class ReceiptController extends Controller
      */
     public function update(Request $request, Receipt $receipt)
     {
-dd($request);
        $this->validate(request(), [
             'date' => 'required|date',
             'payee' => 'required',
