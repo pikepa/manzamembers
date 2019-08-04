@@ -16,6 +16,7 @@ $factory->define(Member::class, function (Faker $faker) {
         'occupation' => $faker->jobTitle,
         'nationality' =>'Australian',
         'mobile' =>$faker->phoneNumber ,
+        'date_joined' =>$faker->date ,
         'email' =>$faker->unique()->safeEmail,   
         ];
 });
