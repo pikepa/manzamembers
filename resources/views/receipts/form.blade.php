@@ -7,9 +7,9 @@
     <label class="block">
       <span class="mb-4 text-gray-700 font-bold">Receipt Date</span>
         <input  type="date" class="form-input mt-1 block w-full" 
-                name='date'
+                name='receipt_date'
                 placeholder="Enter the date of the receipt."
-                value="{{old('date', $receipt->date->format('Y-m-d'))}}"> 
+                value="{{old('date', $receipt->receipt_date->format('Y-m-d'))}}"> 
     </label>
 </div>
 

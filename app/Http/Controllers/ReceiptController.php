@@ -40,7 +40,7 @@ class ReceiptController extends Controller
 
         $receipt= new Receipt;
 
-        $receipt->date = Carbon::now();  
+        $receipt->receipt_date = Carbon::now();  
         $receipt->payee = $payee->surname;  
                                                                                                                                        
         return view('receipts.create',compact('membership_id', 'receipt'));
@@ -56,7 +56,7 @@ class ReceiptController extends Controller
     {
 
         $this->validate(request(), [
-            'date' => 'required|date',
+            'receipt_date' => 'required|date',
             'payee' => 'required',
             'mship_term_id' => 'required|numeric|min:0|not_in:0',
             'receipt_no' => 'required|unique:receipts|numeric|min:0|not_in:0',
@@ -65,7 +65,7 @@ class ReceiptController extends Controller
               
         $receipt = new Receipt;
 
-        $receipt->date = $request->date;
+        $receipt->receipt_date = $request->receipt_date;
         $receipt->payee = $request->payee;
         $receipt->mship_term_id = $request->mship_term_id;
         $receipt->receipt_no = $request->receipt_no;
@@ -112,21 +112,20 @@ class ReceiptController extends Controller
     public function update(Request $request, Receipt $receipt)
     {
        $this->validate(request(), [
-            'date' => 'required|date',
+            'receipt_date' => 'required|date',
             'payee' => 'required',
             'mship_term_id' => 'required|numeric|min:0|not_in:0',
             'receipt_no' => 'required',
             'amount' => 'required|numeric|min:0|not_in:0',
         ]);   
               
-        $receipt->date = $request->date;
+        $receipt->receipt_date = $request->receipt_date;
         $receipt->payee = $request->payee;
         $receipt->mship_term_id = $request->mship_term_id;
         $receipt->receipt_no = $request->receipt_no;
         $receipt->amount = $request->amount*100;
-        $receipt->owner_id = Auth::user()->id;
         $receipt->membership_id = $request->membership_id;
-                             
+            //    dd($receipt);             
         $receipt->update();
 
         return redirect('membership/'.$receipt->membership_id)->with('message', 'Receipt '.$receipt->receipt_no.' has been saved');
