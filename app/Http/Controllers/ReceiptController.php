@@ -129,7 +129,7 @@ class ReceiptController extends Controller
                              
         $receipt->update();
 
-        return redirect('membership/'.$receipt->membership_id)->with('message', 'Member '.$receipt->id.' has been saved');
+        return redirect('membership/'.$receipt->membership_id)->with('message', 'Receipt '.$receipt->receipt_no.' has been saved');
                     }
 
     /**
