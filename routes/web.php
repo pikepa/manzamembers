@@ -46,6 +46,7 @@ Auth::routes();
     Route::get('/memberlisting','ReportsController@member_listing');
     Route::get('/receiptlisting','ReportsController@receipt_listing');
     Route::get('/noreceipts','ReportsController@no_receipt_listing');
+    Route::get('/lifemembers','ReportsController@life_member_listing');
 
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');

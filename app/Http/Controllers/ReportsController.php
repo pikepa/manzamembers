@@ -25,6 +25,15 @@ class ReportsController extends Controller
                                                                                                                     
         return view('members.index', compact('members'));
     }
+
+       public function life_member_listing()
+    {
+        $members = Membership::where('mship_type_id',3)
+                                    ->orderBy('member_no','desc')
+                                    ->get();
+        return view('members.index', compact('members'));
+    }
+    
     public function receipt_listing()
     {
         $receipts = Receipt::with('membership','term')
