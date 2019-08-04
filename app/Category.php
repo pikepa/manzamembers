@@ -33,6 +33,10 @@ class Category extends Model
             return $this->hasMany(Membership::class,'id', 'mship_type_id');
     }
 
+    public function receiptterms()
+    {
+            return $this->hasMany(Category::class,'id', 'mship_type_id');
+    }
     public function path()
     {
         return "/category/{$this->id}";

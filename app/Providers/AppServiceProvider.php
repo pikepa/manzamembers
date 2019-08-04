@@ -58,6 +58,7 @@ class AppServiceProvider extends ServiceProvider
                             ->orderBy('category', 'asc')->get());
             });
         view()->composer(['memberships.edit_form',
+                          'receipts.create'
             ], function ($view) {
                 $view->with('memb_terms', Category::orderBy('type', 'asc')
                             ->where('type','TRM')

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Member;
+use App\Receipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
@@ -19,6 +20,11 @@ class Receipt extends Model
     public function getFormattedAmountAttribute()
     {
             return number_format($this->amount/100,2,'.', ',');; 
+    }
+
+        public function term()
+        {
+        return $this->belongsTo(Category::class,'mship_term_id','id');
     }
 
 
