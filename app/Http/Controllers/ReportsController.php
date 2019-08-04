@@ -27,9 +27,8 @@ class ReportsController extends Controller
     }
     public function receipt_listing()
     {
-        $receipts = Receipt::with('membership')
+        $receipts = Receipt::with('membership','term')
         ->orderBy('receipt_no','asc')->get();
-                       
         return view('receipts.receipt_index', compact('receipts'));
                 
     } 
