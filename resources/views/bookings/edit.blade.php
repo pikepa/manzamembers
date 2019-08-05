@@ -14,10 +14,12 @@
 
         <form 
                 method="POST"
-                action="/event/{{ $event->id }}/bookings"
+                action="{{ $booking->path() }}"
         >
+            @method('PATCH')
+
             @include ('bookings.form', [
-                'buttonText' => 'Book Me!'
+                'buttonText' => 'Update Me!'
             ]) 
         </form>
     </div>
