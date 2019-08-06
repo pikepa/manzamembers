@@ -43,5 +43,6 @@
     </div>
 </div>
 @include('memberships.memb_index')
+@include('memberships.address_index')
  @include('memberships.receipt_index')
 
