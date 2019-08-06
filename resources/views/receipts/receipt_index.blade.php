@@ -37,24 +37,20 @@
               <tbody>
                 @foreach($receipts as $receipt)
                 <tr class="hover:bg-grey-lighter">
-                  <td class="underline py-4 px-6 border-b border-r border-grey-light"><a href='/membership/{{ $receipt->membership->id }}'>{{ $receipt->membership->memb_no}}</td></a>
-                  <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->membership->surname }}</td>
+                  <td class="py-4 px-6 border border-grey-light">{{ $receipt->membership->memb_no}}</td></a>
+                  <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $receipt->membership->surname }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light">{{ $receipt->formatted_receipt_date }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->receipt_no }}</td>
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">RM {{ number_format($receipt->amount/100,2,'.', ',')}}</td>
 
                   <td class="py-4 px-6 border-b border-r border-grey-light ">{{ $receipt->membership->mship['category'] }}</td>
+
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $receipt->term['category'] }}</td>
                   <td class=" border-b border-r  border-grey-light">
-                    <div class="flex justify-around px-4">
-                        <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $receipt->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                        <div class="text-grey-lighter text-sm mr-2 ">
-                            <form method="POST" action="{{ $receipt->path() }}" >
-                                @method('DELETE')
-                                @csrf
-                                <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                            </form>
-                        </div>
+                    <div class="flex justify-around ">
+                      {{--   @include('layouts.partials.icons._more',['variable'=>$receipt->path()]) --}}
+                        @include('layouts.partials.icons._edit',['variable'=>$receipt->path()])
+                        @include('layouts.partials.icons._delete',['variable'=>$receipt->path()])
                     </div>
                   </td>
                 </tr>
