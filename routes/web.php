@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('root');
+Route::get('/', 'EventController@index')->name('root');
 Route::get('/aboutus', function () {
     return view('homepages.aboutus');
 });
@@ -20,11 +20,14 @@ Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
 });
 
-
-  Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
-  Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
-  Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
-  Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
+    Route::post('/event/{id}/bookings','EventBookingsController@store')->name('event_bookings');;
+    Route::get('/booking/create/{id}', 'EventBookingsController@create')->name('booking.create');
+    
+    Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
+    Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
+    Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
+    Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
+    Route::get('/address/create/{id?}', 'AddressController@create')->name('fromAddress.create');
 
     Route::resource('address', 'AddressController');
     Route::resource('event', 'EventController');
