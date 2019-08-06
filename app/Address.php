@@ -11,4 +11,9 @@ class Address extends Model
     {
         return $this->belongsTo(Membership::class);
     }
+
+    public function path()
+    {
+        return "/address/{$this->id}";
+    }
 }
