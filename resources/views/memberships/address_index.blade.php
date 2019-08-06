@@ -10,7 +10,7 @@
                 <div class="flex flex-col ">
                     <div class=" mx-auto">
                   <div class="bg-white  rounded my-4">
-            <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+            <table class="text-left text-sm w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
               <thead>
                 <tr>
                   <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Type</th>
