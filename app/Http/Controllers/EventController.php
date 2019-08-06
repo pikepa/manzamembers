@@ -28,7 +28,6 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('date','asc')->get();
-             dd($events);
         return view('dashboard.home', compact('events'));
     }
 
