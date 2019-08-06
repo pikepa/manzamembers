@@ -6,10 +6,11 @@ use App\Membership;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class MembershipTests extends TestCase
 {
-    use WithFaker, RefreshDatabase;
+        use DatabaseMigrations,WithFaker;
 
     /** @test */
     public function it_has_a_path()
@@ -19,12 +20,4 @@ class MembershipTests extends TestCase
         $this->assertEquals('/membership/'.$membership->id, $membership->path());
     }
 
-    /** @test */
-    public function it_has_a_membership_number()
-    {
-        $this->withoutExceptionHandling();
-        $membership = factory(Membership::class)->create();
-        $number=10000 + $membership->id;
-        $this->assertEquals($number, $membership->memb_no);
-    }
 }

@@ -54,6 +54,7 @@ class MessageController extends Controller
             'name' => 'required|min:5',
             'subject' => 'required|min:5',
             'content'=>'required|min:10',
+            'my_question'=>'required',
         ]);
 
         $message = new Message;
@@ -63,7 +64,7 @@ class MessageController extends Controller
         $message->subject = $request->subject;
         $message->content = Purifier::clean($request->content);
 
-        if (strtoupper($request->my_question) === 'MALAYSIAN') {
+        if (strtoupper($request->my_question) === '5') {
             $message->save();
 
             return redirect('/')->with('success', 'Message has been sent');

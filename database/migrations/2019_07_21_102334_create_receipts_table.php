@@ -20,6 +20,7 @@ class CreateReceiptsTable extends Migration
             $table->timestamp('date');
             $table->string('payee');
             $table->integer('receipt_no')->unique();
+            $table->unsignedBigInteger('mship_term_id')->nullable();
             $table->string('amount');
             $table->string('source')->default('Manual');
             $table->timestamps();

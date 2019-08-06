@@ -72,8 +72,21 @@ class MemberController extends Controller
         } 
              
          if(!isset($request->membership))
-         {    
+         {  
+        //check for old membership number
+        if((int)$request->old_membership_no > 0){
+           
+           $newnum = $request->old_membership_no;
+        }
+        else
+        {
+            $last_no = Membership::orderBy('member_no', 'asc')->get()->last();
+
+            $newnum= $last_no->member_no + 1;
+        } 
+
         $membership = new Membership;
+        $membership->member_no = $newnum;
         $membership->old_membership_no = $request->old_membership_no;
         $membership->surname = $request->surname;
         $membership->date_joined = $request->date_joined;
@@ -82,7 +95,6 @@ class MemberController extends Controller
         $membership->mship_term_id = 11;
         $membership->phone = $request->mobile;
         $membership->email = $request->email;
-        
         $membership->save();
 
         }

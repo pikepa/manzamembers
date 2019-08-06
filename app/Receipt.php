@@ -3,16 +3,17 @@
 namespace App;
 
 use App\Member;
+use App\Receipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Receipt extends Model
 {
-    protected $dates = ['date','created_at'];
+    protected $dates = ['receipt_date','created_at'];
     protected $guarded = [];
 
     public function getFormattedReceiptDateAttribute()
     {
-            return $this->date->format('M j, Y'); 
+            return $this->receipt_date->format('M j, Y'); 
     }
 
 
@@ -21,15 +22,21 @@ class Receipt extends Model
             return number_format($this->amount/100,2,'.', ',');; 
     }
 
+        public function term()
+        {
+        return $this->belongsTo(Category::class,'mship_term_id','id');
+    }
 
         public function membership()
     {
         return $this->belongsTo(Membership::class);
     }
+
         public function owner()
     {
         return $this->belongsTo(User::class);
     }
+    
        public function member()
     {
         return $this->belongsTo(Member::class);
