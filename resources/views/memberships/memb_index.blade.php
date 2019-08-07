@@ -1,9 +1,10 @@
 {{-- views/memberships/memb_index.blade.php --}}
 <div class="mt-4 w-5/6 mx-auto items-center flex justify-between max-w-5xl">
   <div>
-      <a class=" mt-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark">Members</>
+        <a class=" mt-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark">Members</>
   </div>
-  <div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\member\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a></div>
+  <div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\member\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a>
+  </div>
 </div>
      <div class="flex flex-col ">
         <div class="max-w-5xl mx-auto">
