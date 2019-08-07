@@ -51,15 +51,20 @@
                 </div>
                 @endauth
             </div>
-            </div>
-            <div class="flex justify-between items-center flex-row border-t-2 ">
+     </div>
+
+
+            <div class="flex flex-row justify-between items-center border-t-2 ">
                 @if( $event->bookings_only !== "Bookings Only")
                     <div class=" pt-4 pl-4 mb-4 text-left  font-semibold ">Ticket Prices: </div>
-                    <div class="button btn btn-manza h-10">Book Now</div>
+                    <div class=" button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
                 @else
-                    <div class="mx-auto mt-4 button btn btn-manza h-10">Book Now</div>
+                    <div class="mx-auto mt-4 button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
                 @endif
             </div>
+
+
+
             @if( $event->bookings_only !== "Bookings Only")
                 <div class=" ml-12 flex items-center">
                         <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
@@ -70,6 +75,9 @@
                      <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
                     @endauth
                 </div>
+
+
+
                 @foreach($priceitems as $item)
                     <div class="ml-12 flex items-center">
                         <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>

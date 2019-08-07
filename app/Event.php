@@ -18,11 +18,26 @@ class Event extends Model
         return $this->date->format('l \t\h\e jS M, Y');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
     public function isPublished()
     {
         return $this->published_at !== null;
     }
-    
+
+    public function isnotPublished()
+    {
+        return $this->published_at == null;
+    }
+
+    public function publish()
+    {
+        $this->update(['published_at' => $this->freshTimestamp()]);
+        $this->addTickets($this->ticket_quantity);
+    }  
     /**
      * Format the message has a path.
      */
@@ -44,6 +59,64 @@ class Event extends Model
     public function priceitems()
     {
         return $this->hasMany(priceitem::class, 'event_id');
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'event_id');
+    }
+
+// 
+    public function reserveTickets($quantity, $email)
+    {
+        $tickets = $this->findTickets($quantity)->each(function ($ticket) {
+            $ticket->reserve();
+        });
+        return new Reservation($tickets, $email);
+    }
+
+
+    public function findTickets($quantity)
+    {
+        $tickets = $this->tickets()->available()->take($quantity)->get();
+        if ($tickets->count() < $quantity) {
+            throw new NotEnoughTicketsException;
+        }
+        return $tickets;
+    }
+
+
+    public function addTickets($quantity)
+    {
+        foreach (range(1, $quantity) as $i) {
+            $this->tickets()->create([]);
+        }
+        return $this;
+    }
+
+
+
+    public function bookTickets($email , $quantity)
+    {
+       dd('im here');
+    }
+
+
+    public function ticketsRemaining()
+    {
+        return $this->tickets()->available()->count();
+    }
+
+
+    public function ticketsSold()
+    {
+        return $this->tickets()->sold()->count();
+    }
+
+
+    public function totalTickets()
+    {
+        return $this->tickets()->count();
     }
 
 

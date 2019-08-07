@@ -21,18 +21,18 @@
                        {{--  @include('dashboard.components._pricing')  --}}          
                     </div>
                     @if($event->bookings_only === "Bookings Only" and $event->ispublished())
-                        <div class="text-center mt-4 text-lg text-indigo-900 font-semibold">
+                        <div class="text-center mt-4 text-lg text-pink-600 font-extrabold ">
                             <p>Bookings Open</p>
                         </div>
                     @endif
                     @if($event->bookings_only === "Booking & Tickets" and $event->ispublished())
-                        <div class="text-center mt-4 text-lg text-indigo-900 font-semibold">
+                        <div class="text-center mt-4 text-lg text-pink-600 font-extrabold">
                             <p>Get Your Tickets Now</p>
                         </div>
                     @endif
-                    @if( !$event->ispublished())
+                    @if( $event->isnotpublished())
                         <div class="text-center mt-4 text-lg text-indigo-900 font-semibold">
-                            <p>Tickets Coming Soon</p>
+                            <p>Bookings Opening Soon</p>
                         </div>
                     @endif
                 </div>

@@ -25,6 +25,7 @@ Route::get('/coming_soon', function () {
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
+  Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
 
     Route::resource('address', 'AddressController');
     Route::resource('event', 'EventController');
