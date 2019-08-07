@@ -53,7 +53,7 @@
             </div>
      </div>
 
-
+          @if($event->isPublished())
             <div class="flex flex-row justify-between items-center border-t-2 ">
                 @if( $event->bookings_only !== "Bookings Only")
                     <div class=" pt-4 pl-4 mb-4 text-left  font-semibold ">Ticket Prices: </div>
@@ -75,8 +75,7 @@
                      <div class="bg-gray-400 py-2 px-6 border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
                     @endauth
                 </div>
-
-
+        @endif
 
                 @foreach($priceitems as $item)
                     <div class="ml-12 flex items-center">
