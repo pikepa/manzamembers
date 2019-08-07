@@ -39,8 +39,5 @@
             </div>
         @endforeach
 
-        <div class="mt-12 mx-auto"><a  href="https://en.calameo.com/read/00506399529496a1e7d5c" target="_blank" rel="noopener"><img src="https://www.manza.org/wp-content/uploads/2019/02/MANZA-June-cover-616x436.jpg"></a></div>
-        <div class="text-red-800 font-semibold mx-auto text-3xl"><h1 class="mx-auto">Click the Magazine cover to open.</h1></div>
-
 
 </main>
