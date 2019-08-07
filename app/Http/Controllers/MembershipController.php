@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Receipt;
 use App\Membership;
 use Illuminate\Http\Request;
@@ -59,8 +60,9 @@ class MembershipController extends Controller
         $members=$membership->members;
 
         $receipts=Receipt::with(['term'])->where('membership_id',$membership->id)->get();
+        $addresses=Address::where('membership_id',$membership->id)->get();
 
-        return view('memberships.show',compact('membership','members', 'receipts'));
+        return view('memberships.show',compact('membership','members', 'addresses', 'receipts'));
     }
 
     /**
