@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ManageMembersTest extends TestCase
 {
- use WithFaker,RefreshDatabase;
+    use WithFaker,RefreshDatabase;
 
     /** @test */
     public function a_guest_can_not_create_a_member()
@@ -28,7 +28,8 @@ class ManageMembersTest extends TestCase
         $this->assertDatabaseHas('Members', ['firstname' => $member['firstname']]);
         $this->assertDatabaseHas('Members', ['surname' => $member['surname']]);
     }
-        /** @test */
+
+    /** @test */
     public function a_guest_can_not_view_the_member_index()
     {
         $membership = factory(Membership::class)->create();
@@ -36,7 +37,8 @@ class ManageMembersTest extends TestCase
         $response = $this->get('/member');
         $response->assertRedirect('/login');
     }
-      /** @test */
+
+    /** @test */
     public function a_signedIn_user_can_view_the_membership_index()
     {
         $this->signIn();
@@ -46,16 +48,15 @@ class ManageMembersTest extends TestCase
         $response = $this->get('/member');
         $response->assertStatus(200);
     }
-      /** @test */
+
+    /** @test */
     public function a_signedIn_user_can_add_a_member()
     {
         $this->withoutExceptionHandling();
-        
+
         $this->signIn();
         $response = $this->get('/member/create');
         $response->assertStatus(200);
         $response->assertSee('New Member');
-
     }
-
 }
