@@ -27,7 +27,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('date','asc')->get();
+        $events = Event::orderBy('date', 'asc')->get();
+
         return view('dashboard.home', compact('events'));
     }
 
@@ -38,13 +39,14 @@ class EventController extends Controller
      */
     public function create()
     {
-        $item=new Category_Type;
-        $items=$item->bookinginfo();
+        $item = new Category_Type;
+        $items = $item->bookinginfo();
 
-        $event= new Event;
+        $event = new Event;
 
-        $event->date = Carbon::now(); 
-        return view('events.create', compact('event','items'));
+        $event->date = Carbon::now();
+
+        return view('events.create', compact('event', 'items'));
     }
 
     /**
@@ -55,7 +57,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate(request(), [
+        $this->validate(request(), [
                     'title' => 'required|min:3',
                     'description' => 'required|min:10',
                     'venue' => 'required',
@@ -64,7 +66,7 @@ class EventController extends Controller
                     'timing'=> 'required',
                     'featured_img'=>'',
                     'published_at'=>'',
-                ]); 
+                ]);
 
         $event = new Event;
 
@@ -79,9 +81,9 @@ class EventController extends Controller
         $event->featured_img = $request->featured_img;
         $event->status = 'pending';
 
-        $event->save()  ;         
-        return redirect( $event->path() )->with('success', 'Event has been added');
+        $event->save();
 
+        return redirect($event->path())->with('success', 'Event has been added');
     }
 
     /**
@@ -94,9 +96,10 @@ class EventController extends Controller
     {
         $event = Event::find($event->id);
 
-        $priceitems=Priceitem::with('category')
-        ->where('event_id',$event->id)->get();
-        return view('events.show', compact('event','priceitems'));
+        $priceitems = Priceitem::with('category')
+        ->where('event_id', $event->id)->get();
+
+        return view('events.show', compact('event', 'priceitems'));
     }
 
     /**
@@ -106,13 +109,13 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Event $event)
-    {                     
-        $event->description=nl2br($event->description);
+    {
+        $event->description = nl2br($event->description);
 
-        $item=new Category_Type;
-        $items=$item->bookinginfo();
-                     
-        return view('events.edit',compact('event','items'));
+        $item = new Category_Type;
+        $items = $item->bookinginfo();
+
+        return view('events.edit', compact('event', 'items'));
     }
 
     /**
@@ -124,7 +127,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-         $this->validate(request(), [
+        $this->validate(request(), [
                     'title' => 'required|min:3',
                     'description' => 'required|min:10',
                     'venue' => 'required',
@@ -133,8 +136,7 @@ class EventController extends Controller
                     'timing'=> 'required',
                     'featured_img'=>'',
                     'published_at'=>'',
-                ]); 
-
+                ]);
 
         $event->title = $request->title;
         $event->description = Purifier::clean($request->description);
@@ -144,13 +146,12 @@ class EventController extends Controller
         $event->add_info = $request->add_info;
         $event->date = $request->date;
         $event->timing = $request->timing;
-  //      $event->featured_img = $request->featured_img;
+        //      $event->featured_img = $request->featured_img;
         $event->status = 'pending';
-        $event->update()  ;  
-                                   
-        return redirect( $event->path() )->with('success', 'Event has been added');
-                                   
-      }
+        $event->update();
+
+        return redirect($event->path())->with('success', 'Event has been added');
+    }
 
     /**
      * Remove the specified resource from storage.
