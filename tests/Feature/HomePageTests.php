@@ -29,5 +29,6 @@ class HomePageTests extends TestCase
         $response = $this->get('/aboutus');
         $response->assertStatus(200);
         $response->assertSee('About MANZA');
+
     }
 }

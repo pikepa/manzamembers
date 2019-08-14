@@ -19,9 +19,10 @@ class MembershipController extends Controller
 
     public function index()
     {
-        $memberships = Membership::with(['mship', 'term'])->orderBy('date_joined', 'desc')->get();
-
+        $memberships = Membership::with(['mship','term'])->orderBy('date_joined','desc')->get();
+                                 
         return view('memberships.index', compact('memberships'));
+
     }
 
     /**
@@ -53,14 +54,15 @@ class MembershipController extends Controller
      */
     public function show(Membership $membership)
     {
-        $membership = Membership::with(['mship', 'term'])->find($membership->id);
+                 
+        $membership=Membership::with(['mship','term'])->find($membership->id);  
 
-        $members = $membership->members;
+        $members=$membership->members;
 
-        $receipts = Receipt::with(['term'])->where('membership_id', $membership->id)->get();
-        $addresses = Address::where('membership_id', $membership->id)->get();
+        $receipts=Receipt::with(['term'])->where('membership_id',$membership->id)->get();
+        $addresses=Address::where('membership_id',$membership->id)->get();
 
-        return view('memberships.show', compact('membership', 'members', 'addresses', 'receipts'));
+        return view('memberships.show',compact('membership','members', 'addresses', 'receipts'));
     }
 
     /**
@@ -71,9 +73,9 @@ class MembershipController extends Controller
      */
     public function edit(Membership $membership)
     {
-        $membership = Membership::with(['mship', 'term'])->find($membership->id);
-
-        return view('memberships.edit', compact('membership'));
+       $membership=Membership::with(['mship','term'])->find($membership->id);  
+                       
+        return view('memberships.edit',compact('membership'));
     }
 
     /**
@@ -83,10 +85,10 @@ class MembershipController extends Controller
      * @param  \App\Membership  $membership
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Membership $membership)
+    public function update(Request $request,Membership $membership)
     {
-        $request->status = $membership->status;
-        $attributes = request()->validate([
+        $request->status =$membership->status;
+        $attributes=request()->validate( [
          //   'status' => 'required|min:4',
             'surname' => 'required|min:4',
             'phone' => 'required',
@@ -96,8 +98,8 @@ class MembershipController extends Controller
         ]);
         $membership->update($attributes);
 
-        return redirect('membership')
-            ->with('message', 'Membership '.$membership->memb_no.' has been updated.');
+            return redirect('membership')
+            ->with('message', 'Membership '.$membership->memb_no.' has been updated.');;
     }
 
     /**

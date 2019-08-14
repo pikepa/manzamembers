@@ -1,21 +1,19 @@
 <?php
-
+ 
 namespace App\SpecialClasses;
-
-class category_type
-{
-    public function gettypes()
-    {
+ 
+class Category_Type {
+    
+      public function gettypes() {
         return [
         'MEM'=>'Membership Type',
         'EVT'=>'Event Type',
         'PRI'=>'Pricing Type',
         'TRM'=>'Membership Term',
         ];
-    }
+        }     
 
-    public function gettitles()
-    {
+        public function gettitles() {
         return [
         'Mr',
         'Mrs',
@@ -24,12 +22,12 @@ class category_type
         'HE, The Australian High Commissioner',
         'HE, The New Zealand High Commissioner',
         ];
-    }
+        }
 
-    public function bookinginfo()
-    {
+
+        public function bookinginfo() {
         return [
         'Car Registration Required',
         ];
-    }
+        }
 }

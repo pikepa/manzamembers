@@ -26,9 +26,9 @@ class AddressController extends Controller
     public function create($id)
     {
         $membership = Membership::find($id);
-        $address = new Address;
+        $address= new Address;
 
-        return view('addresses.create', compact('address', 'membership'));
+        return view('addresses.create',compact('address','membership'));
     }
 
     /**
@@ -39,7 +39,7 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+       $this->validate(request(), [
                 'type' => 'required',
                 'addr1' => 'required',
                 'addr2' => 'required',
@@ -62,6 +62,7 @@ class AddressController extends Controller
         $address->save();
 
         return redirect('membership/'.$address->membership_id)->with('message', 'An address has been added.');
+
     }
 
     /**
@@ -83,9 +84,8 @@ class AddressController extends Controller
      */
     public function edit(Address $address)
     {
-        $membership = Membership::find($address->membership_id);
-
-        return view('addresses.edit', compact('address', 'membership'));
+       $membership=Membership::find($address->membership_id);
+        return view('addresses.edit', compact('address','membership'));  
     }
 
     /**
@@ -97,7 +97,7 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address)
     {
-        $this->validate(request(), [
+   $this->validate(request(), [
                 'type' => 'required',
                 'addr1' => 'required',
                 'addr2' => 'required',
@@ -119,7 +119,8 @@ class AddressController extends Controller
         $address->update();
 
         return redirect('membership/'.$address->membership_id)->with('message', 'Address '.$address->id.' has been updated');
-    }
+        
+   }
 
     /**
      * Remove the specified resource from storage.
@@ -132,5 +133,5 @@ class AddressController extends Controller
         $address->delete();
 
         return redirect('membership/'.$address->membership_id)->with('message', 'Address No. '.$address->id.' has been deleted');
-    }
+     }
 }

@@ -16,21 +16,21 @@ class CategoriesTableSeeder extends Seeder
             'type' => 'MEM',
             'active' => 1,
             'created_at' => new DateTime,
-        ]);
+        ]);         
 
         DB::table('categories')->insert([
             'category' => 'Ordinary',
             'type' => 'MEM',
             'active' => 1,
             'created_at' => new DateTime,
-        ]);
+        ]);         
 
         DB::table('categories')->insert([
             'category' => 'Associate',
             'type' => 'MEM',
             'active' => 1,
             'created_at' => new DateTime,
-        ]);
+        ]);         
 
         DB::table('categories')->insert([
             'category' => 'Dinner',
@@ -46,12 +46,14 @@ class CategoriesTableSeeder extends Seeder
             'created_at' => new DateTime,
         ]);
 
+
         DB::table('categories')->insert([
             'category' => 'AGM',
             'type' => 'EVT',
             'active' => 1,
             'created_at' => new DateTime,
         ]);
+
 
         DB::table('categories')->insert([
             'category' => 'Family',
@@ -65,7 +67,7 @@ class CategoriesTableSeeder extends Seeder
             'type' => 'PRI',
             'active' => 1,
             'created_at' => new DateTime,
-        ]);
+        ]);         
 
         DB::table('categories')->insert([
             'category' => 'Single Adult',
@@ -108,5 +110,7 @@ class CategoriesTableSeeder extends Seeder
             'active' => 1,
             'created_at' => new DateTime,
         ]);
+
+
     }
 }

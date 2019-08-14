@@ -15,7 +15,8 @@ class UpdateMembershipTableWithMembNo extends Migration
     {
         Schema::table('memberships', function (Blueprint $table) {
             $table->bigInteger('memb_no')->nullable()->after('id');
-        });
+        }); 
+
     }
 
     /**

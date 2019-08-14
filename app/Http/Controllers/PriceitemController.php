@@ -16,6 +16,7 @@ class PriceitemController extends Controller
         $this->middleware('auth', ['except' => ['index']]);
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -31,11 +32,12 @@ class PriceitemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($event_id)
-    {
-        return view('priceitems.create', compact('event_id'));
+    public function create ( $event_id)
+    {    
+                     
+        return view('priceitems.create', compact('event_id'));    
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +46,7 @@ class PriceitemController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+                $this->validate(request(), [
                 'event_id' => 'required',
                 'type' => 'required',
                 'price' => 'required',
@@ -54,11 +56,11 @@ class PriceitemController extends Controller
 
         $priceitem->event_id = $request->event_id;
         $priceitem->price_type_id = $request->type;
-        $priceitem->price = intval($request->price * 100);
-        $priceitem->save();
+        $priceitem->price = intval($request->price*100);
+        $priceitem->save();   
 
         return redirect('event/'.$request->event_id);
-        //    return view('events.show', compact('event'));
+    //    return view('events.show', compact('event')); 
     }
 
     /**
@@ -107,6 +109,5 @@ class PriceitemController extends Controller
         $priceitem->delete();
 
         return redirect('event/'.$priceitem->event_id)
-            ->with('Success', 'Line Item has been deleted');
-    }
+            ->with('Success', 'Line Item has been deleted');    }
 }

@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Event::class, function (Faker $faker) {
     return [
         'featured_img' => '/images/uploads/MANZA-Dinner-Club-Flyer-Aug19.jpg',
-        'title' => $faker->words($nb = 2, $asText = true),
+        'title' => $faker->words($nb = 2, $asText = true) ,
         'description' =>$faker->paragraph,
         'venue' =>$faker->paragraph,
         'v_address' =>$faker->paragraph,

@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Member;
 use App\Receipt;
 use App\Membership;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class ReportsController extends Controller
 {
     /**
@@ -15,7 +14,6 @@ class ReportsController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**date_joined
      * Display a listing of the resource.
      *
@@ -23,25 +21,24 @@ class ReportsController extends Controller
      */
     public function member_listing()
     {
-        $members = Member::with('membership')->orderBy('membership_id', 'desc')->get();
-
+        $members = Member::with('membership')->orderBy('membership_id','desc')->get();
+                                                                                                                    
         return view('members.index', compact('members'));
     }
 
-    public function life_member_listing()
+       public function life_member_listing()
     {
-        $members = Membership::where('mship_type_id', 3)
-                                    ->orderBy('member_no', 'desc')
+        $members = Membership::where('mship_type_id',3)
+                                    ->orderBy('member_no','desc')
                                     ->get();
-
         return view('members.index', compact('members'));
     }
-
+    
     public function receipt_listing()
     {
-        $receipts = Receipt::with('membership', 'term')
-        ->orderBy('receipt_no', 'asc')->get();
-
+        $receipts = Receipt::with('membership','term')
+        ->orderBy('receipt_no','asc')->get();
         return view('receipts.receipt_index', compact('receipts'));
-    }
+                
+    } 
 }

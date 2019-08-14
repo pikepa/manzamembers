@@ -17,6 +17,7 @@ class CategoryController extends Controller
         $this->middleware('auth', ['except' => ['bycategory']]);
     }
 
+
     /**
      * Display a listing of categories.
      *
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // category loaded via appServiceProvider
+        // category loaded via appServiceProvider    
         return view('categories.index');
     }
 
@@ -48,12 +49,13 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-
+    {           
+                     
       //  $type= new Category_Type;
-        //  $types=$type->gettypes();
+      //  $types=$type->gettypes();
 
         return view('categories.create');
+
     }
 
     /**

@@ -20,12 +20,13 @@ Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
 });
 
+
   Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
   Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
-
+    
     Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
     Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
     Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
@@ -49,10 +50,10 @@ Auth::routes();
     Route::get('/images/{image}', 'UploadImageController@show');
     Route::post('/images/upload', 'UploadImageController@upload');
 
-    Route::get('/memberlisting', 'ReportsController@member_listing');
-    Route::get('/receiptlisting', 'ReportsController@receipt_listing');
-    Route::get('/noreceipts', 'ReportsController@no_receipt_listing');
-    Route::get('/lifemembers', 'ReportsController@life_member_listing');
+    Route::get('/memberlisting','ReportsController@member_listing');
+    Route::get('/receiptlisting','ReportsController@receipt_listing');
+    Route::get('/noreceipts','ReportsController@no_receipt_listing');
+    Route::get('/lifemembers','ReportsController@life_member_listing');
 
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');
