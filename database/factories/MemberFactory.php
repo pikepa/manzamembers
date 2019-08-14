@@ -6,8 +6,8 @@ use App\Member;
 use Faker\Generator as Faker;
 
 $factory->define(Member::class, function (Faker $faker) {
-    
     $gender = $faker->randomElement(['male', 'female']);
+
     return [
         'membership_id'=>'1',
         'surname' => $faker->lastname,
@@ -15,8 +15,8 @@ $factory->define(Member::class, function (Faker $faker) {
         'gender' => $gender,
         'occupation' => $faker->jobTitle,
         'nationality' =>'Australian',
-        'mobile' =>$faker->phoneNumber ,
-        'date_joined' =>$faker->date ,
-        'email' =>$faker->unique()->safeEmail,   
+        'mobile' =>$faker->phoneNumber,
+        'date_joined' =>$faker->date,
+        'email' =>$faker->unique()->safeEmail,
         ];
 });

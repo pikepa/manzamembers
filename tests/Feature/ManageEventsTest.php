@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ManageEventsTest extends TestCase
@@ -19,7 +17,7 @@ class ManageEventsTest extends TestCase
 
         //When user visit the events page
         $response = $this->get('/');
-        
+
         //He should be able to read the event
         $response->assertSee($event->title);
     }
