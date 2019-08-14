@@ -2,8 +2,6 @@
 
 namespace App;
 
-use App\Event;
-use App\Priceitem;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -25,21 +23,21 @@ class Category extends Model
 
     public function mship_types()
     {
-            return $this->hasMany(Membership::class,'id','mship_term_id');
+        return $this->hasMany(Membership::class, 'id', 'mship_term_id');
     }
-   
+
     public function mshipterms()
     {
-            return $this->hasMany(Membership::class,'id', 'mship_type_id');
+        return $this->hasMany(Membership::class, 'id', 'mship_type_id');
     }
 
     public function receiptterms()
     {
-            return $this->hasMany(Category::class,'id', 'mship_type_id');
+        return $this->hasMany(self::class, 'id', 'mship_type_id');
     }
+
     public function path()
     {
         return "/category/{$this->id}";
     }
-
 }

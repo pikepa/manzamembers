@@ -12,7 +12,7 @@ $factory->define(Membership::class, function (Faker $faker) {
         'surname' => $faker->lastname,
         'mship_type_id' => 4,
         'mship_term_id' => 11,
-        'phone' =>$faker->phoneNumber ,
+        'phone' =>$faker->phoneNumber,
         'email' =>$faker->unique()->safeEmail,
         ];
 });

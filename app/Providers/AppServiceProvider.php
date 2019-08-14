@@ -29,12 +29,11 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         URL::forceScheme('https');
 
-
         view()->composer(['dashboard.components.dash_left',
                            'events.form',
                            ], function ($view) {
                                $view->with('categories', Category::where('active', 1)
-                                           ->where('type','EVT')
+                                           ->where('type', 'EVT')
                                            ->orderBy('category', 'asc')->get());
                            });
 
@@ -47,21 +46,21 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['priceitems.form',
             ], function ($view) {
                 $view->with('tickettypes', Category::orderBy('type', 'asc')
-                            ->where('type','PRI')
+                            ->where('type', 'PRI')
                             ->orderBy('category', 'asc')->get());
             });
 
         view()->composer(['memberships.edit_form',
             ], function ($view) {
                 $view->with('memb_types', Category::orderBy('type', 'asc')
-                            ->where('type','MEM')
+                            ->where('type', 'MEM')
                             ->orderBy('category', 'asc')->get());
             });
         view()->composer(['memberships.edit_form',
-                          'receipts.form'
+                          'receipts.form',
             ], function ($view) {
                 $view->with('memb_terms', Category::orderBy('type', 'asc')
-                            ->where('type','TRM')
+                            ->where('type', 'TRM')
                             ->orderBy('category', 'asc')->get());
             });
     }
