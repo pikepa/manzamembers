@@ -19,14 +19,16 @@ Route::get('/aboutus', function () {
 Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
 });
-
+Route::get('addmoney/stripe', array('as' => 'addmoney.paystripe','uses' => 'MoneySetupController@PaymentStripe'));
+Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
 
   Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
-  Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
     
+    Route::get('/checkout/', 'CheckoutController@precheckout')->name('checkout.precheckout');
+    Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
     Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
     Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
     Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
@@ -34,6 +36,7 @@ Route::get('/coming_soon', function () {
     Route::get('/address/create/{id?}', 'AddressController@create')->name('fromAddress.create');
 
     Route::resource('address', 'AddressController');
+    Route::resource('bookingitems', 'BookingItemController');
     Route::resource('event', 'EventController');
     Route::resource('message', 'MessageController');
     Route::resource('category', 'CategoryController');
@@ -41,6 +44,7 @@ Route::get('/coming_soon', function () {
     Route::resource('membership', 'MembershipController');
     Route::resource('member', 'MemberController');
     Route::resource('receipt', 'ReceiptController');
+    Route::resource('eventbooking', 'EventBookingsController');
 
 Auth::routes();
     Route::get('/images', 'UploadImageController@index');

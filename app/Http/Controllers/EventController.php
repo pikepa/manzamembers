@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Event;
 use App\Priceitem;
 use Carbon\Carbon;
@@ -93,8 +93,9 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event = Event::find($event->id);
-
+        session:flush();
         $priceitems=Priceitem::with('category')
+        ->orderBy('memb','desc')
         ->where('event_id',$event->id)->get();
         return view('events.show', compact('event','priceitems'));
     }

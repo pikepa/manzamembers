@@ -5,6 +5,7 @@ namespace App;
 use App\User;
 use App\Event;
 use App\Category;
+use Session;
 use Illuminate\Database\Eloquent\Model;
 
 class Priceitem extends Model
@@ -18,12 +19,24 @@ class Priceitem extends Model
         return 'RM '.number_format(($this->price)/100,2,'.', ',');
 
     }
+
+    public function scopeMembers($query)
+    {
+        return $query->where('memb',1)->where('event_id',session::get('event_id',0));
+    }
+
+    public function scopeNonmembers($query)
+    {
+        return $query->where('memb',0)->where('event_id',session::get('event_id',0));
+    }
+
+
     public function owner()
     {
         return $this->belongsTo(User::class);
     }
 
-        public function category()
+    public function category()
     {
         return $this->belongsTo(Category::class,'price_type_id');
     }

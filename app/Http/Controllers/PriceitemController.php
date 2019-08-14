@@ -34,8 +34,8 @@ class PriceitemController extends Controller
      */
     public function create ( $event_id)
     {    
-                     
-        return view('priceitems.create', compact('event_id'));    
+        $priceitem = new Priceitem;
+        return view('priceitems.create', compact('priceitem','event_id'));    
     }
     
     /**
@@ -51,11 +51,11 @@ class PriceitemController extends Controller
                 'type' => 'required',
                 'price' => 'required',
             ]);
-
         $priceitem = new Priceitem;
 
         $priceitem->event_id = $request->event_id;
         $priceitem->price_type_id = $request->type;
+        $priceitem->memb = $request->memb;
         $priceitem->price = intval($request->price*100);
         $priceitem->save();   
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Event;
 use App\Booking;
+use App\Category;
+use App\Priceitem;
 use Illuminate\Http\Request;
 use App\Billing\PaymentGateway;
 use App\Billing\PaymentFailedException;
@@ -11,6 +14,14 @@ use App\Exceptions\NotEnoughTicketsException;
 
 class EventBookingsController extends Controller
 {
+      /**
+     * Restricting certain functions to Auth Users only.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     private $paymentGateway;
  /*   
     public function __construct(PaymentGateway $paymentGateway)
@@ -21,34 +32,38 @@ class EventBookingsController extends Controller
 
     public function create($id)
     { 
-        $booking = new Booking;
-        $event = Event::find($id);
-        return view('bookings.create', compact('booking','event'));    
+
+        $bookings = Booking::where('event_id',$id)->get();
+        $eventbooking = Event::with('bookings')->findOrFail($id);
+                     
+        return view('bookings.create', compact('bookings','eventbooking','eventtickettypes'));    
     }
 
 
-    public function store(Request $request, $eventId)
+    public function store(Request $request)
     {
-     //   dd('Arrived in Store Method awaiting further work');
-
-        $event = Event::published()->findOrFail($eventId);
-
-        $this->validate(request(), [
+        $validatedrequest = $this->validate(request(), [
+            'event_id' => 'required|numeric|min:0|not_in:0',
+            'name' => 'required',
             'email' => 'required',
-            'ticket_quantity' => ['required', 'integer', 'min:1'],
-            'payment_token' => 'required',
-        ]);
+         //   'memb_no' => 'required',
+        ]);               
+                           
+       $booking = new Booking;
 
-        try {
-            $booking = $event->bookTickets(request('email'), request('ticket_quantity'));
-            $this->paymentGateway->charge(request('ticket_quantity') * $event->ticket_price, request('payment_token'));
-            return response()->json([], 201);
-        } catch (PaymentFailedException $e) {
-            $booking->cancel();
-            return response()->json([], 422);
-        } catch (NotEnoughTicketsException $e) {
-            return response()->json([], 422);
-        }
-    }
+       $booking->event_id = $request->event_id;
+       $booking->name = $request->name;
+       $booking->email = $request->email;
+       $booking->memb_no = $request->memb_no;
+       $booking->add_info = $request->add_info;
 
+
+       $booking->save();
+
+        session(['booking_id' => $booking->id]);
+        session(['event_id' => $booking->event_id]);
+
+       return redirect('/bookingitems/'.$booking->id);
+
+  }
 }

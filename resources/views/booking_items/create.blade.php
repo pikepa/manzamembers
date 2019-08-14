@@ -14,13 +14,13 @@
 
         <form 
                 method="POST"
-                action="/eventbooking"
+                action="/bookingitems"
         >
-            @include ('bookings.form', [
-                'buttonText' => 'Continue'
+            @include ('booking_items.form', [
+                'buttonText' => 'Save'
             ]) 
         </form>
     </div>
-    </div>
+</div>
 
 @endsection

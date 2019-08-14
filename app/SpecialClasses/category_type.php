@@ -27,7 +27,7 @@ class Category_Type {
 
         public function bookinginfo() {
         return [
-        'Car Registration Required',
+        'Car Registration Required if Driving',
         ];
         }
 }

@@ -20,7 +20,7 @@ class Category extends Model
 
     public function priceitems()
     {
-        return $this->hasMany(Priceitem::class, 'price_type_id');
+        return $this->hasMany(Priceitem::class, 'price_type_id')->orderBy('category','asc');
     }
 
     public function mship_types()

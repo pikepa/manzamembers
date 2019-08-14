@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
                             ->orderBy('category', 'asc')->get());
             });
 
-        view()->composer(['priceitems.form',
+        view()->composer(['priceitems.form', 'bookings.form',
             ], function ($view) {
                 $view->with('tickettypes', Category::orderBy('type', 'asc')
                             ->where('type','PRI')
@@ -57,12 +57,15 @@ class AppServiceProvider extends ServiceProvider
                             ->where('type','MEM')
                             ->orderBy('category', 'asc')->get());
             });
+
         view()->composer(['memberships.edit_form',
                           'receipts.form'
             ], function ($view) {
                 $view->with('memb_terms', Category::orderBy('type', 'asc')
                             ->where('type','TRM')
                             ->orderBy('category', 'asc')->get());
-            });
+            });  
+
+
     }
 }

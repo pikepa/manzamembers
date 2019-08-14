@@ -61,12 +61,34 @@ class Event extends Model
         return $this->hasMany(priceitem::class, 'event_id');
     }
 
+    public function membpriceitems()
+    {
+        return $this->hasMany(priceitem::class, 'event_id')->where('memb',1);
+    }
+
+    public function nonmembpriceitems()
+    {
+        return $this->hasMany(priceitem::class, 'event_id')->where('memb',0);
+    }
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class, 'event_id');
     }
 
-// 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'event_id');
+    }
+
+//  
+    public function getPrice($member)
+    {
+        dd($member);
+    }
+
+
+
     public function reserveTickets($quantity, $email)
     {
         $tickets = $this->findTickets($quantity)->each(function ($ticket) {
@@ -93,6 +115,8 @@ class Event extends Model
         }
         return $this;
     }
+
+
 
 
 

@@ -18,3 +18,17 @@ $factory->define(Event::class, function (Faker $faker) {
         'published_at' =>$faker->date,
     ];
 });
+
+
+$factory->state(App\Event::class, 'published', function ($faker) {
+    return [
+        'published_at' => Carbon::parse('-1 week'),
+    ];
+});
+
+$factory->state(App\Event::class, 'unpublished', function ($faker) {
+    return [
+        'published_at' => null,
+    ];
+});
+

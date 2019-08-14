@@ -16,7 +16,6 @@
             action="/priceitem"
         >
             @include ('priceitems.form', [
-                'priceitem' => new App\Priceitem,
                 'buttonText' => 'Save'
             ])
         </form>
