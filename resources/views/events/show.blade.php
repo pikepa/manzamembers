@@ -76,7 +76,6 @@
                     @endauth
                 </div>
         @endif
-
                 @foreach($priceitems as $item)
                     <div class="ml-12 flex items-center">
                         <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
