@@ -30,7 +30,6 @@ class Priceitem extends Model
         return $query->where('memb',0)->where('event_id',session::get('event_id',0));
     }
 
-
     public function owner()
     {
         return $this->belongsTo(User::class);
