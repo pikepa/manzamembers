@@ -18,6 +18,6 @@
     @yield('content')
 
 </div>
-</body>
 @include('layouts.partials.scripts')
+</body>
 </html>
