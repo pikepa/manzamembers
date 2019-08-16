@@ -12,7 +12,6 @@ class Category extends Model
 
     protected $guarded = [];
 
-    //
     public function events()
     {
         return $this->belongsToMany(Event::class)->orderBy('publish_at', 'desc');
