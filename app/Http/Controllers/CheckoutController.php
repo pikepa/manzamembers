@@ -39,10 +39,7 @@ class CheckoutController extends Controller
         $booking->receipt_url = $charged->receipt_url;
         $booking->update();
 
-
-         dd($booking); 
-        return back();
-
+        return redirect( '/' );
     }
 
 }
