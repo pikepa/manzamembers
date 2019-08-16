@@ -53,21 +53,19 @@
             </div>
      </div>
 
-            <div class="flex flex-row justify-between items-center border-t-2 ">
+        <div class="flex flex-row justify-between items-center border-t-2 ">
+            @if($event->isPublished())  
                 @if( $event->bookings_only !== "Bookings Only")
                     <div class=" pt-4 pl-4 mb-4 text-left  font-semibold ">Ticket Prices: </div>
-                        @if($event->isPublished())
                             <div class=" button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
-                       @endif
                 @else
                     <div class="mx-auto mt-4 button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
                 @endif
-            </div>
-
-
+            @endif
+        </div>
 
             @if( $event->bookings_only !== "Bookings Only")
-                <div class=" ml-12 flex items-center">
+                <div class="mt-4 ml-12 flex items-center">
                         <div class="bg-gray-400 w-1/2 py-2 px-6 border-b border-r border-grey-light font-semibold">
                           Ticket Type
                         </div>
@@ -78,11 +76,11 @@
                 </div>
                 @foreach($priceitems as $item)
                     <div class="ml-12 flex items-center">
-                      @if($item->memb == 0)
-                          <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}} - Non Members</div>
-                      @else
-                          <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
-                      @endif
+                        @if($item->memb == 0)
+                            <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}} - Non Members</div>
+                        @else
+                            <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
+                        @endif
                         <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
                         <div class="border-b border-r border-grey-light" >
                           @auth
