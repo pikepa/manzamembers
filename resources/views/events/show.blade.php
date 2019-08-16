@@ -82,7 +82,9 @@
                         <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
                         <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
                         <div class="border-b border-r border-grey-light" >
+                          @auth
                             @include('layouts.partials.icons._delete',['variable'=>$item->path()])
+                          @endauth                        
                         </div>
                     </div>
                 @endforeach
