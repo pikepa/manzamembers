@@ -78,7 +78,11 @@
                 </div>
                 @foreach($priceitems as $item)
                     <div class="ml-12 flex items-center">
-                        <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
+                      @if($item->memb == 0)
+                          <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}} - Non Members</div>
+                      @else
+                          <div class="w-1/2 py-2 px-6 border-b border-r border-grey-light ">{{ $item->category->category}}</div>
+                      @endif
                         <div class="w-1/4 text-right py-2 px-6 border-b border-r border-grey-light ">{{ $item->formatted_price }}</div>
                         <div class="border-b border-r border-grey-light" >
                           @auth
