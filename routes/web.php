@@ -16,11 +16,11 @@ Route::get('/aboutus', function () {
     return view('homepages.aboutus');
 });
 
+
+
 Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
 });
-Route::get('addmoney/stripe', array('as' => 'addmoney.paystripe','uses' => 'MoneySetupController@PaymentStripe'));
-Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'MoneySetupController@postPaymentStripe'));
 
   Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
@@ -28,6 +28,8 @@ Route::post('addmoney/stripe', array('as' => 'addmoney.stripe','uses' => 'MoneyS
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
     
     Route::get('/checkout/', 'CheckoutController@precheckout')->name('checkout.precheckout');
+    Route::post('/charge/', 'CheckoutController@charge')->name('checkout.charge');
+
     Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
     Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
     Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
