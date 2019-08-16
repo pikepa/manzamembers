@@ -12,7 +12,6 @@ class Membership extends Model
     protected $guarded = [];
 
    
-
     public function getMembNoattribute()
     {
 

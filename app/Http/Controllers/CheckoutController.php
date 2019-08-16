@@ -35,7 +35,12 @@ class CheckoutController extends Controller
         ]);
   
         Session::flash('success', 'Payment successful!');
-         dd($charged); 
+        $booking->confirmed_at = now();
+        $booking->receipt_url = $charged->receipt_url;
+        $booking->update();
+
+
+         dd($booking); 
         return back();
 
     }

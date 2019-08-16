@@ -7,6 +7,7 @@ use App\Event;
 use App\Booking;
 use App\Category;
 use App\Priceitem;
+use App\Membership;
 use Illuminate\Http\Request;
 use App\Billing\PaymentGateway;
 use App\Billing\PaymentFailedException;
@@ -42,19 +43,27 @@ class EventBookingsController extends Controller
 
     public function store(Request $request)
     {
+      $validmember = 'False';
         $validatedrequest = $this->validate(request(), [
             'event_id' => 'required|numeric|min:0|not_in:0',
             'name' => 'required',
             'email' => 'required',
          //   'memb_no' => 'required',
         ]);               
-                           
+        $memb=$request->memb_no;              
+
        $booking = new Booking;
+        
+        if(Membership::where('member_no',$request->memb_no)
+                      ->where('status', 'current')->get()->count() > 0 ){
+            $booking->memb_no = $request->memb_no;
+        }else{
+            $booking->memb_no = 'N-'.$request->memb_no;
+        };
 
        $booking->event_id = $request->event_id;
        $booking->name = $request->name;
        $booking->email = $request->email;
-       $booking->memb_no = $request->memb_no;
        $booking->add_info = $request->add_info;
 
 
