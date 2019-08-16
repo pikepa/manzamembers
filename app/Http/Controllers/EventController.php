@@ -93,7 +93,9 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $event = Event::find($event->id);
+        
         session:flush();
+
         $priceitems=Priceitem::with('category')
         ->orderBy('memb','desc')
         ->where('event_id',$event->id)->get();
