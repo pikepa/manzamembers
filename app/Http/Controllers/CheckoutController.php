@@ -49,17 +49,21 @@ class CheckoutController extends Controller
             $error = $e_json['error']; 
             Log::info('Problem with the Network.'.$error['message'].' Please try again',['Booking No' => $booking->id]);
             return view('stripe.newcheckout', compact('error','totalcost'));
+
         } catch (\Stripe\Error\InvalidRequest $e) {
             // dd($e); // You screwed up in your programming. Shouldn't happen!
           $e_json = $e->getJsonBody();
           $error = $e_json['error']; 
           Log::stack("Problem with Stripe's servers.".$error['message'],['Booking No' => $booking->id]);
+          return view('stripe.newcheckout', compact('error','totalcost'));
+          return redirect('/');
 
         } catch (\Stripe\Error\Api $e) {
             //dd($e); // Stripe's servers are down!
           $e_json = $e->getJsonBody();
           $error = $e_json['error']; 
           Log::info("Problem with Stripe's servers.".$error['message'],['Booking No' => $booking->id]);
+          return view('stripe.newcheckout', compact('error','totalcost'));
 
         } catch (\Stripe\Error\Card $e) {
             $e_json = $e->getJsonBody();
@@ -70,6 +74,7 @@ class CheckoutController extends Controller
         
         return redirect('/success');
     }
+
     public function success()
     {
       $booking=Booking::findOrFail(session::get('booking_id'));
@@ -80,5 +85,14 @@ class CheckoutController extends Controller
 
     }
 
+    public function sorry()
+    {
+      $booking=Booking::findOrFail(session::get('booking_id'));
+      $totalcost=BookingItem::cost()/100;
+      $totaltickets=BookingItem::tickets();
+
+       return view('stripe.success', compact('booking'));
+
+    }
 
 }
