@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel 5 - Stripe Payment</title>
+
+    <title>MANZA - Payments</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style type="text/css">
@@ -25,8 +26,13 @@
 <body>
 
 <div class="container">
-
-    <h1>Laravel 5 - Stripe Example </h1>
+  <div class="col-md-6 col-md-offset-3 ">
+      <br>
+      <br>
+      <h2 class="text-center">MANZA Credit Card Billing</h2>
+      <br>
+      <br>
+  </div>
 
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -55,12 +61,6 @@
                                                     id="payment-form">
                         @csrf
                         <input type='hidden' name='cost' value={{$totalcost}}>
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' size='4' type='text'>
-                            </div>
-                        </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
