@@ -34,6 +34,8 @@
       <br>
   </div>
 
+@include ('errors')
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
@@ -54,6 +56,16 @@
                         </div>
                     @endif
 
+                    @if ($error['message'] !=='' )
+                        <div class="alert alert-danger text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <p>Sorry, {{ $error['message'] }} Please try another card.</p>
+                        </div> 
+                       <div class="alert alert-warning text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <p>or click here to Cancel Booking</p>
+                        </div>
+                    @endif
 
                     <form role="form" action="/charge" method="post" class="require-validation"
                                                      data-cc-on-file="false"

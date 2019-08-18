@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use Session;
 use App\Booking;
-use Stripe;
+use Stripe\Charge;
 use App\BookingItem;
+use Stripe\Customer;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -14,8 +15,8 @@ class CheckoutController extends Controller
       $booking=Booking::findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
-
-       return view('stripe.newcheckout', compact('totalcost'));
+      $error=['message'=>''];
+       return view('stripe.newcheckout', compact('totalcost','error'));
 
 
     }
@@ -26,8 +27,9 @@ class CheckoutController extends Controller
       $totaltickets=BookingItem::tickets();
 
         try {
-            Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-            $charged= Stripe\Charge::create ([
+            \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+             
+            $charged= Charge::create ([
                     "amount" => $totalcost,
                     "currency" => "myr",
                     "source" => $request->stripeToken,
@@ -47,11 +49,15 @@ class CheckoutController extends Controller
         } catch (\Stripe\Error\Api $e) {
             dd($e); // Stripe's servers are down!
         } catch (\Stripe\Error\Card $e) {
-    //        echo 'Im here';
-    //        dd($e); // Card was declined.
-            return redirect( '/checkout/' );
+            $e_json = $e->getJsonBody();
+            $error = $e_json['error'];
+         //   dd($error['message']);
+            
+            return view('stripe.newcheckout', compact('error','totalcost'));
+    
+          //  return redirect( '/checkout/');
         }
-
+        
         return redirect('/success');
     }
     public function success()
@@ -62,6 +68,7 @@ class CheckoutController extends Controller
 
        return view('stripe.success', compact('booking'));
 
-
     }
+
+
 }
