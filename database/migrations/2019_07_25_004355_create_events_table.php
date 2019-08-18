@@ -27,6 +27,7 @@ class CreateEventsTable extends Migration
             $table->string('status');
             $table->timestamp('published_at')->nullable();
             $table->integer('owner_id')->unsigned()->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
