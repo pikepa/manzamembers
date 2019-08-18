@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +14,6 @@ Route::get('/', 'EventController@index')->name('root');
 Route::get('/aboutus', function () {
     return view('homepages.aboutus');
 });
-
 
 
 Route::get('/coming_soon', function () {
