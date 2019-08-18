@@ -7,7 +7,9 @@ use Stripe\Charge;
 use App\BookingItem;
 use Stripe\Customer;
 use Illuminate\Http\Request;
+use App\Mail\BookingConfirmed;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -80,6 +82,11 @@ class CheckoutController extends Controller
       $booking=Booking::findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
+
+$ccmembers="[manzatourskl@gmail.com,pikepeter@gmail.com]";
+
+      Mail::to($booking->email)
+        ->cc(['manzatourskl@gmail.com','pikepeter@gmail.com'])->send(new BookingConfirmed()); 
 
        return view('stripe.success', compact('booking'));
 
