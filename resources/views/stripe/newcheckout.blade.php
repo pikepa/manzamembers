@@ -109,7 +109,7 @@
 
                         <div class="row">
                             <div class="col-xs-12" >
-                                <button style="background-color:#8C2E51" class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost}}</button>
+                                <button style="background-color:#8C2E51" class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost/100}}</button>
                             </div>
                         </div>
 

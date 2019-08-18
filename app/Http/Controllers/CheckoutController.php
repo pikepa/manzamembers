@@ -13,7 +13,7 @@ class CheckoutController extends Controller
     public function precheckout()
     {
       $booking=Booking::findOrFail(session::get('booking_id'));
-      $totalcost=BookingItem::cost()/100;
+      $totalcost=BookingItem::cost();
       $totaltickets=BookingItem::tickets();
       $error=['message'=>''];
        return view('stripe.newcheckout', compact('totalcost','error'));
@@ -50,12 +50,8 @@ class CheckoutController extends Controller
             dd($e); // Stripe's servers are down!
         } catch (\Stripe\Error\Card $e) {
             $e_json = $e->getJsonBody();
-            $error = $e_json['error'];
-         //   dd($error['message']);
-            
+            $error = $e_json['error'];            
             return view('stripe.newcheckout', compact('error','totalcost'));
-    
-          //  return redirect( '/checkout/');
         }
         
         return redirect('/success');
