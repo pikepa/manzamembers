@@ -27,9 +27,9 @@ Route::get('/coming_soon', function () {
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
   Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
 
-    Route::get('/checkout/', 'CheckoutController@precheckout')->name('checkout.precheckout');
+    Route::get('/checkout', 'CheckoutController@precheckout')->name('checkout.precheckout');
     Route::get('/success', 'CheckoutController@success')->name('checkout.success');
-    Route::post('/charge/', 'CheckoutController@charge')->name('checkout.charge');
+    Route::post('/charge', 'CheckoutController@charge')->name('checkout.charge');
 
     Route::get('/eventbooking/create/{id?}', 'EventBookingsController@create')->name('eventbooking.create');
     Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
