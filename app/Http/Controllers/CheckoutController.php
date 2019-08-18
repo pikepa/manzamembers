@@ -7,6 +7,7 @@ use Stripe\Charge;
 use App\BookingItem;
 use Stripe\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -43,14 +44,27 @@ class CheckoutController extends Controller
 
 
         } catch (\Stripe\Error\ApiConnection $e) {
-            dd($e); // Network problem, perhaps try again.dd
+            //dd($e); // Network problem, perhaps try again.dd
+            $e_json = $e->getJsonBody();
+            $error = $e_json['error']; 
+            Log::info('Problem with the Network.'.$error['message'].' Please try again',['Booking No' => $booking->id]);
+            return view('stripe.newcheckout', compact('error','totalcost'));
         } catch (\Stripe\Error\InvalidRequest $e) {
-            dd($e); // You screwed up in your programming. Shouldn't happen!
+            // dd($e); // You screwed up in your programming. Shouldn't happen!
+          $e_json = $e->getJsonBody();
+          $error = $e_json['error']; 
+          Log::stack("Problem with Stripe's servers.".$error['message'],['Booking No' => $booking->id]);
+
         } catch (\Stripe\Error\Api $e) {
-            dd($e); // Stripe's servers are down!
+            //dd($e); // Stripe's servers are down!
+          $e_json = $e->getJsonBody();
+          $error = $e_json['error']; 
+          Log::info("Problem with Stripe's servers.".$error['message'],['Booking No' => $booking->id]);
+
         } catch (\Stripe\Error\Card $e) {
             $e_json = $e->getJsonBody();
-            $error = $e_json['error'];            
+            $error = $e_json['error']; 
+            Log::info('Problem with a card.'.$error['message'],['Booking No' => $booking->id]);
             return view('stripe.newcheckout', compact('error','totalcost'));
         }
         
