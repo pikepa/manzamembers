@@ -29,7 +29,7 @@
   <div class="col-md-6 col-md-offset-3 ">
       <br>
       <br>
-      <h2 class="text-center">MANZA Credit Card Billing</h2>
+      <h2 class="text-center " style="color:#8C2E51"><strong>MANZA Credit Card Billing</strong></h2>
       <br>
       <br>
   </div>
@@ -96,8 +96,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost}}</button>
+                            <div class="col-xs-12" >
+                                <button style="background-color:#8C2E51" class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost}}</button>
                             </div>
                         </div>
 
