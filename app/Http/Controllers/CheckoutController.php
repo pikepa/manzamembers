@@ -83,7 +83,7 @@ class CheckoutController extends Controller
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
 
-$ccmembers="[manzatourskl@gmail.com,pikepeter@gmail.com]";
+      $ccmembers="[manzatourskl@gmail.com,pikepeter@gmail.com]";
 
       Mail::to($booking->email)
         ->cc(['manzatourskl@gmail.com','pikepeter@gmail.com'])->send(new BookingConfirmed()); 
