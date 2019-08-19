@@ -15,7 +15,7 @@
             
             <div class="container mx-auto pb-4">
                 <div class="text-center">
-                  @include('success')
+                  @include('messages')
                     <h1 class="font-bold text-3xl m-2 ">Receipts</h1>
                 </div>
                 <div class="flex flex-col ">
