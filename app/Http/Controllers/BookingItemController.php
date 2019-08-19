@@ -34,11 +34,12 @@ class BookingItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     /*
     public function create()
     {
 
-                    dd('Stop Here');
-                     
+            dd('Stop Here');
+
             $event_id =session::get('event_id');
             $booking_id =session::get('booking_id');
 
@@ -50,11 +51,11 @@ class BookingItemController extends Controller
             $orders=BookingItem::with('category')->where('booking_id',session::get('booking_id'))->get();
             $booking_item=new BookingItem;
 
-             
-            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes'));    
+
+            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes'));
 
     }
-
+/*/
     /**
      * Store a newly created resource in storage.
      *
@@ -67,8 +68,8 @@ class BookingItemController extends Controller
             'qty' => 'required|Min:0|notin:0',
             'type' => 'required',
          //   'memb_no' => 'required',
-        ]);               
-       $priceitem=Priceitem::with('category')->findOrFail($request->type) ;                 
+        ]);
+       $priceitem=Priceitem::with('category')->findOrFail($request->type) ;
        $booking_item = new BookingItem;
 
        $booking_item->booking_id = session::get('booking_id');
@@ -79,7 +80,7 @@ class BookingItemController extends Controller
 
        $booking_item->save();
 
-       return redirect($booking_item->path())->with('success', 'Order has been added');
+       return redirect($booking_item->path())->withSuccess('Order has been added.');
 
 
     }
@@ -95,16 +96,14 @@ class BookingItemController extends Controller
             $event_id =session::get('event_id',0);
             $booking_id =session::get('booking_id',0);
 
-       //     $bookings=BookingItem::where('booking_id',$booking_id)->get();
-
             $eventbooking = Event::with('bookings')->find($event_id);
             $tickettypes =Priceitem::with('category')->members()->get();
             $non_tickettypes =Priceitem::with('category')->nonmembers()->get();
 
             $orders=BookingItem::with('priceitems')->with('category')->where('booking_id',session::get('booking_id'))->get();
             $booking_item=new BookingItem;
-             
-            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes'));    
+
+            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes'));
     }
 
     /**

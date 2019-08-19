@@ -6,12 +6,15 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class="container mx-auto w-2/3">
-    <div class=" my-4 mx-auto card p-6  rounded shadow">
-        <h1 class="text-2xl font-normal mb-10 text-center">
+<div  class="container mx-auto w-3/5">
+    <div class=" my-2 mx-auto card p-6  rounded shadow">
+
+        @include('messages')
+
+        <h1 class="text-2xl font-normal mb-2 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
-          <div class="mt-8 w-2/3 mx-auto flex items-center">
+          <div class="mt-2 w-2/3 mx-auto flex items-center">
               <div class="bg-gray-400 w-16 py-2 px-4 border border-grey-light font-semibold">
                 Qty
               </div>                    
@@ -39,10 +42,9 @@
                  </div>
             </div>
 
-        <div class="w-1/3 mx-auto">
-                    @include ('errors')
+        <div class=" mx-auto">
         </div>
-        <div class="w-2/3 pb-4 mx-auto flex flex-row justify-between card pt-4">
+        <div class=" pb-4 mx-auto flex flex-row justify-center card pt-4">
             <div class=""> 
                 <form 
                         method="POST"

@@ -24,7 +24,7 @@ class EventBookingsController extends Controller
     }
 
     private $paymentGateway;
- /*   
+ /*
     public function __construct(PaymentGateway $paymentGateway)
     {
         $this->paymentGateway = $paymentGateway;
@@ -32,12 +32,12 @@ class EventBookingsController extends Controller
 */
 
     public function create($id)
-    { 
+    {
 
         $bookings = Booking::where('event_id',$id)->get();
         $eventbooking = Event::with('bookings')->findOrFail($id);
-                     
-        return view('bookings.create', compact('bookings','eventbooking','eventtickettypes'));    
+
+        return view('bookings.create', compact('bookings','eventbooking','eventtickettypes'));
     }
 
 
@@ -49,11 +49,11 @@ class EventBookingsController extends Controller
             'name' => 'required',
             'email' => 'required',
          //   'memb_no' => 'required',
-        ]);               
-        $memb=$request->memb_no;              
+        ]);
+        $memb=$request->memb_no;
 
        $booking = new Booking;
-        
+
         if(Membership::where('member_no',$request->memb_no)
                       ->where('status', 'current')->get()->count() > 0 ){
             $booking->memb_no = $request->memb_no;
