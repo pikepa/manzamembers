@@ -85,6 +85,8 @@ class CheckoutController extends Controller
 
       $ccmembers="[manzatourskl@gmail.com,pikepeter@gmail.com]";
 
+   //   $request->session()->forget(['booking_id', 'event_id']);
+
       Mail::to($booking->email)
         ->cc(['manzatourskl@gmail.com','pikepeter@gmail.com'])->send(new BookingConfirmed()); 
 
