@@ -27,11 +27,11 @@
                     @endif
                     @if($event->bookings_only === "Booking & Tickets" and $event->ispublished())
                         <div class="text-center mt-4 text-lg text-pink-600 font-extrabold">
-                            <p>Get Your Tickets Now</p>
+                        <a href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" >Get Your Tickets Now</a>
                         </div>
                     @endif
                     @if( $event->isnotpublished())
-                        <div class="text-center mt-4 text-lg text-indigo-900 font-semibold">
+                        <div class="text-center no_underline mt-4 text-lg text-indigo-900 font-extrabold">
                             <p>Bookings Opening Soon</p>
                         </div>
                     @endif
