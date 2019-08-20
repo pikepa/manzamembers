@@ -28,15 +28,29 @@
                 Events
             </h4>
         </div>
+
         <ul class="">
        {{--      <li><a href="{{ url('/') }}" class="hover:font-semibold no-underline">All works of Art</a></li>
             <li><a href="{{ url('/status/For Sale') }}" class="hover:font-semibold">Available for Sale</a></li>
             <li><a href="{{ url('/status/Sold') }}" class="hover:font-semibold">Sorry Sold Already</a></li>
  --}}       <li class="ml-4"><a href="{{ url('/event') }}" class="hover:font-semibold no-underline">Event Listing</a></li>
- 
+         <div>
+         @auth
+            <h4 class="my-2 font-bold">
+                Bookings
+            </h4>
+        </div>
+          @forelse($events as $event) 
+            <li><a href="{{ url('/byevent/'. $event->id ) }}" class="ml-4 hover:font-semibold">{{ $event->title }}</li></a>
+          @empty
+            <div class=" ml-4"> No Events Yet</div>
+          @endforelse 
+        @endauth
+        </ul>
+        <ul>
             <br>
             @guest
-                <li class="hover:font-semibold ml-4"><a href="{{ url('login') }}"></i>Sign In</a></li>
+                <li class="hover:font-semibold ml-4"><a href="{{ url('login') }}">Sign In</a></li>
             @endguest
         </ul> 
             @auth 
@@ -66,7 +80,6 @@
                     {{ csrf_field() }}
                 </form>  
             @endauth
-
     </div>
 </div>
 </div>

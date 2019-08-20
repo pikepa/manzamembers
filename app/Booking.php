@@ -2,19 +2,33 @@
 
 namespace App;
 
+use App\BookingItem;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model{
     
 
-    protected $dates = ['created_at'];
+    protected $dates = ['created_at','confirmed_at'];
 
     protected $guarded = [];
 
-
-    public function tickets()
+    public function getFormattedDate($date)
     {
-        return $this->hasMany(Ticket::class);
+       if($this->$date !== null){
+            return $this->$date->toFormattedDateString(); 
+        }else{
+            return $this->$date;
+        }
+    }
+
+    public function booking_items()
+    {
+        return $this->hasMany(BookingItem::class);
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
     }
 
     //Defines a path for a booking

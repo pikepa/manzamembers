@@ -15,9 +15,22 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $bookings=Booking::get();
+    
+        return view ('bookings.index', compact('bookings'));
+    }    
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function byevent($id)
+    {
+        $bookings=Booking::with('event')->where('event_id',$id)->get();
+        $event=Event::find($id);
+        return view ('bookings.index', compact('bookings','event'));
+    }
     /**
      * Show the form for creating a new resource.
      *

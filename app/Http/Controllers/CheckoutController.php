@@ -17,6 +17,7 @@ class CheckoutController extends Controller
     {
       $booking=Booking::findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost();
+                   
       $totaltickets=BookingItem::tickets();
 
       if($totalcost == 0){
@@ -41,9 +42,10 @@ class CheckoutController extends Controller
                     "amount" => $totalcost,
                     "currency" => "myr",
                     "source" => $request->stripeToken,
+                    "receipt_email" => $booking->email,
                     "description" => 'Booking for '.$totaltickets .' @ RM '.(($totalcost/100)/$totaltickets).' each.'
             ]);
-
+            
             Session::flash('success', 'Payment successful!');
             $booking->confirmed_at = now()->setTimezone('Asia/Kuala_Lumpur');
             $booking->receipt_url = $charged->receipt_url;

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Event;
 use App\Category;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
@@ -36,6 +37,13 @@ class AppServiceProvider extends ServiceProvider
                                $view->with('categories', Category::where('active', 1)
                                            ->where('type','EVT')
                                            ->orderBy('category', 'asc')->get());
+                           });
+
+
+        view()->composer(['dashboard.components.dash_left',
+                           ], function ($view) {
+                               $view->with('events', Event::whereNotNull('published_at')
+                                           ->get());
                            });
 
         view()->composer(['categories.index',

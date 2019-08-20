@@ -35,8 +35,10 @@ Route::get('/coming_soon', function () {
     Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
     Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
     Route::get('/address/create/{id?}', 'AddressController@create')->name('fromAddress.create');
+    Route::get('/byevent/{id?}', 'BookingController@byevent');
 
     Route::resource('address', 'AddressController');
+    Route::resource('booking', 'BookingController');
     Route::resource('bookingitems', 'BookingItemController');
     Route::resource('event', 'EventController');
     Route::resource('message', 'MessageController');
@@ -48,6 +50,7 @@ Route::get('/coming_soon', function () {
     Route::resource('eventbooking', 'EventBookingsController');
 
 Auth::routes();
+
     Route::get('/images', 'UploadImageController@index');
     Route::get('/images/{product}/load', 'UploadImageController@load');
     Route::get('/images/{product}/{image}/delete', 'UploadImageController@delete');

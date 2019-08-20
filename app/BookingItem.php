@@ -24,7 +24,7 @@ class BookingItem extends Model
     {        
         return $query->where('booking_id',session::get('booking_id',0))->get()->sum('cost');
     }
-
+ 
     public function scopeTickets($query)
     {        
         return $query->where('booking_id',session::get('booking_id',0))->get()->sum('qty');
