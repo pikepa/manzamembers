@@ -16,7 +16,7 @@ class BookingItemController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show','store']]);
+        $this->middleware('auth', ['except' => ['index', 'show','store','destroy']]);
     }
 
     /**
