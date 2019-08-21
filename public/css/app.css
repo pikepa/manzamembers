@@ -866,6 +866,11 @@ html {
   font-weight: 700;
 }
 
+.current {
+  color: #48bb78;
+  font-weight: 700;
+}
+
 .td {
   padding-top: 1rem;
   padding-bottom: 1rem;
