@@ -43,7 +43,7 @@ class CheckoutController extends Controller
                     "currency" => "myr",
                     "source" => $request->stripeToken,
                     "receipt_email" => $booking->email,
-                    "description" => 'Booking for '.$totaltickets 
+                    "description" => 'Booking for a total of '.$totaltickets.' tickets.'
             ]);
             
             Session::flash('success', 'Payment successful!');
