@@ -24,24 +24,26 @@
                     <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                       <thead>
                         <tr>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Booking Date</th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Name</th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb No. </th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">No. Tickets</th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Amount</th>
-                          <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-r  border-grey-light">Date Paid</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Booking Date</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Name</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Memb No. </th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. Tickets</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. Tables</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Amount</th>
+                          <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border  border-grey-light">Date Paid</th>
                         </tr>
                       </thead
                       <tbody>
                         @foreach($bookings as $booking)
                         <tr class="hover:bg-grey-lighter">
-                          <td class=" py-4 px-4 border-b border-r border-grey-light">{{ $booking->getFormattedDate('created_at')}}</td>
-                          <td class="underline py-4 px-4 border-b border-r border-grey-light text-center">{{ $booking->name}}</td>
-                          <td class="py-4 px-4 border-b border-r border-grey-light text-left">{{ $booking->memb_no}}</td>
-                          <td class="py-4 px-4 border-b border-r border-grey-light text-center">{{ $booking->booking_items->sum('qty') }}</td>
-                          <td class="py-4 px-4 border-b border-r border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
-                          <td class="py-4 px-4 border-b border-r border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
-                          <td class=" border-b border-r  border-grey-light">
+                          <td class=" py-4 px-4 border border-grey-light">{{ $booking->getFormattedDate('created_at')}}</td>
+                          <td class="underline py-4 px-4 border border-grey-light text-center">{{ $booking->name}}</td>
+                          <td class="py-4 px-4 border border-grey-light text-left">{{ $booking->memb_no}}</td>
+                          <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('qty') }}</td>
+                          <td class="py-4 px-4 border border-grey-light text-center"></td>
+                          <td class="py-4 px-4 border border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
+                          <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
+                          <td class=" border  border-grey-light">
 
                           </td>
                         </tr>

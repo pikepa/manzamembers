@@ -19,6 +19,7 @@ class CheckoutController extends Controller
       $totalcost=BookingItem::cost();
                    
       $totaltickets=BookingItem::tickets();
+      $totaltables=BookingItem::tables();
 
       if($totalcost == 0){
           return redirect('/bookingitems/'.session::get('booking_id'))
