@@ -28,9 +28,9 @@ class ReportsController extends Controller
 
        public function life_member_listing()
     {
-        $members = Membership::where('mship_type_id',3)
-                                    ->orderBy('member_no','desc')
-                                    ->get();
+        $members = Member::whereHas('membership', function($q) {
+        $q->where('mship_type_id',3);})->orderBy('membership_id','ASC')->get();
+  
         return view('members.index', compact('members'));
     }
     
