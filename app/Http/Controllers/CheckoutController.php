@@ -96,7 +96,7 @@ class CheckoutController extends Controller
       session()->forget(['booking_id', 'event_id']);
 
       Mail::to($booking->email)
-        ->cc($ccmembers)->send(new BookingConfirmed());
+            ->bcc($ccmembers)->send(new BookingConfirmed($booking));
 
        return view('stripe.success', compact('booking'));
 

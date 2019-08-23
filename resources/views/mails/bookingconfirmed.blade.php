@@ -1,11 +1,12 @@
 @component('mail::message')
-Hello **{{$name}}**,  {{-- use double space for line break --}}
-Thank you using the MANZA online booking system!
+Hello **{{$name}}**,
+{{-- use double space for line break --}}
+Thank you for using the MANZA online booking system!
  
-Click below to view your receipt right now
+Please click below to view your receipt.
 @component('mail::button', ['url' => $link])
 View your Receipt
 @endcomponent
 Sincerely,  
-The MANZA Events team.
+**The MANZA Events Team.**
 @endcomponent

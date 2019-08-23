@@ -10,6 +10,7 @@
 |
 */
 
+
 Route::get('/', 'EventController@index')->name('root');
 Route::get('/aboutus', function () {
     return view('homepages.aboutus');
@@ -66,4 +67,11 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     //  Route::get('/category', 'CategoryController@index');
   //  Route::get('/category/create', 'CategoryController@create')->name('category.create');
+});
+
+Route::get('send_test_email', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        $message->to('pikepeter@gmail.com');
+    });
 });

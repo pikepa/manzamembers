@@ -14,9 +14,9 @@ class BookingConfirmed extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($info)
     {
-        //
+        $this->info  =  $info;
     }
     /**
      * Build the message.
@@ -25,12 +25,12 @@ class BookingConfirmed extends Mailable
      */
     public function build()
     {
-        return $this->from('manzawebsite@gmail.com', 'Mailtrap')
+        return $this->from('manzawebsite@gmail.com', 'Manza Events Team')
             ->subject('Your Booking has been confirmed')
             ->markdown('mails.bookingconfirmed')
             ->with([
-                'name' => 'New Mailtrap User',
-                'link' => 'https://mailtrap.io/inboxes'
+                'name' => $this->info['name'],
+                'link' => $this->info['receipt_url'],
             ]);
     }
 }
