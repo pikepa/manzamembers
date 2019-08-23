@@ -77,7 +77,8 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
+                                    autocomplete='off' class='form-control card-number'
+                                    placeholder='Enter Card No. without spaces, or dashes.' size='20'
                                     type='text'>
                             </div>
                         </div>
