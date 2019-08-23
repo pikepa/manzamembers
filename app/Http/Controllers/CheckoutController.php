@@ -8,6 +8,7 @@ use App\BookingItem;
 use Stripe\Customer;
 use Illuminate\Http\Request;
 use App\Mail\BookingConfirmed;
+use App\Mail\BookingTicketsSent;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -87,16 +88,33 @@ class CheckoutController extends Controller
 
     public function success()
     {
-      $booking=Booking::findOrFail(session::get('booking_id'));
+      $booking=Booking::with('event')->findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
-
-      $ccmembers=['manzatourskl@gmail.com','pikepeter@gmail.com'];
+      $ccmembers=['manzaoffice@gmail.com','manzawebsite@gmail.com'];
 
       session()->forget(['booking_id', 'event_id']);
+             
+      Mail::to($booking->email)
+            ->bcc($ccmembers)->send(new BookingConfirmed($booking ));
+
+      $text=$text=str_ireplace('<p>','',$booking->event->v_address);
+      $text=$text=str_ireplace('</p>','',$text);
+
+      $event=[
+        'title'=>$booking->event->title,
+        'add_title'=>$booking->event->add_info,
+        'venue'=>$booking->event->venue.', '.$text,
+        'timing'=>$booking->event->timing,
+        'date'=>$booking->event->date->format('M d, Y'),
+      ];
+
 
       Mail::to($booking->email)
-            ->bcc($ccmembers)->send(new BookingConfirmed($booking));
+            ->bcc('manzatourskl@gmail.com','manzawebsite@gmail.com')
+            ->send(new BookingTicketsSent($booking,$event,$totaltickets));
+
+
 
        return view('stripe.success', compact('booking'));
 

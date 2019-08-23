@@ -25,7 +25,7 @@ class BookingConfirmed extends Mailable
      */
     public function build()
     {
-        return $this->from('manzawebsite@gmail.com', 'Manza Events Team')
+        return $this->from('postmaster@mg.manzamembers.org', 'Manza Events Team')
             ->subject('Your Booking has been confirmed')
             ->markdown('mails.bookingconfirmed')
             ->with([
