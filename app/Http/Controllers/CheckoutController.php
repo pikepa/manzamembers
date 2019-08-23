@@ -109,9 +109,10 @@ class CheckoutController extends Controller
         'date'=>$booking->event->date->format('M d, Y'),
       ];
 
+      $bccmembers=['manzatourskl@gmail.com','manzaoffice@gmail.com','manzawebsite@gmail.com'];
 
       Mail::to($booking->email)
-            ->bcc('manzatourskl@gmail.com','manzawebsite@gmail.com')
+            ->bcc($bccmembers)
             ->send(new BookingTicketsSent($booking,$event,$totaltickets));
 
 
