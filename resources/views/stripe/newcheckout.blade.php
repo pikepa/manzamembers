@@ -116,6 +116,7 @@
                     </form>
                 </div>
             </div>
+            <h4 style='text-align:center'>After clicking "Pay Now", please do not click the BACK key, STOP, or ENTER while Payment is processing</h4>
         </div>
     </div>
 
