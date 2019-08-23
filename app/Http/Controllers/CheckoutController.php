@@ -45,7 +45,7 @@ class CheckoutController extends Controller
                     "currency" => "myr",
                     "source" => $request->stripeToken,
                     "receipt_email" => $booking->email,
-                    "description" => 'Booking for a total of '.$totaltickets.' tickets.'
+                    "description" => 'Booking for a total of '.$totaltickets.' tickets. Booking Ref: Man10'.$booking->id
             ]);
             
             Session::flash('success', 'Payment successful!');

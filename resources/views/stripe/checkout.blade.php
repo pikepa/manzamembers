@@ -26,7 +26,7 @@
 </div>
 <script type="application/javascript">
 
-var stripe = Stripe('pk_test_DijKJaVo7bp7tfGHDftk24tb00iHNN0BXc');
+var stripe = Stripe(env('STRIPE_PUBLIC_KEY'));
 
 // Create an instance of Elements.
 var elements = stripe.elements();
