@@ -11,7 +11,36 @@ class Membership extends Model
 
     protected $guarded = [];
 
-   
+   //This calculate the membership term from the 
+   // last receipt.
+    public function getMemberTerm()
+    {
+         $receipt=Receipt::with('term')->where('membership_id', $this->id)->get()->last();
+          if($receipt == null){
+            return "xxx";
+          }else{
+            return $receipt->term['category'];
+          }
+    }
+
+
+    public function getStatus()
+    {
+          $dtstart=Carbon::create()->now()->submonth(2);
+          $mydate=Receipt::where('membership_id', $this->id)->get()->last();
+          if($mydate == null){
+
+            return "Expired";
+          }
+          if ($mydate->receipt_date->year >= $dtstart->year
+                and 
+                $mydate->mship_term_id == 11){
+            return "Current";
+          }else{
+            return "Pending";
+          }
+    }
+
     public function getMembNoattribute()
     {
 

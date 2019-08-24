@@ -6,7 +6,7 @@
         <div class="w-1/2 mx-auto  flex  flex-col ">
             <div class="flex flex-row ">
                 <div class="w-1/3 ml-4 font-bold ">Status : </div>
-                    <div class="ml-2 pending font-bold ">{{ $membership->status }}</div>
+                    <div class="ml-2 {{ strtolower($membership->getstatus()) }} font-bold ">{{ $membership->getstatus() }}</div>
             </div>   
             <div class="flex flex-row">
                 <div class="w-1/3 ml-4  font-bold">M'ship Type : </div>
@@ -14,7 +14,7 @@
             </div>       
             <div class="flex flex-row">
                 <div class="w-1/3 ml-4  font-bold">M'ship Term : </div>
-                <div class="ml-2">{{ $membership->term->category}}</div> 
+                <div class="ml-2">{{ $membership->getmemberterm()}}</div> 
             </div>       
         </div>    
 
