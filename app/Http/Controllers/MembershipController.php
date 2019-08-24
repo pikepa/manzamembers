@@ -20,7 +20,7 @@ class MembershipController extends Controller
 
     public function index()
     {
-        $memberships = Membership::with(['mship','term'])->get()->sortBy('term');
+        $memberships = Membership::with(['mship'])->get()->sortBy('term');
                                  
         return view('memberships.index', compact('memberships'));
 
