@@ -14,7 +14,11 @@ class Membership extends Model
    //This calculate the membership term from the 
    // last receipt.
     public function getMemberTerm()
-    {
+    { 
+          if($this->mship_type_id == 3)
+          {
+              return "Life";
+          }
          $receipt=Receipt::with('term')->where('membership_id', $this->id)->get()->last();
           if($receipt == null){
             return "xxx";
