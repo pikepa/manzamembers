@@ -27,7 +27,17 @@ class MembershipController extends Controller
 
     public function expired_memberships()
     {   $report_title = "Expired Memberships";
-        $memberships = Membership::with(['mship'])->where('status','Expired')
+        $memberships = Membership::with(['mship'])
+                    ->where('status','Expired')
+                    ->orderBy('mship_term','ASC')->get();
+                                 
+        return view('memberships.index', compact('memberships','report_title'));
+    }
+
+    public function pending_memberships()
+    {   $report_title = "Pending Memberships";
+        $memberships = Membership::with(['mship'])
+                    ->where('status','Pending')
                     ->orderBy('mship_term','ASC')->get();
                                  
         return view('memberships.index', compact('memberships','report_title'));
