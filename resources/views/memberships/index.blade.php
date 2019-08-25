@@ -40,7 +40,7 @@
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->memb_no }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->status }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->mship->category }}</td>
-                          <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->getmemberterm() }}</td>
+                          <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->mship_term }}</td>
                           <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
                           <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->phone }}</a></td>
                           <td class=" border  border-grey-light">

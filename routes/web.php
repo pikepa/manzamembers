@@ -65,7 +65,7 @@ Auth::routes();
     Route::get('/lifemembers','ReportsController@life_member_listing');
 
 Route::group(['middleware' => 'auth'], function () {
-    //  Route::get('/category', 'CategoryController@index');
+    Route::get('/memberstatusupdate', 'MembershipController@memberstatusupdate');
   //  Route::get('/category/create', 'CategoryController@create')->name('category.create');
 });
 
