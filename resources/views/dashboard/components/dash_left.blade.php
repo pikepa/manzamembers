@@ -22,6 +22,7 @@
                 <li class="ml-4"><a href="{{ url('/membership/pending') }}" class="hover:font-semibold no-underline">Pending M'ships</a></li>
                 <li class="ml-4"><a href="{{ url('/memberstatusupdate') }}" class="hover:font-semibold no-underline">Update Status</a></li>
                 <li class="ml-4"><a href="{{ url('/memberlisting') }}" class="hover:font-semibold no-underline">List Members</a></li>        
+                <li class="ml-4"><a href="{{ url('/address') }}" class="hover:font-semibold no-underline">Address List</a></li>        
         </ul> 
         <div>
             <h4 class="my-2 font-bold">

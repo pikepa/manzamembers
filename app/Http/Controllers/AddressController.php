@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Member;
 use App\Address;
 use App\Membership;
 use Illuminate\Http\Request;
@@ -14,8 +15,13 @@ class AddressController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $report_title='Address Listing';
+        $rows=Member::selectRaw('members.firstname, members.surname, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
+            ->join('addresses','members.membership_id', '=', 'addresses.membership_id' )
+            ->orderBy('addr1','ASC')->get();
+
+        return view('addresses.index', compact('rows','report_title'));
+         
     }
 
     /**

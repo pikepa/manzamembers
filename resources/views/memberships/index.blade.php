@@ -26,11 +26,11 @@
                         <tr>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Date Joined</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Member No.</th>
+                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Name</th>
+                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Mobile</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Status</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Membership</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Term</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Name</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Mobile</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Actions</th>
                         </tr>
                       </thead>
@@ -39,11 +39,12 @@
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-4 px-6 border border-grey-light">{{ $membership->formatted_date_joined }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->memb_no }}</td>
+                          <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
+                          <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->phone }}</a></td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->status }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->mship->category }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->mship_term }}</td>
-                          <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
-                          <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->phone }}</a></td>
+ 
                           <td class=" border  border-grey-light">
                             <div class="flex justify-around px-4">
                                 <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}" ><i class="far fa-arrow-alt-circle-up"></i></a></div>
