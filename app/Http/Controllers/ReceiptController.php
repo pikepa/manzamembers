@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Receipt;
 use Carbon\Carbon;
 use App\Membership;
+use App\Jobs\CreateReceipt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,9 +74,9 @@ class ReceiptController extends Controller
         $receipt->owner_id = Auth::user()->id;
         $receipt->membership_id = $request->membership_id;
                              
-        $receipt->save();
+      //  $receipt->save();
 
-        //event(new ReceiptCreated($receipt));
+        $this->dispatchNow(new CreateReceipt($receipt));
 
         return redirect('membership/'.$receipt->membership_id)->with('message', 'Receipt '.$receipt->receipt_no.' has been saved');
                 
