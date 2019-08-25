@@ -19,18 +19,18 @@ class MembershipController extends Controller
     }
 
     public function index()
-    {
+    {   $report_title = "Membership Listing";
         $memberships = Membership::with(['mship'])->orderBy('status')->get();
                                  
-        return view('memberships.index', compact('memberships'));
+        return view('memberships.index', compact('memberships','report_title'));
     }
 
     public function expired_memberships()
-    {
+    {   $report_title = "Expired Memberships";
         $memberships = Membership::with(['mship'])->where('status','Expired')
                     ->orderBy('mship_term','ASC')->get();
                                  
-        return view('memberships.index', compact('memberships'));
+        return view('memberships.index', compact('memberships','report_title'));
     }
 
     /**
