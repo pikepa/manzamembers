@@ -7,7 +7,7 @@ use App\Receipt;
 use Carbon\Carbon;
 use App\Membership;
 use Illuminate\Http\Request;
-
+use App\Jobs\Memberships\UpdateMemberStatus;
 class MembershipController extends Controller
 {
     /**
@@ -20,7 +20,7 @@ class MembershipController extends Controller
 
     public function index()
     {
-        $memberships = Membership::with(['mship'])->get()->sortBy('term');
+        $memberships = Membership::with(['mship'])->get()->sortBy('status');
                                  
         return view('memberships.index', compact('memberships'));
 
@@ -33,24 +33,9 @@ class MembershipController extends Controller
      */
     public function create()
     {
-// THis is a test site for detemining the staatus of membership
 
-          $dtstart=Carbon::create()->now();
-          $mydate=Receipt::with('term')->where('membership_id',144)->get()->last();
-        dd($mydate->term->category);
-        if($mydate == null){
-            return "Expired"  ;
-           }
-          if ($mydate->receipt_date->year == $dtstart->year
-                and 
-                $mydate->mship_term_id >= 11){
-            $status="Current";
-          }else{
-            $status="Out of Date";
-          }
-         dd($status, $mydate->receipt_date, $dtstart,$mydate->receipt_date->lte($dtstart ));
-                       
-        dd($dtstart->startOfYear());
+
+
     }
 
     /**
@@ -132,5 +117,13 @@ class MembershipController extends Controller
         $membership->delete();
 
         return redirect('membership')->with('message', 'Membership '.$membership->memb_no.' has been deleted');
+    }    
+    /** 
+    *This is a route to allow manual triggering of the
+    *UpdateMemberStatus Job. Normally the job runs nightly.
+    **/
+    public function memberstatusupdate()
+    {
+        $this->dispatchNow(new UpdateMemberStatus());
     }
 }
