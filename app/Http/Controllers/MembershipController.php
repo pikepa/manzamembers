@@ -38,7 +38,16 @@ class MembershipController extends Controller
     {   $report_title = "Pending Memberships";
         $memberships = Membership::with(['mship'])
                     ->where('status','Pending')
-                    ->orderBy('mship_term','ASC')->get();
+                    ->orderBy('mship_term','ASC')->surnameascending()->get();
+                                 
+        return view('memberships.index', compact('memberships','report_title'));
+    }
+
+    public function current_memberships()
+    {   $report_title = "Current Memberships";
+        $memberships = Membership::with(['mship'])
+                    ->where('status','Current')
+                    ->orderBy('mship_term','ASC')->surnameascending()->get();
                                  
         return view('memberships.index', compact('memberships','report_title'));
     }
