@@ -24,9 +24,7 @@
                     <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                       <thead>
                         <tr>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Title</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">First Name</th>
-                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Surname</th>
+                          <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Label Name</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Addr1</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Addr2</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Addr3</th>
@@ -38,9 +36,7 @@
                       <tbody>
                         @foreach($rows as $key=>$row)
                         <tr class="hover:bg-grey-lighter">
-                          <td class="py-4 px-6 border border-grey-light">{{ $row->title }}</td>
-                          <td class="py-4 px-6 border border-grey-light">{{ $row->firstname }}</td>
-                          <td class="py-4 px-6 border border-grey-light text-center">{{ $row->surname }}</td>
+                          <td class="py-4 px-6 border border-grey-light text-center">{{ $row->mailing_label }}</td>
                           <td class="py-4 px-6 border border-grey-light">{{ $row->addr1 }}</td>
                           <td class="py-4 px-6 border border-grey-light">{{ $row->addr2 }}</a></td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $row->addr3 }}</td>
