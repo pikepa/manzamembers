@@ -132,7 +132,6 @@ class MembershipController extends Controller
     public function memberstatusupdate()
     {
         $this->dispatchNow(new UpdateMemberStatus());
-        return view('home');
-
+        return redirect ('/')->with('success', 'Membership status job has been streamed');
     }
 }

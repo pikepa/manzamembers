@@ -1,5 +1,4 @@
 <main class=" flex flex-1 flex-row flex-wrap pt-2 pl-1">
-
         @foreach ($events as $event)
             <div class="flex flex-col  content-between card w-64 mb-2 ml-1">
                 <div class="h-10px mx-auto text-center">
