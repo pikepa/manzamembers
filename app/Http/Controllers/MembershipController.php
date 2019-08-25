@@ -110,7 +110,7 @@ class MembershipController extends Controller
         $request->status =$membership->status;
         $attributes=request()->validate( [
          //   'status' => 'required|min:4',
-            'surname' => 'required|min:4',
+            'surname' => 'required|min:3',
             'mailing_label' => 'required|min:4',
             'phone' => 'required',
             'email' => 'email|required',

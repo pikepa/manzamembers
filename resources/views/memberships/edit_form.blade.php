@@ -7,7 +7,7 @@
               <span class="form_label font-bold">Status</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='status'
-                        value="{{old('surname', $membership->status)}}"
+                        value="{{old('status', $membership->status)}}"
                         disabled>
             </label>
         </div>        
@@ -16,7 +16,7 @@
               <span class="form_label font-bold">Membership No.</span>
                 <input  type="text" class="form-input mt-1 block w-full" 
                         name='memb_no'
-                        value="{{old('surname', $membership->memb_no)}}"
+                        value="{{old('memb_no', $membership->memb_no)}}"
                         disabled>
             </label>
         </div>
