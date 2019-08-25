@@ -18,6 +18,7 @@ class CreateMembershipsTable extends Migration
             $table->unsignedBigInteger('old_membership_no')->nullable();
             $table->string('status')->default('Pending');
             $table->string('surname');
+            $table->string('mailing_label');
             $table->integer('mship_type_id')->unsigned()->nullable();
             $table->integer('mship_term_id')->unsigned()->nullable();
             $table->string('phone');

@@ -111,6 +111,7 @@ class MembershipController extends Controller
         $attributes=request()->validate( [
          //   'status' => 'required|min:4',
             'surname' => 'required|min:4',
+            'mailing_label' => 'required|min:4',
             'phone' => 'required',
             'email' => 'email|required',
             'mship_term_id'=> 'required',

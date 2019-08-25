@@ -34,6 +34,16 @@
                         value="{{old('surname', $membership->surname)}}">
             </label>
         </div>
+
+        <div class="ml-4 w-1/2 field mb-6">
+            <label class="block">
+              <span class="-ml-1 form_label font-bold"><span class='text-red-500 '>* </span>Mailing Label Name</span>
+                <input  type="text" class="form-input mt-1 block w-full" 
+                        name='mailing_label'
+                        placeholder="Please enter the mailing Label name."
+                        value="{{old('surname', $membership->mailing_label)}}">
+            </label>
+        </div>
 </div>
 
 <div class="flex justify-between">

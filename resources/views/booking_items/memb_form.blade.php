@@ -23,6 +23,7 @@
           </div>
         </div>
 
+
         <div class="w-1/4 field mb-6">
             <label class="block">
               <span class="font-semibold text-gray-700">Qty</span>
