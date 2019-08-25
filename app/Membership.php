@@ -19,6 +19,12 @@ class Membership extends Model
 
     }
 
+    public function scopeSurnameAscending($query)
+    {
+            return $query->orderBy('surname','asc');
+    }   
+
+
     public function getFormattedDateJoinedAttribute()
     {
             return $this->date_joined->format('M j, Y'); 

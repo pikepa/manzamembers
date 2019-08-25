@@ -20,7 +20,7 @@ class MembershipController extends Controller
 
     public function index()
     {   $report_title = "Membership Listing";
-        $memberships = Membership::with(['mship'])->orderBy('status')->get();
+        $memberships = Membership::surnameascending()->with(['mship'])->get();
                                  
         return view('memberships.index', compact('memberships','report_title'));
     }
@@ -29,7 +29,7 @@ class MembershipController extends Controller
     {   $report_title = "Expired Memberships";
         $memberships = Membership::with(['mship'])
                     ->where('status','Expired')
-                    ->orderBy('mship_term','ASC')->get();
+                    ->orderBy('mship_term','ASC')->surnameascending()->get();
                                  
         return view('memberships.index', compact('memberships','report_title'));
     }
