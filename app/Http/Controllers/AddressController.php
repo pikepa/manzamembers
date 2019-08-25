@@ -16,7 +16,7 @@ class AddressController extends Controller
      */
     public function index()
     {   $report_title='Address Listing';
-        $rows=Member::selectRaw('members.firstname, members.surname, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
+        $rows=Member::selectRaw('members.title, members.firstname, members.surname, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
             ->join('addresses','members.membership_id', '=', 'addresses.membership_id' )
             ->orderBy('addr1','ASC')->get();
 
