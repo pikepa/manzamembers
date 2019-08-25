@@ -20,10 +20,17 @@ class MembershipController extends Controller
 
     public function index()
     {
-        $memberships = Membership::with(['mship'])->get()->sortBy('status');
+        $memberships = Membership::with(['mship'])->orderBy('status')->get();
                                  
         return view('memberships.index', compact('memberships'));
+    }
 
+    public function expired_memberships()
+    {
+        $memberships = Membership::with(['mship'])->where('status','Expired')
+                    ->orderBy('mship_term','ASC')->get();
+                                 
+        return view('memberships.index', compact('memberships'));
     }
 
     /**
@@ -125,5 +132,7 @@ class MembershipController extends Controller
     public function memberstatusupdate()
     {
         $this->dispatchNow(new UpdateMemberStatus());
+        return view('home');
+
     }
 }

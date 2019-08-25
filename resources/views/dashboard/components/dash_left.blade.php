@@ -15,13 +15,21 @@
                 Membership
             </h4>
         </div>
-        <ul class="">
+        <ul>
                 <li class="ml-4"><a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">Add New Member.</a></li>
                 <li class="ml-4"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">List Membership</a></li>
-                <li class="ml-4"><a href="{{ url('/memberlisting') }}" class="hover:font-semibold no-underline">List Members</a></li>
+                <li class="ml-4"><a href="{{ url('/membership/expired') }}" class="hover:font-semibold no-underline">Expired Memberships</a></li>
                 <li class="ml-4"><a href="{{ url('/memberstatusupdate') }}" class="hover:font-semibold no-underline">Update Status</a></li>
-                <li class="ml-4"><a href="{{ url('/receiptlisting') }}" class="hover:font-semibold no-underline">List Receipts</a></li>
+                <li class="ml-4"><a href="{{ url('/memberlisting') }}" class="hover:font-semibold no-underline">List Members</a></li>        
         </ul> 
+        <div>
+            <h4 class="my-2 font-bold">
+                Receipts
+            </h4>
+        </div>
+            <ul>
+                <li class="ml-4"><a href="{{ url('/receiptlisting') }}" class="hover:font-semibold no-underline">List Receipts</a></li>
+            </ul>
        @endauth   
     <div class="mb-2">
         @auth 

@@ -25,7 +25,7 @@ class ReportsController extends Controller
                                                                                                                     
         return view('members.index', compact('members'));
     }
-
+    
        public function life_member_listing()
     {
         $members = Member::whereHas('membership', function($q) {
