@@ -47,10 +47,6 @@ class CreateReceipt implements ShouldQueue
                 $term=Category::find($this->receipt->mship_term_id)->category;
         }
 
-          //call the Membership updateStatus() function & update Membership Status
-    //      $membership->mship_term = $term;
-    //      $membership->status = $membership->updateStatus();
-
           $membership->update();
 
     }
