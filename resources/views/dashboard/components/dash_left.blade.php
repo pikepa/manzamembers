@@ -1,6 +1,6 @@
-<div class="font-sans card bg-grey-dark mx-4 mt-4 md:ml-0 md:w-1/6">
+<div class="font-sans card bg-grey-dark px-2 mx-2 mt-2 md:ml-0 ">
     
-    <div class=" ml-4 mb-2 mt-6">
+    <div class=" ml-2 mb-2 ">
         <ul class="">
             <li><a href="{{ url('/') }}" class="my-2 font-semibold hover:font-bold no-underline">Home</a></li>
             <li class="ml-4"><a href="{{ url('/aboutus') }}" class="hover:font-semibold no-underline">About Us</a></li>
