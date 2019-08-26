@@ -6,15 +6,14 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class=" mx-auto lg:w-1/2">    {{-- container taken from here --}}
+<div  class="container  mx-auto lg:w-1/2">    {{-- container taken from here --}}
     <div class="card mt-6  mx-auto  rounded shadow">
- 
         <div class="  ">
             <h1 class="text-3xl font-semibold mt-2 pb-4 text-center">
                 {{ $event->title }}
             </h1>
         </div>
-        <div class="text-lg  ">
+        <div class=" text-lg  ">
             <div class="flex flex-col md:flex-row">
                 <div class="">
                   @if(isset($event->featured_img))

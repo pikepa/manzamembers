@@ -4,7 +4,7 @@
 
 <input type="hidden" value='{{ $eventbooking->id }}' name=event_id >
 
-<div class="w-2/3 mx-auto">
+<div class="mx-auto">
         <div class="field mb-6">
             <label class="block">
               <span class="font-semibold text-gray-700">Name</span>
