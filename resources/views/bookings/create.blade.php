@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class="container mx-auto ">
+<div  class="container mx-auto md:w-2/5">
     <div class="my-4 mx-auto card  rounded shadow">
         <h1 class="text-2xl font-normal mb-10 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
