@@ -10,9 +10,10 @@
 <body class="font-sans antialiased">
 
   <div id="app">
-    @include('layouts.partials.nav') 
-    @yield('content')
-
+    @include('layouts.partials.nav')
+    <div class="">
+         @yield('content')
+    </div>
   </div>
   @include('layouts.partials.scripts')
 </body>
