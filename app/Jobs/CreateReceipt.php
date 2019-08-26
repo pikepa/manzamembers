@@ -48,8 +48,8 @@ class CreateReceipt implements ShouldQueue
         }
 
           //call the Membership updateStatus() function & update Membership Status
-          $membership->mship_term = $term;
-          $membership->status = $membership->updateStatus();
+    //      $membership->mship_term = $term;
+    //      $membership->status = $membership->updateStatus();
 
           $membership->update();
 
