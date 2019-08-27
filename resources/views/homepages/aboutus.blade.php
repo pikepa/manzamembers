@@ -6,13 +6,13 @@
 
 @include('layouts.partials.pageheader')
 
-    <div class="container mx-auto pb-4">
+    <div class="container mx-auto w-4/5 pb-4">
 
-         <div class="flex flex-col md:flex-row justify-between">
+        <div class="flex flex-col md:flex-row justify-between">
 
             @include('dashboard.components.dash_left')
             
-            <div class="container mx-auto pb-4">
+            <div class="container mx-auto w-4/5 pb-4">
                 <div class="text-center">
                     <h1 class="font-bold text-3xl m-2 ">About MANZA</h1>
                 </div>
