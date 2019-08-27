@@ -40,6 +40,7 @@ Route::get('/coming_soon', function () {
     Route::get('/membership/current','MembershipController@current_memberships');
     Route::get('/membership/expired','MembershipController@expired_memberships');
     Route::get('/membership/pending','MembershipController@pending_memberships');
+    Route::get('/membership/noaddress','MembershipController@membs_without_addresses');
 
     Route::resource('address', 'AddressController');
     Route::resource('booking', 'BookingController');

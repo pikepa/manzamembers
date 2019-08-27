@@ -52,6 +52,12 @@ class MembershipController extends Controller
         return view('memberships.index', compact('memberships','report_title'));
     }
 
+    public function membs_without_addresses()
+    {   $report_title = "Memberships without Addresses";
+        $memberships = Membership::doesnthave('addresses')->surnameascending()->get();
+        return view('memberships.index', compact('memberships','report_title'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
