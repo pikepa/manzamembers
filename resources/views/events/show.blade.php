@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class="container  mx-auto lg:w-1/3">    {{-- container taken from here --}}
+<div  class="container  mx-auto lg:w-1/2">    {{-- container taken from here --}}
     <div class="card mt-6  mx-auto  rounded shadow">
         <div class="  ">
             <h1 class="text-3xl font-semibold mt-2 pb-4 text-center">
