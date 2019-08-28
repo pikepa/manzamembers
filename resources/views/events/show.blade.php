@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class="container  mx-auto lg:w-1/2">    {{-- container taken from here --}}
+<div  class="container  mx-auto lg:w-1/3">    {{-- container taken from here --}}
     <div class="card mt-6  mx-auto  rounded shadow">
         <div class="  ">
             <h1 class="text-3xl font-semibold mt-2 pb-4 text-center">
@@ -56,7 +56,7 @@
 
         <div class="flex flex-row p-2 justify-between items-center border-t-2 ">
             @if($event->isPublished())  
-                @if( $event->bookings_only !== "Bookings Only")
+                @if( $event->bookings_only  !== "Bookings Only" || $event->memb_na  == "memb_na")
                     <div class="mb-4 text-left  font-semibold ">Ticket Prices: </div>
                             <div class=" button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
                 @else
@@ -65,7 +65,7 @@
             @endif
         </div>
         <div class=" card">
-            @if( $event->bookings_only !== "Bookings Only")
+            @if( $event->bookings_only !== "Bookings Only" || $event->memb_na  == "memb_na")
                 @include('events.partials._pricing')
             @endif
             <div class="m-2">
