@@ -29,7 +29,7 @@ class UploadImageController extends Controller
 
     public function delete($aid, $id)
     {
-        $mediaitem = Media::find($id)->delete();
+        $mediaitem = Media::findOrFail($id)->delete();
 
         return redirect('/event/'.$aid);
     }
