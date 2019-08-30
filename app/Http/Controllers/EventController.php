@@ -60,6 +60,7 @@ class EventController extends Controller
                     'description' => 'required|min:10',
                     'venue' => 'required',
                     'v_address' => 'required',
+                    'max_bookings' => 'required',
                     'date' => 'date|required',
                     'timing'=> 'required',
                     'featured_img'=>'',
@@ -69,11 +70,13 @@ class EventController extends Controller
         $event = new Event;
 
         $event->title = $request->title;
-        $event->description = Purifier::clean($request->description);
+        $event->description = $request->description;
         $event->venue = $request->venue;
         $event->v_address = Purifier::clean($request->v_address);
         $event->bookings_only = $request->bookings_only;
         $event->add_info = $request->add_info;
+        $event->max_bookings = $request->max_bookings;
+        $event->memb_na = $request->memb_na;        
         $event->date = $request->date;
         $event->timing = $request->timing;
         $event->featured_img = $request->featured_img;
@@ -95,7 +98,8 @@ class EventController extends Controller
         $event = Event::find($event->id);
         
         session:flush();
-
+        session(['memb_required' => $event->isMembershipRequired()]);
+             
         $priceitems=Priceitem::with('category')
         ->orderBy('memb','desc')
         ->where('event_id',$event->id)->get();
@@ -114,8 +118,9 @@ class EventController extends Controller
 
         $item=new Category_Type;
         $items=$item->bookinginfo();
-                     
-        return view('events.edit',compact('event','items'));
+        $images = $event->getMedia('photos');
+            
+        return view('events.edit',compact('event','items','images'));
     }
 
     /**
@@ -132,6 +137,7 @@ class EventController extends Controller
                     'description' => 'required|min:10',
                     'venue' => 'required',
                     'v_address' => 'required',
+                    'max_bookings' => 'required',
                     'date' => 'date|required',
                     'timing'=> 'required',
                     'featured_img'=>'',
@@ -145,6 +151,8 @@ class EventController extends Controller
         $event->v_address = Purifier::clean($request->v_address);
         $event->bookings_only = $request->bookings_only;
         $event->add_info = $request->add_info;
+        $event->max_bookings = $request->max_bookings;        
+        $event->memb_na = $request->memb_na;        
         $event->date = $request->date;
         $event->timing = $request->timing;
   //      $event->featured_img = $request->featured_img;

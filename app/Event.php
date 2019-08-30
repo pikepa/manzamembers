@@ -1,12 +1,15 @@
 <?php
 
 namespace App;
+use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Event extends Model
+class Event extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use HasMediaTrait, SoftDeletes;
 
     
     protected $dates = ['published_at','created_at','date'];
@@ -34,6 +37,13 @@ class Event extends Model
     public function isnotPublished()
     {
         return $this->published_at == null;
+    }
+
+    public function isMembershipRequired()
+    { 
+        if($this->memb_na){
+         return "NO";
+        }
     }
 
     public function publish()
@@ -70,6 +80,11 @@ class Event extends Model
     }
 
     public function nonmembpriceitems()
+    {
+        return $this->hasMany(priceitem::class, 'event_id')->where('memb',0);
+    }
+
+    public function othertickets()
     {
         return $this->hasMany(priceitem::class, 'event_id')->where('memb',0);
     }
@@ -145,7 +160,6 @@ class Event extends Model
     {
         return $this->tickets()->count();
     }
-
 
     // Media Definitions
     public function registerMediaConversions(Media $media = null)

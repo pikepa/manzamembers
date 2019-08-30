@@ -4,6 +4,7 @@
 <head>
 
   @include('layouts.partials.meta') @yield('addstyles') @include('layouts.partials.css')
+    @yield('addstyles')
 
 </head>
 
@@ -15,7 +16,6 @@
          @yield('content')
     </div>
   </div>
-  @include('layouts.partials.scripts')
 </body>
-
+@include('layouts.partials.scripts')
 </html>

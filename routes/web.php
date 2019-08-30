@@ -57,9 +57,9 @@ Route::get('/coming_soon', function () {
 Auth::routes();
 
     Route::get('/images', 'UploadImageController@index');
-    Route::get('/images/{product}/load', 'UploadImageController@load');
-    Route::get('/images/{product}/{image}/delete', 'UploadImageController@delete');
-    Route::get('/images/{product}/{image}/featured', 'UploadImageController@featured');
+    Route::get('/images/{event}/load', 'UploadImageController@load');
+    Route::get('/images/{event}/{image}/delete', 'UploadImageController@delete');
+    Route::get('/images/{event}/{image}/featured', 'UploadImageController@featured');
     Route::get('/images/{image}', 'UploadImageController@show');
     Route::post('/images/upload', 'UploadImageController@upload');
 

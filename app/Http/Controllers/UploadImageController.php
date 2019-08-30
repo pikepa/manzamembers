@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Event;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
 
 class UploadImageController extends Controller
 {
-    public function load($product_id)
+    public function load($event_id)
     {
-        return view('images.upload', compact('product_id'));
+        return view('images.upload', compact('event_id'));
     }
 
     public function upload(Request $request)
@@ -19,28 +19,28 @@ class UploadImageController extends Controller
         'image' => 'required|mimes:jpeg,png,jpg,JPG|max:12000',
         ]);
 
-        $product = Product::find($request->product_id);
+        $event = Event::find($request->event_id);
 
-        $product->addMedia($request->file('image'))
+        $event->addMedia($request->file('image'))
                 ->toMediaCollection('photos', 's3');
 
-        return redirect('/product/'.$request->product_id);
+        return redirect('/event/'.$request->event_id);
     }
 
     public function delete($aid, $id)
     {
         $mediaitem = Media::find($id)->delete();
 
-        return redirect('/product/'.$aid);
+        return redirect('/event/'.$aid);
     }
 
     public function featured($aid, $id)
     {
-        $product = Product::find($aid);
-        $product->featured_img = Media::find($id)->getUrl();
-        $product->save();
+        $event = Event::find($aid);
+        $event->featured_img = Media::find($id)->getUrl();
+        $event->save();
 
-        return redirect('/product/'.$aid);
+        return redirect('/event/'.$aid);
     }
 
     // Show a media Item
