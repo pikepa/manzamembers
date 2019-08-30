@@ -20,32 +20,59 @@
           <textarea class="form-textarea mt-1 block w-full" 
           name='description'
           rows="3" 
-          placeholder="Please enter the event description.">{{old('description',$event->description)}}
+          placeholder="Please enter the event description.">{{old('description',strip_tags($event->description))}}
           </textarea>
         </label>
     </div>
 
-<div class="flex justify-between items-center flex-row">
-
-    <div class="w-1/2  block mb-4">
-          <span class=" font-bold text-gray-800">Additional Info</span>
-          <div class="mt-1">
-            <div class=" flex flex-wrap ">
-              <div class="inline-block relative w-full">
-                <select name="add_info" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                  <option value=''>Select if required</option>
-                  @foreach($items as $item)
-                  <option value="{{ $item }}" @if (old('item') ==  $item |  $event->add_info  ==  $item ) {{ 'selected' }} @endif>{{ $item }}</option>
-                @endforeach
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+    <div class="flex justify-between md:items-center flex-col md:flex-row">
+        <div class="w-1/2  block mb-4">
+              <span class=" font-bold text-gray-800">Additional Info</span>
+              <div class="mt-1">
+                <div class=" flex flex-wrap ">
+                  <div class="inline-block relative w-full">
+                    <select name="add_info" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                      <option value=''>Select if required</option>
+                      @foreach($items as $item)
+                      <option value="{{ $item }}" @if (old('item') ==  $item |  $event->add_info  ==  $item ) {{ 'selected' }} @endif>{{ $item }}</option>
+                    @endforeach
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+        </div>
+        
+        <div class="field mt-4 mb-4">
+          <div class="block">
+                <div class="mt-4 flex">
+                  <div>
+                    <label class="inline-flex items-center mr-4">
+                      <input type="checkbox" class="form-radio text-pink-600" 
+                      name="memb_na"  @if(old('status',$event->memb_na)=="memb_na") checked @endif
+                      value = 'memb_na'/>
+                      <span class="ml-2">Membership Not Required</span>
+                    </label>
+                  </div>
+              </div>
           </div>
     </div>
-      <div class="field mt-6 mb-6">
+    </div>
+
+    <div class="flex justify-left md:items-center flex-col md:flex-row">
+        <div class=" field mb-4">
+            <label class="block">
+              <span class=" font-bold text-gray-800">Max Bookings :</span>
+                <input  type="text" class="form-input mt-1 block w-1/2" 
+                        name='max_bookings'
+                        placeholder="Max Qty."
+                        value="{{old('max_bookings', $event->max_bookings)}}">
+            </label>
+        </div>
+
+      <div class="field mt-4 mb-4">
         <div class="block">
               <div class="mt-2 flex">
                 <div>
@@ -86,7 +113,7 @@
           <textarea class="form-textarea mt-1 block w-full" 
           name='v_address'
           rows="1" 
-          placeholder="Please enter the venue address.">{{old('v_address', $event->v_address) }}
+          placeholder="Please enter the venue address.">{{old('v_address', strip_tags($event->v_address)) }}
           </textarea>
         </label>
     </div>
