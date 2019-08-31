@@ -15,12 +15,15 @@ class ManageEventsTest extends TestCase
     public function a_user_can_read_all_the_events()
     {
         //Given we have event in the database
-        $event = factory('App\Event')->create();
+        $event = factory('App\Event')->create([
+                'title' => 'Title One',
+        ]);
 
         //When user visit the events page
         $response = $this->get('/');
         
         //He should be able to read the event
-        $response->assertSee($event->title);
+        $response
+            ->assertSee('Title One');
     }
 }
