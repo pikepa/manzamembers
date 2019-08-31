@@ -22,7 +22,6 @@ class ReportsController extends Controller
     public function member_listing()
     {
         $members = Member::with('membership')->orderBy('membership_id','desc')->get();
-                                                                                                                    
         return view('members.index', compact('members'));
     }
     
