@@ -7,6 +7,14 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+    protected function whoopsHandler()
+        {
+            try {
+                return app(\Whoops\Handler\HandlerInterface::class);
+            } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+                return (new \Illuminate\Foundation\Exceptions\WhoopsHandler)->forDebug();
+            }
+        }
     /**
      * A list of the exception types that are not reported.
      *
