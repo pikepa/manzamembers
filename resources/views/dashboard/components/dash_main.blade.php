@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex flex-col justify-between ">
                     <div class="flex-1 h-auto ">
-                        <p class="mt-4">{!! nl2br(substr($event->description,0,100))!!}
+                        <p class="mt-4">{!! nl2br(substr($event->description,0,90))!!}
                         <a class="text-blue-900 font-extrabold no-underline" href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" > ... see more <i class="fas fa-angle-double-right"></i></a></p>
                     </div>
 
