@@ -37,7 +37,7 @@ class UploadImageController extends Controller
     public function featured($aid, $id)
     {
         $event = Event::find($aid);
-        $event->featured_img = Media::find($id)->getUrl();
+        $event->featured_img = Media::find($id)->getUrl('event');
         $event->save();
 
         return redirect('/event/'.$aid);
