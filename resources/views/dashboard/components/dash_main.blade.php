@@ -7,7 +7,7 @@
                     @endif
                 </div>
                 <div class=""></div> {{-- This is a filler  --}}
-                <div class="h-16  mt-1 pb-4 card border  border-gray-500 text-center">
+                <div class="h-20  mt-1 pb-4 card border  border-gray-500 text-center">
                     <h1 class="text-xl text-indigo-900 font-semibold pt-2 ">{{ $event->title }}</h1>
                 </div>
                 <div class="flex flex-col justify-between ">
