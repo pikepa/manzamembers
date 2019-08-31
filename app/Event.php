@@ -169,6 +169,11 @@ class Event extends Model implements HasMedia
               ->height(300)
               ->sharpen(10);
 
+        $this->addMediaConversion('event')
+              ->width(475)
+              ->height(660)
+              ->sharpen(10);
+
         $this->addMediaConversion('full')
               ->width(800)
               ->height(800)
