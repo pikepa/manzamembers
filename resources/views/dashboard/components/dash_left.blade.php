@@ -1,4 +1,4 @@
-<div class="font-sans card bg-grey-dark px-2 ml-4 mt-2 md:ml-0 ">
+<div class="w-1/5 font-sans card bg-grey-dark px-2 ml-4 mt-2 md:ml-0 ">
     
     <div class=" ml-2 mb-2 ">
         <ul class="">
