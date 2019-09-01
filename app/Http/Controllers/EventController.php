@@ -78,6 +78,7 @@ class EventController extends Controller
         $event->max_bookings = $request->max_bookings;
         $event->memb_na = $request->memb_na;        
         $event->date = $request->date;
+        $event->published_at = $request->published_at;
         $event->timing = $request->timing;
         $event->featured_img = $request->featured_img;
         $event->status = 'pending';
@@ -154,6 +155,7 @@ class EventController extends Controller
         $event->max_bookings = $request->max_bookings;        
         $event->memb_na = $request->memb_na;        
         $event->date = $request->date;
+        $event->published_at = $request->published_at;
         $event->timing = $request->timing;
   //      $event->featured_img = $request->featured_img;
         $event->status = 'pending';

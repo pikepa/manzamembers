@@ -21,9 +21,23 @@ class ManageEventsTest extends TestCase
 
         //When user visit the events page
         $response = $this->get('/');
-        
+
         //He should be able to read the event
         $response
             ->assertSee('Title One');
     }
+
+    /** @test */
+    public function an_authorised_user_can_edit_all_the_events()
+    {
+        $event = factory('App\Event')->create();
+
+        $this->signIn();
+        $response = $this->get('/event/'.$event->id.'/edit');
+
+        $response
+            ->assertStatus(200)
+            ->assertSee('Edit Event Details');
+    }
+
 }

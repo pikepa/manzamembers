@@ -123,7 +123,6 @@
           <span class="font-bold text-gray-800">Event Date :</span>
             <input  type="date" class="form-input mt-1 block w-full" 
                     name='date'
-                    placeholder="Enter the date of the category."
                     value="{{old('date', $event->date->format('Y-m-d'))}}"
                     > 
         </label>
@@ -138,8 +137,23 @@
                         value="{{old('timing',$event->timing)}}">
             </label>
         </div>
-
 </div>
+    <div class="field w-1/2  mb-6">
+        <label class="block">
+          <span class="font-bold text-gray-800">Published on :</span>
+          @if(isset($event->published_at))
+            <input  type="date" class="form-input mt-1 block w-full" 
+                    name='published_at'
+                    value="{{old('date', $event->published_at->format('Y-m-d'))}}"
+                    > 
+          @else
+            <input  type="date" class="form-input mt-1 block w-full" 
+                    name='published_at'
+                    value="{{old('date', $event->published_at)}}"
+                    > 
+          @endif
+        </label>
+    </div>
 
 
 <div class="field">
