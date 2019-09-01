@@ -9,16 +9,15 @@ class HomePageTests extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    /** @test */
     public function anyone_can_read_the_home_page()
     {
+        $this->withoutExceptionHandling();
+
         $response = $this->get('/');
-        $response->assertStatus(200);
-        $response->assertSee('Malaysian');
+        $response
+            ->assertStatus(200)
+            ->assertSee('Malaysian');
     }
 
     /** @test */
