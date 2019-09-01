@@ -105,8 +105,10 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+   public function destroy(Booking $booking)
     {
-        //
+        $booking->booking_items()->delete();
+        $booking->delete();
+        return redirect('booking')->with('Success', 'Booking and Items have been deleted');
     }
 }

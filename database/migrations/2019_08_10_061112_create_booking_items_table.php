@@ -17,6 +17,7 @@ class CreateBookingItemsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('booking_id');
             $table->bigInteger('price_item_id');
+            $table->bigInteger('price_type_id');
             $table->Integer('price');
             $table->Integer('qty');
             $table->timestamp('confirmed_at')->nullable();

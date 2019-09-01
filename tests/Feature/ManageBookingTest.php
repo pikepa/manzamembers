@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Booking;
 use Tests\TestCase;
+use App\BookingItem;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -35,5 +36,19 @@ class ManageBookingTest extends TestCase
         $category = factory(Booking::class)->create();
         $response = $this->get('/byevent/1');
         $response->assertStatus(200);
+    }
+
+    /** @test */
+    public function a_signed_in_user_can_delete_a_booking()
+    {
+        $this->signIn();
+        $booking = factory(Booking::class)->create();
+        $booking_items = factory(BookingItem::class,5)->create([
+                        'booking_id'=>$booking->id, 
+        ]);
+        $this->delete('/booking/'.$booking->id)->assertRedirect('booking');
+        $this->assertDatabaseMissing('booking_items',['booking_id' => $booking->id]);
+        $this->assertDatabaseMissing('bookings',['id'=> $booking->id]);
+
     }
 }
