@@ -46,7 +46,7 @@ class ManageBookingTest extends TestCase
         $booking_items = factory(BookingItem::class,5)->create([
                         'booking_id'=>$booking->id, 
         ]);
-        $this->delete('/booking/'.$booking->id)->assertRedirect('booking');
+        $this->delete('/booking/'.$booking->id)->assertRedirect('/byevent/'.$booking->event_id);
         $this->assertDatabaseMissing('booking_items',['booking_id' => $booking->id]);
         $this->assertDatabaseMissing('bookings',['id'=> $booking->id]);
 

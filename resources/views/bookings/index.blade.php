@@ -44,7 +44,15 @@
                           <td class="py-4 px-4 border border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
                           <td class=" border  border-grey-light">
-
+                            @auth()
+                            <div class="text-grey-lighter text-center text-sm mx-2 ">
+                              <form method="POST" action="{{ $booking->path() }}" >
+                                  @method('DELETE')
+                                  @csrf
+                                  <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                              </form>
+                            </div>
+                            @endauth
                           </td>
                         </tr>
                         @endforeach
@@ -52,7 +60,7 @@
                       </tbody>
                     </table>
                   </div>
-                  <p>{{ $bookings->count() }}</p>
+                  <p>No. of Bookings:-{{ $bookings->count() }}</p>
                 </div>
                 </div>
             </div>

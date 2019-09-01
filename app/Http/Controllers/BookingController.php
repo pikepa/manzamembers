@@ -109,6 +109,6 @@ class BookingController extends Controller
     {
         $booking->booking_items()->delete();
         $booking->delete();
-        return redirect('booking')->with('Success', 'Booking and Items have been deleted');
+        return redirect('byevent/'.$booking->event_id)->with('Success', 'Booking and Items have been deleted');
     }
 }
