@@ -54,6 +54,7 @@ Route::get('/coming_soon', function () {
     Route::resource('receipt', 'ReceiptController');
     Route::resource('eventbooking', 'EventBookingsController');
 
+
 Auth::routes();
 
     Route::get('/images', 'UploadImageController@index');
