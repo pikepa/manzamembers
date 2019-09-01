@@ -23,14 +23,6 @@ class EventBookingsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show','create','store']]);
     }
 
-    private $paymentGateway;
- /*
-    public function __construct(PaymentGateway $paymentGateway)
-    {
-        $this->paymentGateway = $paymentGateway;
-    }
-*/
-
     public function create($id)
     {
 

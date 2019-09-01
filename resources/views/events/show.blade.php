@@ -16,7 +16,7 @@
         <div class=" text-lg  ">
             <div class="flex flex-col md:flex-row">
                 <div class="">
-                  @if(isset($event->featured_img))
+                  @if(isset($event->media))
                      <div class=" max-w-md card mx-auto">
                                <img class="w-full object-cover object-centre" src="{{URL::asset( $event->featured_img)}}">  
                       </div>

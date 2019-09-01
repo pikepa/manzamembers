@@ -100,6 +100,7 @@ class MembershipController extends Controller
         return view('memberships.show',compact('membership','members', 'addresses', 'receipts'));
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *

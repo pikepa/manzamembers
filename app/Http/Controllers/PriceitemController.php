@@ -49,6 +49,7 @@ class PriceitemController extends Controller
                 $this->validate(request(), [
                 'event_id' => 'required',
                 'type' => 'required',
+                'memb' => 'required',
                 'price' => 'required',
             ]);
         $priceitem = new Priceitem;

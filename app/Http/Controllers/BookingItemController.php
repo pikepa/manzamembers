@@ -99,11 +99,12 @@ class BookingItemController extends Controller
             $eventbooking = Event::with('bookings')->find($event_id);
             $tickettypes =Priceitem::with('category')->members()->get();
             $non_tickettypes =Priceitem::with('category')->nonmembers()->get();
+            $other_tickettypes =Priceitem::with('category')->others()->get();
 
             $orders=BookingItem::with('priceitems')->with('category')->where('booking_id',session::get('booking_id'))->get();
             $booking_item=new BookingItem;
 
-            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes'));
+            return view('booking_items.show', compact('booking_item','orders','eventbooking','tickettypes','non_tickettypes','other_tickettypes'));
     }
 
     /**

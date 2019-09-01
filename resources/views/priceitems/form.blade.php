@@ -24,7 +24,7 @@
 
 
 <div class="flex justify-between">
-    <div class="w-1/2 field mb-6">
+    <div class=" field mb-6">
         <div class="block">
               <div class="mt-2 flex">
                 <div>
@@ -41,6 +41,14 @@
                     name="memb" @if(old('gender',$priceitem->memb)=="0") checked @endif
                     value = 0>
                     <span class="ml-2">Non-Member</span>
+                  </label>
+                </div>
+                <div>
+                  <label class="inline-flex items-center mr-4">
+                    <input type="radio" class="form-radio text-pink-600" 
+                    name="memb" @if(old('gender',$priceitem->memb)=="2") checked @endif
+                    value = 2>
+                    <span class="ml-2">Not Applicable</span>
                   </label>
                 </div>
             </div>

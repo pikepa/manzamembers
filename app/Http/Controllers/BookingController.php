@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 class BookingController extends Controller
 {
     /**
+     * Restricting certain functions to Auth Users only.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [ 'show','store',]]);
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -27,7 +36,8 @@ class BookingController extends Controller
      */
     public function byevent($id)
     {
-        $bookings=Booking::with('event')->where('event_id',$id)->get();
+        $bookings=Booking::with('event','booking_items')->where('event_id',$id)->get();
+//dd($bookings);
         $event=Event::find($id);
         return view ('bookings.index', compact('bookings','event'));
     }

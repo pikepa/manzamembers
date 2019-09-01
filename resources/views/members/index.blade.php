@@ -36,7 +36,7 @@
                         @foreach($members as $member)
                         <tr class="hover:bg-grey-lighter">
                           <td class=" py-4 px-4 border-b border-r border-grey-light">{{ $member->date_joined->format('M j, Y') }}</td>
-                          <td class="underline py-4 px-4 border-b border-r border-grey-light text-center"><a href='/membership/{{ $member->membership->id }}'>{{ $member->membership->memb_no }}</a></td>
+                          <td class="underline py-4 px-4 border-b border-r border-grey-light text-center"><a href='/membership/{{ $member->membership['id'] }}'>{{ $member->membership['memb_no'] }}</a></td>
                           <td class="py-4 px-4 border-b border-r border-grey-light text-left">{{  str_limit( $member->fullname, 30)}}</td>
                           <td class="py-4 px-4 border-b border-r border-grey-light text-center">{{ $member->nationality }}</td>
                           <td class="py-4 px-4 border-b border-r border-grey-light text-center">{{ $member->mobile }}</td>
