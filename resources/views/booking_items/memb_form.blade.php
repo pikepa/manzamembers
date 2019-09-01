@@ -5,7 +5,7 @@
 <div class=" p-2 mx-auto">
 <div class="card">
         <div class=" block mb-4">
-          <span class="font-bold text-gray-700">Order Member Tickets</span>
+          <span class="font-bold text-gray-700">Member Tickets</span>
           <div class="mt-2">
             <div class="flex  flex-wrap ">
               <div class="inline-block relative w-64">
