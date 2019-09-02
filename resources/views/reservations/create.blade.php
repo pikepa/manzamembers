@@ -17,7 +17,7 @@
             action="/reservation"
         >
             @include ('reservations.form', [
-                'buttonText' => 'Save'
+                'buttonText' => 'Register'
             ])
         </form>
     </div>
