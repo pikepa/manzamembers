@@ -56,7 +56,7 @@
 
 <div class="field">
     <div class="control">
-        <button type="submit" class="btn btn-blue is-link mr-2">{{ $buttonText }}</button>
+        <button type="submit" class="btn btn-manza is-link mr-2">{{ $buttonText }}</button>
 
         <a href="{{ url()->previous() }}" class="text-default">Cancel</a>
     </div>
