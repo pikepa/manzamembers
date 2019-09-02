@@ -43,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['dashboard.components.dash_left',
                            ], function ($view) {
                                $view->with('events', Event::whereNotNull('published_at')
+                                           ->has('bookings', '>', 0)
+                                           ->get());
+                           });
+
+        view()->composer(['dashboard.components.dash_left',
+                           ], function ($view) {
+                               $view->with('reservations', Event::whereNotNull('published_at')
+                                           ->has('reservations', '>', 0)
                                            ->get());
                            });
 

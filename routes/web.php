@@ -36,7 +36,10 @@ Route::get('/coming_soon', function () {
     Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
     Route::get('/receipt/create/{id?}', 'ReceiptController@create')->name('fromReceipt.create');
     Route::get('/address/create/{id?}', 'AddressController@create')->name('fromAddress.create');
+    Route::get('/reservation/create/{id?}', 'ReservationController@create')->name('fromReservation.create');
+   
     Route::get('/byevent/{id?}', 'BookingController@byevent');
+    Route::get('/reservation/{id?}', 'ReservationController@index');
     Route::get('/membership/current','MembershipController@current_memberships');
     Route::get('/membership/expired','MembershipController@expired_memberships');
     Route::get('/membership/pending','MembershipController@pending_memberships');
@@ -52,6 +55,7 @@ Route::get('/coming_soon', function () {
     Route::resource('membership', 'MembershipController');
     Route::resource('member', 'MemberController');
     Route::resource('receipt', 'ReceiptController');
+    Route::resource('reservation', 'ReservationController');
     Route::resource('eventbooking', 'EventBookingsController');
 
 

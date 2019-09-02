@@ -81,7 +81,7 @@
                     name="bookings_only"  @if(old('status',$event->bookings_only)=="Bookings Only") checked @endif
                     checked 
                     value = 'Bookings Only'/>
-                    <span class="ml-2">Bookings Only</span>
+                    <span class="ml-2">Registrations</span>
                   </label>
                 </div>
                 <div>

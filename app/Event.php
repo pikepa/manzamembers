@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Reservation;
 use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -92,6 +93,10 @@ class Event extends Model implements HasMedia
     public function tickets()
     {
         return $this->hasMany(Ticket::class, 'event_id');
+    }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'event_id');
     }
 
     public function bookings()

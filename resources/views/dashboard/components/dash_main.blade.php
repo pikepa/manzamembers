@@ -12,7 +12,7 @@
                 </div>
                 <div class="flex flex-col justify-between ">
                     <div class="flex-1 h-auto ">
-                        <p class="mt-4">{!! nl2br(substr($event->description,0,90))!!}
+                        <p class="mt-4">{!! nl2br(substr($event->description,0,95))!!}
                         <a class="text-blue-900 font-extrabold no-underline" href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" > ... see more <i class="fas fa-angle-double-right"></i></a></p>
                     </div>
 
@@ -21,7 +21,7 @@
                     </div>
                     @if($event->bookings_only === "Bookings Only" and $event->ispublished())
                         <div class="text-center mt-4 text-lg text-pink-600 font-extrabold ">
-                   <a href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" >Bookings Open</a>                        </div>
+                   <a href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" >Register Now</a>                        </div>
                     @endif
                     @if($event->bookings_only === "Booking & Tickets" and $event->ispublished())
                         <div class="text-center mt-4 text-lg text-pink-600 font-extrabold">
