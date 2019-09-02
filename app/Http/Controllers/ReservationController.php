@@ -67,9 +67,10 @@ class ReservationController extends Controller
              
         $reservation->save();
 
-        return redirect('/event/'.$request->event_id)
-        ->with('success', 'Your reservation has been added');    
+   //     return redirect('/event/'.$request->event_id)
+   //     ->with('message', 'Your reservation has been added'); 
 
+        return view('reservations.success', compact('booking'));
     }
 
     /**
@@ -118,4 +119,40 @@ class ReservationController extends Controller
 
         return redirect('/reservation/'.$reservation->event_id)->with('Success', 'Booking Line has been deleted');
     }
+
+    public function success()
+    {
+      $booking=Booking::with('event')->findOrFail(session::get('booking_id'));
+      $totalcost=BookingItem::cost()/100;
+      $totaltickets=BookingItem::tickets();
+      $ccmembers=['manzaoffice@gmail.com','manzawebsite@gmail.com'];
+
+      session()->forget(['booking_id', 'event_id']);
+             
+      Mail::to($booking->email)
+            ->bcc($ccmembers)->send(new BookingConfirmed($booking ));
+
+      $text=$text=str_ireplace('<p>','',$booking->event->v_address);
+      $text=$text=str_ireplace('</p>','',$text);
+
+      $event=[
+        'title'=>$booking->event->title,
+        'add_title'=>$booking->event->add_info,
+        'venue'=>$booking->event->venue.', '.$text,
+        'timing'=>$booking->event->timing,
+        'date'=>$booking->event->date->format('M d, Y'),
+      ];
+
+      $bccmembers=['manzatourskl@gmail.com','manzaoffice@gmail.com','manzawebsite@gmail.com'];
+
+      Mail::to($booking->email)
+            ->bcc($bccmembers)
+            ->send(new BookingTicketsSent($booking,$event,$totaltickets));
+
+
+
+       return view('stripe.success', compact('booking'));
+
+    }
+
 }
