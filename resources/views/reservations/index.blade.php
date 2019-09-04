@@ -28,7 +28,7 @@
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Name</th>
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Mobile</th>
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Email</th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Qty of People</th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. of People</th>
                         </tr>
                       </thead
                       <tbody>
