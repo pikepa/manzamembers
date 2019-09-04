@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Session;
 use App\Booking;
 use Stripe\Charge;
-use App\BookingItem;
 use Stripe\Customer;
+use App\BookingItem;
 use Illuminate\Http\Request;
 use App\Mail\BookingConfirmed;
 use App\Mail\BookingTicketsSent;
@@ -40,14 +40,16 @@ class CheckoutController extends Controller
         try {
             \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
+       //     dd($customer->id);
+             
             $charged= Charge::create ([
                     "amount" => $totalcost,
                     "currency" => "myr",
                     "source" => $request->stripeToken,
                     "receipt_email" => $booking->email,
-                    "description" => 'Booking for a total of '.$totaltickets.' tickets. Booking Ref: Man10'.$booking->id
+                    "description" => $booking->name.' : Booking for a total of '.$totaltickets.' tickets. Booking Ref: Man10'.$booking->id
             ]);
-            
+   
             Session::flash('success', 'Payment successful!');
             $booking->confirmed_at = now()->setTimezone('Asia/Kuala_Lumpur');
             $booking->receipt_url = $charged->receipt_url;
@@ -88,6 +90,7 @@ class CheckoutController extends Controller
 
     public function success()
     {
+                   
       $booking=Booking::with('event')->findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
