@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function setPasswordAttribute($password)
+    {   
+        $this->attributes['password'] = Hash::make($password);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -44,6 +51,13 @@ class User extends Authenticatable
     public function receipts()
     {
         return $this->hasMany(Receipts::class, 'owner_id');
+    }
+
+
+    //Defines a path for a booking
+    public function path()
+    {
+        return "/users/{$this->id}";
     }
 
     

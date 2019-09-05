@@ -54,7 +54,7 @@
                 <h4 class="my-2 font-bold">Reservations</h4>
             </div>
             @forelse($reservations as $reservation) 
-                <li><a href="{{ url('/reservation/'. $reservation->id ) }}" class="ml-2 hover:font-semibold">{{ $reservation->title }}</li></a>
+                <li><a href="{{ url('/reservation/'. $reservation->id ) }}" class="ml-2 hover:font-semibold">{{ $reservation->title }}</a></li>
             @empty
                 <div class=" ml-2"> No Reservations Yet</div>
             @endforelse 
@@ -74,14 +74,22 @@
                 <li class="ml-2"><a href="{{ url('/category') }}" class="hover:font-semibold no-underline">Categories.</a></li>
             </ul>
                 <br>
+                @hasrole('SuperAdmin') {{-- Laravel-permission blade helper --}}
+                    <a href="/users"><i class="fa fa-btn fa-unlock"></i>  User Admin</a>
+                @endrole 
+                <br>
+  
                 <a href="{{ route('logout') }}"
                     class="hover:font-semibold no-underline ml-2"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                     {{ csrf_field() }}
-                </form>  
-            @endauth
+                </form> 
+                <br>
+                @endauth
+
     </div>
 </div>
 </div>
+

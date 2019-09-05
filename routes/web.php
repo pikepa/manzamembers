@@ -60,6 +60,9 @@ Route::get('/coming_soon', function () {
 
 
 Auth::routes();
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
 
     Route::get('/images', 'UploadImageController@index');
     Route::get('/images/{event}/load', 'UploadImageController@load');
