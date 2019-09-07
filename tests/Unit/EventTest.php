@@ -26,4 +26,20 @@ class EventTest extends TestCase
             ->assertSee('Published on')
             ->assertSee($event->published_at->format('Y-m-d'));
     }
+
+        /** @test */
+        public function a_signed_in_user_can_edit_event_status()
+        {
+            $event = factory('App\Event')->create([
+                'status' => 'Pending',
+            ]);
+                         
+            $this->signIn();
+            $response = $this->get('/event/'.$event->id.'/edit');
+    
+            $response
+                ->assertStatus(200)
+                ->assertSee('Status')
+                ->assertSee('Pending');
+        }
 }

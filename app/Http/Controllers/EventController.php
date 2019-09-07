@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Event;
 use App\Priceitem;
+use App\SpecialClasses\Event_Status;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Mews\Purifier\Facades\Purifier;
@@ -41,10 +42,13 @@ class EventController extends Controller
         $item=new Category_Type;
         $items=$item->bookinginfo();
 
+        $status=new Event_Status;
+        $statuses=$status->getstatus();
+
         $event= new Event;
 
         $event->date = Carbon::now(); 
-        return view('events.create', compact('event','items'));
+        return view('events.create', compact('event','items','statuses'));
     }
 
     /**
@@ -63,6 +67,7 @@ class EventController extends Controller
                     'max_bookings' => 'required',
                     'date' => 'date|required',
                     'timing'=> 'required',
+                    'status'=> 'status',
                     'featured_img'=>'',
                     'published_at'=>'',
                 ]); 
@@ -81,7 +86,7 @@ class EventController extends Controller
         $event->published_at = $request->published_at;
         $event->timing = $request->timing;
         $event->featured_img = $request->featured_img;
-        $event->status = 'pending';
+        $event->status = $request->status;
 
         $event->save()  ;         
         return redirect( $event->path() )->with('success', 'Event has been added');
@@ -119,9 +124,12 @@ class EventController extends Controller
 
         $item=new Category_Type;
         $items=$item->bookinginfo();
+
+        $status=new Event_Status;
+        $statuses=$status->getstatus();
         $images = $event->getMedia('photos');
             
-        return view('events.edit',compact('event','items','images'));
+        return view('events.edit',compact('event','items','images','statuses'));
     }
 
     /**
@@ -141,6 +149,7 @@ class EventController extends Controller
                     'max_bookings' => 'required',
                     'date' => 'date|required',
                     'timing'=> 'required',
+                    'status'=> 'required',
                     'featured_img'=>'',
                     'published_at'=>'',
                 ]); 
@@ -157,8 +166,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->published_at = $request->published_at;
         $event->timing = $request->timing;
-  //      $event->featured_img = $request->featured_img;
-        $event->status = 'pending';
+        $event->status = $request->status;
         $event->update()  ;  
                                    
         return redirect( $event->path() )->with('success', 'Event has been added');
