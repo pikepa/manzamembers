@@ -27,12 +27,17 @@ class Event extends Model implements HasMedia
 
     public function scopePublished($query)
     {
-        return $query->whereNotNull('published_at');
+        return $query->whereNotNull('published_at')->where('status', '!=', 'Hidden') ;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', '!=', 'Hidden') ;
     }
 
     public function isPublished()
     {
-        return $this->published_at !== null;
+        return $this->published_at !== null  ;
     }
 
     public function isnotPublished()
