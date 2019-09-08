@@ -28,7 +28,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::active()->orderBy('date','asc')->get();
+        $events = Event::orderBy('date','asc')->get();
         return view('dashboard.home', compact('events'));
     }
 

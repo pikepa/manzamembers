@@ -11,7 +11,7 @@
 */
 
 
-Route::get('/', 'EventController@index')->name('root');
+Route::get('/', 'HomeController@index')->name('root');
 Route::get('/aboutus', function () {
     return view('homepages.aboutus');
 });
