@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Message;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -11,7 +12,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class MessageTests extends TestCase
 {
         use DatabaseMigrations,WithFaker;
-
     /** @test */
     public function it_has_a_path()
     {
@@ -22,7 +22,7 @@ class MessageTests extends TestCase
 
     /** @test */
     public function it_requires_a_name()
-    {
+    {   
         $this->message(['name' => ''])->assertSessionHasErrors('name');
     }
     /** @test */

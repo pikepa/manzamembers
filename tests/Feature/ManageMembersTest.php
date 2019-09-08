@@ -31,8 +31,7 @@ class ManageMembersTest extends TestCase
         /** @test */
     public function a_guest_can_not_view_the_member_index()
     {
-        $membership = factory(Membership::class)->create();
-        $member = factory(Member::class)->create();
+ 
         $response = $this->get('/member');
         $response->assertRedirect('/login');
     }
@@ -42,7 +41,7 @@ class ManageMembersTest extends TestCase
         $this->signIn();
 
         $membership = factory(Membership::class)->create();
-        $member = factory(Member::class)->create();
+        $member = factory(Member::class)->create(['membership_id'=>$membership->id]);
         $response = $this->get('/member');
         $response->assertStatus(200);
     }
