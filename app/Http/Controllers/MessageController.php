@@ -71,15 +71,18 @@ class MessageController extends Controller
         if (strtoupper($request->my_question) === '5') {
             $message->save();
 
+        $emailJob = new SendMessageReceived($message);
+        dispatch($emailJob);
+
     //    Mail::to($message->email)
     //        ->bcc($bccmembers)
     //        ->send(new MessageReceived($message))
     //        ->queue(new OrderShipped($order));
 
-        $job = (new SendMessageReceived($message))->onQueue('emails');
-        $this->dispatch($job);
+    //    $job = (new SendMessageReceived($message))->onQueue('emails');
+    //    $this->dispatch($job);
 
-            return redirect('/')->with('success', 'Message has been sent');
+        return redirect('/')->with('success', 'Message has been sent');
 
         } else {
 

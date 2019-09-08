@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Jobs\Mail;
-
+use Mail;
 use App\Mail\MessageReceived;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Mail;
+//use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -30,14 +30,10 @@ class SendMessageReceived implements ShouldQueue
      */
     public function handle()
     {
-      $bccmembers=['manzatourskl@gmail.com','manzaoffice@gmail.com','manzawebsite@gmail.com'];
-
-        $members=['peter@thepikes.net','manzawebsite@gmail.com'];
 
         $email = new MessageReceived($this->message );
         Mail::to($this->message->email)
-            ->cc($members)
+            ->cc('peter@thepikes.net','manzawebsite@gmail.com')
             ->send($email);
-
     }
 }
