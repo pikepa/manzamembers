@@ -30,12 +30,13 @@ class SendMessageReceived implements ShouldQueue
      */
     public function handle()
     {
+      $bccmembers=['manzatourskl@gmail.com','manzaoffice@gmail.com','manzawebsite@gmail.com'];
 
         $members=['peter@thepikes.net','manzawebsite@gmail.com'];
 
         $email = new MessageReceived($this->message );
         Mail::to($this->message->email)
-            ->bcc($members)
+            ->cc($members)
             ->send($email);
 
     }

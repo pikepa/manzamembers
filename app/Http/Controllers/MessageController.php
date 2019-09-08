@@ -71,8 +71,6 @@ class MessageController extends Controller
         if (strtoupper($request->my_question) === '5') {
             $message->save();
 
-        $bccmembers=[];
-
     //    Mail::to($message->email)
     //        ->bcc($bccmembers)
     //        ->send(new MessageReceived($message))
