@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use Illuminate\Http\Request;
+use App\Mail\MessageReceived;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Jobs\Mail\SendMessageReceived;
+
 
 class MessageController extends Controller
 {
@@ -62,13 +66,25 @@ class MessageController extends Controller
         $message->name = $request->name;
         $message->email = $request->email;
         $message->subject = $request->subject;
-        $message->content = Purifier::clean($request->content);
+        $message->content = $request->content;
 
         if (strtoupper($request->my_question) === '5') {
             $message->save();
 
+        $bccmembers=[];
+
+    //    Mail::to($message->email)
+    //        ->bcc($bccmembers)
+    //        ->send(new MessageReceived($message))
+    //        ->queue(new OrderShipped($order));
+
+        $job = (new SendMessageReceived($message))->onQueue('emails');
+        $this->dispatch($job);
+
             return redirect('/')->with('success', 'Message has been sent');
+
         } else {
+
             return redirect('/')->with('failure', 'No Message has been sent');
         }
     }
