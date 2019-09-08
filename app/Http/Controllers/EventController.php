@@ -67,7 +67,7 @@ class EventController extends Controller
                     'max_bookings' => 'required',
                     'date' => 'date|required',
                     'timing'=> 'required',
-                    'status'=> 'status',
+                    'status'=> 'required',
                     'featured_img'=>'',
                     'published_at'=>'',
                 ]); 
