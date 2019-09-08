@@ -34440,8 +34440,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/peterpike/Sites/Development/manzamembers/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/peterpike/Sites/Development/manzamembers/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/peterpike/Sites/Live/manzamembers/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/peterpike/Sites/Live/manzamembers/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
