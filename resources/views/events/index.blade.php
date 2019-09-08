@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-    <div class="container mx-auto pb-4">
+    <div class="container mx-auto w-4/5 pb-4">
 
          <div class="flex flex-col md:flex-row justify-between">
 
@@ -31,16 +31,13 @@
                       <tbody>
                         @foreach($events as $event)
                         <tr class="hover:bg-grey-lighter">
-                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->Date_of_event }}</td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light"><a href="{{ $event->path() }}">{{ $event->title }}</a></td>
+                          <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->date->format('d M, Y') }}</td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</a></td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</a></td>
+
                           <td class=" border-b border-r  border-grey-light">
-                              <div class="text-center mx-auto ">
-                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="{{ $event->path() }}coming_soon">Prices</a>
-                              </div>
-                          </td>
-                          <td class=" border-b border-r  border-grey-light">
-                              <div class="text-center mx-auto ">
-                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="/coming_soon">Book Me</a>
+                              <div class="text-center mx-auto ">   
+                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="{{ $event->path() }}">Book Me</a>
                               </div>
 
 {{--  

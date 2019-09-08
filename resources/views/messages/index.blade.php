@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-    <div class="container mx-auto pb-4">
+    <div class="container mx-auto w-4/5 pb-4">
 
          <div class="flex flex-col md:flex-row justify-between">
 
