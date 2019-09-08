@@ -29,7 +29,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('date','asc')->get();
-        return view('dashboard.home', compact('events'));
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -75,7 +75,7 @@ class EventController extends Controller
         $event = new Event;
 
         $event->title = $request->title;
-        $event->description = $request->description;
+        $event->description = Purifier::clean($request->description);
         $event->venue = $request->venue;
         $event->v_address = Purifier::clean($request->v_address);
         $event->bookings_only = $request->bookings_only;
@@ -156,7 +156,8 @@ class EventController extends Controller
 
 
         $event->title = $request->title;
-        $event->description = Purifier::clean($request->description);
+
+        $event->description = $request->description;
         $event->venue = $request->venue;
         $event->v_address = Purifier::clean($request->v_address);
         $event->bookings_only = $request->bookings_only;
