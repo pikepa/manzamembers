@@ -24,7 +24,7 @@
                         <tr>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Date</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Title</th>
-                          <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-r  border-grey-light">Pricing</th>
+                          <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-r  border-grey-light">Type</th>
                           <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
                         </tr>
                       </thead>
@@ -33,11 +33,11 @@
                         <tr class="hover:bg-grey-lighter">
                           <td class="py-4 px-6 border-b border-r border-grey-light">{{ $event->date->format('d M, Y') }}</td>
                           <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</a></td>
-                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->title }}</a></td>
+                          <td class="py-4 px-6 border-b border-r  border-grey-light">{{ $event->bookings_only }}</a></td>
 
                           <td class=" border-b border-r  border-grey-light">
                               <div class="text-center mx-auto ">   
-                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="{{ $event->path() }}">Book Me</a>
+                                  <a class="button bg-pink-700 hover:bg-pink-500 font-bold text-white" href="{{ $event->path() }}">Show Me</a>
                               </div>
 
 {{--  
