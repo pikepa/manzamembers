@@ -35,7 +35,7 @@ class Event extends Model implements HasMedia
         return $query->where('status', '!=', 'Hidden')
                     ->where('status', '!=', 'Pending') ;
     }
-/*
+
     public function isPublished()
     {
         return $this->published_at !== null  ;
@@ -45,7 +45,7 @@ class Event extends Model implements HasMedia
     {
         return $this->published_at == null;
     }
-*/
+
     public function isMembershipRequired()
     { 
         if($this->memb_na){
