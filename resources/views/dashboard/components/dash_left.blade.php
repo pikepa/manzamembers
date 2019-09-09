@@ -45,7 +45,7 @@
             <div>
                 <h4 class="my-2 font-bold">Ticket Bookings</h4>
             </div>
-            
+
             @forelse($eventswithbookings as $event) 
                 <li><a href="{{ url('/byevent/'. $event->id ) }}" class="ml-2 hover:font-semibold">{{ $event->title }}</li></a>
             @empty

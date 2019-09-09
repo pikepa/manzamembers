@@ -40,4 +40,9 @@ class ManageEventsTest extends TestCase
             ->assertSee('Edit Event Details');
     }
 
+
+
+
+
+
 }

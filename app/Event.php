@@ -35,7 +35,7 @@ class Event extends Model implements HasMedia
         return $query->where('status', '!=', 'Hidden')
                     ->where('status', '!=', 'Pending') ;
     }
-
+/*
     public function isPublished()
     {
         return $this->published_at !== null  ;
@@ -58,9 +58,9 @@ class Event extends Model implements HasMedia
         $this->update(['published_at' => $this->freshTimestamp()]);
         $this->addTickets($this->ticket_quantity);
     }  
-    /**
-     * Format the message has a path.
-     */
+
+*/
+
     public function path()
     {
         return "/event/{$this->id}";
