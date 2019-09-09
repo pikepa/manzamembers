@@ -44,7 +44,9 @@
         @auth 
         <div><h4 class="my-2 font-bold">Events</h4></div>
         <ul class="">
-            <li class="ml-2"><a href="{{ url('/event/create') }}" class="hover:font-semibold no-underline">New Event.</a></li>    
+            @can('event-add')
+                <li class="ml-2"><a href="{{ url('/event/create') }}" class="hover:font-semibold no-underline">New Event.</a></li>    
+            @endcan
             <li class="ml-2"><a href="{{ url('/event') }}" class="hover:font-semibold no-underline">Event Listing</a></li>
             <div>
                 <h4 class="my-2 font-bold">Ticket Bookings</h4>
