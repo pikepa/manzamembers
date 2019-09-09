@@ -40,13 +40,14 @@
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $reservation->email }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $reservation->res_qty }}</td>
                             @auth()
-                          <td class="py-4 px-4 border border-grey-light text-center">                            
                               @can('reservation-delete')
+                                <td class="py-4 px-4 border border-grey-light text-center">                            
                                   <form method="POST" action="{{ $reservation->path() }}" >
                                       @method('DELETE')
                                       @csrf
                                       <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
                                   </form>
+                                </td>
                               @endcan
                             </div>
                             @endauth
