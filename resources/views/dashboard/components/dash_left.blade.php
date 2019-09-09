@@ -16,7 +16,9 @@
             </h4>
         </div>
         <ul>
-                <li class="ml-2"><a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">Add New Member.</a></li>
+                @can('membership-add')
+                    <li class="ml-2"><a href="{{ url('/member/create') }}" class="hover:font-semibold no-underline">Add New Member.</a></li>
+                @endcan
                 <li class="ml-2"><a href="{{ url('/membership') }}" class="hover:font-semibold no-underline">All Mships</a></li>
                 <li class="ml-2"><a href="{{ url('/membership/current') }}" class="hover:font-semibold no-underline">Current M'ships</a></li>
                 <li class="ml-2"><a href="{{ url('/membership/expired') }}" class="hover:font-semibold no-underline">Expired M'ships</a></li>
@@ -72,7 +74,9 @@
             <h4 class="my-2 font-bold">Admin</h4>
         </div>
             <ul>
-                <li class="ml-2"><a href="{{ url('/message') }}" class="hover:font-semibold no-underline">Show Messages.</a></li>
+                @can('message-read')
+                    <li class="ml-2"><a href="{{ url('/message') }}" class="hover:font-semibold no-underline">Show Messages.</a></li>
+                @endcan
                 <li class="ml-2"><a href="{{ url('/category') }}" class="hover:font-semibold no-underline">Categories.</a></li>
             </ul>
                 <br>
