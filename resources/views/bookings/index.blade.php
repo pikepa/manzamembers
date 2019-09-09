@@ -46,11 +46,13 @@
                           <td class=" border  border-grey-light">
                             @auth()
                             <div class="text-grey-lighter text-center text-sm mx-2 ">
-                              <form method="POST" action="{{ $booking->path() }}" >
-                                  @method('DELETE')
-                                  @csrf
-                                  <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                              </form>
+                              @can('booking-delete')
+                                  <form method="POST" action="{{ $booking->path() }}" >
+                                      @method('DELETE')
+                                      @csrf
+                                      <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                                  </form>
+                              @endcan
                             </div>
                             @endauth
                           </td>
