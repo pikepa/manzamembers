@@ -11,9 +11,10 @@
             </div>
         @endif
 @elseif($event->status !== "Sold Out")
-        @if($event->bookings_only === "Bookings Only" and $event->status == 'Open'))
+        @if($event->bookings_only === "Bookings Only" and $event->status == 'Open')
             <div class="text-center mt-4 text-lg text-pink-600 font-extrabold ">
-        <a href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" >Register Now</a>                        </div>
+                 <a href="{{ $url = action('EventController@show', ['id' => $event->id]) }}" >Register Now</a>                       
+            </div>
         @endif
 
         @if($event->bookings_only === "Booking & Tickets" and $event->status == 'Open')
