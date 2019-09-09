@@ -24,14 +24,14 @@
             <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
               <thead>
                 <tr>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb No</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb Name</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Rcpt Date</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Receipt No.</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Amount</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Memb Type</th>
-                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Rcpt Term</th>
-                  <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border-t  border-b border-grey-light">Actions</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Memb No</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Memb Name</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Rcpt Date</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Receipt No.</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Amount</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Memb Type</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Rcpt Term</th>
+                  <th class="py-4 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border border-grey-light">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -49,8 +49,12 @@
                   <td class=" border-b border-r  border-grey-light">
                     <div class="flex justify-around ">
                       {{--   @include('layouts.partials.icons._more',['variable'=>$receipt->path()]) --}}
-                        @include('layouts.partials.icons._edit',['variable'=>$receipt->path()])
+                      @can('receipt-edit')
+                          @include('layouts.partials.icons._edit',['variable'=>$receipt->path()])
+                      @endcan
+                      @can('receipt-delete')
                         @include('layouts.partials.icons._delete',['variable'=>$receipt->path()])
+                      @endcan
                     </div>
                   </td>
                 </tr>

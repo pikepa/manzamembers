@@ -31,7 +31,7 @@ class RoleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $permissions = Permission::all();//Get all permissions
+        $permissions = Permission::where('name','<>','Administer Roles & Permissions')->orderBy('name','asc')->get();//Get all permissions
         $assignedPerms = [];
 
         return view('roles.create', compact('permissions','assignedPerms'));
@@ -89,7 +89,8 @@ class RoleController extends Controller {
      */
     public function edit($id) {
         $role = Role::findOrFail($id);
-        $permissions = Permission::all();
+        $permissions = Permission::where('name','<>','Administer Roles & Permissions')->orderBy('name','asc')->get();
+
         $assignedPerms = $role->permissions->pluck('id')->toArray();
 
         return view('roles.edit', compact('role', 'permissions', 'assignedPerms'));

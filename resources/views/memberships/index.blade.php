@@ -48,14 +48,18 @@
                           <td class=" border  border-grey-light">
                             <div class="flex justify-around px-4">
                                 <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}" ><i class="far fa-arrow-alt-circle-up"></i></a></div>
-                                <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                                <div class="text-grey-lighter text-sm mr-2 ">
-                                    <form method="POST" action="{{ $membership->path() }}" >
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                                    </form>
-                                </div>
+                                @can('membership-edit')
+                                  <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $membership->path() }}/edit" ><i class="far fa-edit"></i></a></div>
+                                @endcan
+                                @can('membership-delete')
+                                  <div class="text-grey-lighter text-sm mr-2 ">
+                                      <form method="POST" action="{{ $membership->path() }}" >
+                                          @method('DELETE')
+                                          @csrf
+                                          <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                                      </form>
+                                  </div>
+                                @endcan
                             </div>
                           </td>
                         </tr>

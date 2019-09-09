@@ -33,14 +33,18 @@
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $receipt->source }}</td>
                   <td class=" border-b border-r  border-grey-light">
                     <div class="flex justify-around px-4">
-                        <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $receipt->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                        <div class="text-grey-lighter text-sm mr-2 ">
+                        @can('receipt-edit')
+                          <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $receipt->path() }}/edit" ><i class="far fa-edit"></i></a></div>
+                        @endcan
+                        @can('receipt-delete')
+                          <div class="text-grey-lighter text-sm mr-2 ">
                             <form method="POST" action="{{ $receipt->path() }}" >
                                 @method('DELETE')
                                 @csrf
                                 <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
                             </form>
-                        </div>
+                          </div>
+                        @endcan
                     </div>
                   </td>
                 </tr>

@@ -5,7 +5,7 @@
     <div class="mt-4  mx-auto ">
         <div class="flex flex-row justify-between items-center">
               <a class=" bg-grey-lightest font-bold uppercase text-sm text-grey-dark">Addresses</></a>
-              <div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\address\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a>
+              @can('address-add')<div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\address\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a>@endcan
               </div>
         </div>
     </div>
@@ -35,14 +35,18 @@
                 <td class="py-4 px-6 border border-grey-light text-center">{{ $address->postcode }}</td>
                 <td class=" border  border-grey-light">
                   <div class="flex justify-around px-4">
-                      <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $address->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                      <div class="text-grey-lighter text-sm mr-2 ">
+                      @can('address-edit')
+                          <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $address->path() }}/edit" ><i class="far fa-edit"></i></a></div>
+                      @endcan
+                      @can('address-delete')
+                        <div class="text-grey-lighter text-sm mr-2 ">
                           <form method="POST" action="{{ $address->path() }}" >
                               @method('DELETE')
                               @csrf
                               <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
                           </form>
-                      </div>
+                        </div>
+                      @endcan
                   </div>
                 </td>
               </tr>

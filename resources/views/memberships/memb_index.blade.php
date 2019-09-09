@@ -3,7 +3,7 @@
   <div>
         <a class=" mt-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark">Members</>
   </div>
-  <div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\member\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a>
+  @can('member-add')<div class="text-right text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="\member\create\{{ $membership->id }}" ><i class="fas fa-plus"></i></a>@endcan
   </div>
 </div>
      <div class="flex flex-col ">
@@ -30,14 +30,18 @@
                   <td class="py-4 px-6 border-b border-r border-grey-light text-center">{{ $member->email }}</td>
                   <td class=" border-b border-r  border-grey-light">
                     <div class="flex justify-around px-4">
+                      @can('member-edit')
                         <div class="text-grey-lighter text-sm mr-2 hover:font-semibold"><a href="{{ $member->path() }}/edit" ><i class="far fa-edit"></i></a></div>
-                        <div class="text-grey-lighter text-sm mr-2 ">
+                      @endcan
+                        @can('member-delete')
+                          <div class="text-grey-lighter text-sm mr-2 ">
                             <form method="POST" action="{{ $member->path() }}" >
                                 @method('DELETE')
                                 @csrf
                                 <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
                             </form>
-                        </div>
+                          </div>
+                        @endcan
                     </div>
                   </td>
                 </tr>
