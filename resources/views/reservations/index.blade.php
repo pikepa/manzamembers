@@ -41,11 +41,13 @@
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $reservation->res_qty }}</td>
                             @auth()
                           <td class="py-4 px-4 border border-grey-light text-center">                            
-                              <form method="POST" action="{{ $reservation->path() }}" >
-                                  @method('DELETE')
-                                  @csrf
-                                  <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
-                              </form>
+                              @can('booking-delete')
+                                  <form method="POST" action="{{ $reservation->path() }}" >
+                                      @method('DELETE')
+                                      @csrf
+                                      <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                                  </form>
+                              @endcan
                             </div>
                             @endauth
                           </td>
