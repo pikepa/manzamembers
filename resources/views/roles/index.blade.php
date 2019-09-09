@@ -39,7 +39,7 @@
                         @foreach($roles as $role)
                             <tr class="hover:bg-grey-lighter">
                               <td class="py-2 px-4 border border-grey-light">{{ $role->name }}</td>
-                              <td class="py-2 px-4 border  border-grey-light">{{  $role->permissions()->pluck('name')->implode(' - ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
+                              <td class="py-2 px-4 border  border-grey-light">{{  $role->permissions()->pluck('name')->implode(', ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
                               <td class="py-2 border border-grey-light flex flex-row align-center justify-around" > 
                               <div class=" hover:font-semibold"><a href="{{ route('roles.edit', $role->id) }}" ><i class="far fa-edit"></i></a></div>
                               <div class=" hover:font-semibold">
