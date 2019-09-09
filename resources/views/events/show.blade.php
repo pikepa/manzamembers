@@ -23,7 +23,7 @@
                   @endif 
                 </div>
                 <div class="">
-                  <div class="p-2">{!! $event->description !!}</div>  
+                  <div class="p-2"> {!! $event->description !!} </div>  
                 </div>
             </div>
               <div class="ml-2">
@@ -33,7 +33,7 @@
                   </div>
                   <div class="flex mb-2 pt-2">
                       <div class="font-semibold ">Address:  </div>
-                      <div class="ml-2">{!! nl2br($event->v_address) !!}</div>
+                      <div class="ml-2">{!! $event->v_address !!}</div>
                   </div>
                   <div class="flex mb-2 pt-2">
                     <div class="font-semibold ">Date: </div>
@@ -44,10 +44,12 @@
                             <div class="font-semibold ">From: </div>
                             <div class="ml-2">{{ $event->timing}}</div>
                         </div> 
-                      @auth 
+                      @auth
+                      @can('event-edit')
                         <div>
                           <a href="{{ $event->path() }}/edit" ><i class="far fa-edit"></i></a>
                         </div>
+                      @endcan
                       @endauth
                       </div>
               </div>
@@ -55,7 +57,7 @@
      </div>
 
         <div class="flex flex-row p-2 justify-between items-center border-t-2 ">
-            @if($event->isPublished()) 
+            @if($event->active()) 
               @if($event->status !== 'Sold Out') 
                 @if( $event->bookings_only  !== "Bookings Only" || $event->memb_na  == "memb_na")
                     <div class="mb-4 text-left  font-semibold ">Ticket Prices: </div>
