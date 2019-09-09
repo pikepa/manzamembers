@@ -35,7 +35,7 @@
     </div>
     <div class="flex mt-4 justify-between mx-auto text-lg">
         <p><a class="no-underline hover:font-semibold"  href="{{ url()->previous() }}" ><i class="fas fa-backward"></i> Back</a></p>
-        <p><a class="no-underline hover:font-semibold"  href="\receipt\create\{{ $membership->id }}"><i class="fa fa-plus" aria-hidden="true"></i> Receipt</a></p>
+        @can('receipt-add')<p><a class="no-underline hover:font-semibold"  href="\receipt\create\{{ $membership->id }}"><i class="fa fa-plus" aria-hidden="true"></i> Receipt</a></p>@endcan
         <div class="flex flex-row">
             <div class="text-grey-lighter text-lg mr-2 hover:font-semibold"><a href="{{ $membership->path() }}/edit" ><i class="far fa-edit"></i></a></div>
         </div>
