@@ -45,7 +45,7 @@ class Event extends Model implements HasMedia
     {
         return $this->published_at == null;
     }
-
+*/
     public function isMembershipRequired()
     { 
         if($this->memb_na){
@@ -59,7 +59,7 @@ class Event extends Model implements HasMedia
         $this->addTickets($this->ticket_quantity);
     }  
 
-*/
+
 
     public function path()
     {
