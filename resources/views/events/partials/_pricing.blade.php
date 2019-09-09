@@ -3,9 +3,9 @@
           Ticket Type
         </div>
         <div class="bg-gray-400 flex-1 text-center py-2 px-6 border-b border-r border-grey-light font-semibold">Price</div>
-    @auth
+    @can('priceitem-add')
      <div class="bg-gray-400 p-2  border-b border-r border-grey-light"><a href="\priceitem\create\{{ $event->id }}" ><i class="fas fa-plus"></i></a></div>           
-    @endauth
+    @endcan
 </div>
 @foreach($priceitems as $item)
     <div class="flex items-center">
@@ -16,9 +16,9 @@
         @endif
         <div class="flex-1 text-right p-2  border border-grey-light ">{{ $item->formatted_price }}</div>
         <div class="border border-grey-light" >
-          @auth
+          @can('priceitem-delete')
             @include('layouts.partials.icons._delete',['variable'=>$item->path()])
-          @endauth                        
+          @endcan                        
         </div>
     </div>
 @endforeach
