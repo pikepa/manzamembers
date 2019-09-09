@@ -28,15 +28,17 @@
                 <li class="ml-2"><a href="{{ url('/address') }}" class="hover:font-semibold no-underline">Address List</a></li>        
                 <li class="ml-2"><a href="{{ url('/membership/noaddress') }}" class="hover:font-semibold no-underline">No Address</a></li>        
         
-        </ul> 
-        <div>
-            <h4 class="my-2 font-bold">
-                Receipts
-            </h4>
-        </div>
-            <ul>
-                <li class="ml-2"><a href="{{ url('/receiptlisting') }}" class="hover:font-semibold no-underline">List Receipts</a></li>
-            </ul>
+        </ul>
+            @can('receipt-read') 
+                <div>
+                    <h4 class="my-2 font-bold">
+                        Receipts
+                    </h4>
+                </div>
+                <ul>
+                    <li class="ml-2"><a href="{{ url('/receiptlisting') }}" class="hover:font-semibold no-underline">List Receipts</a></li>
+                </ul>
+            @endcan
        @endauth   
     <div class="mb-2">
         @auth 
@@ -77,7 +79,9 @@
                 @can('message-read')
                     <li class="ml-2"><a href="{{ url('/message') }}" class="hover:font-semibold no-underline">Show Messages.</a></li>
                 @endcan
-                <li class="ml-2"><a href="{{ url('/category') }}" class="hover:font-semibold no-underline">Categories.</a></li>
+                @can('category-read')
+                    <li class="ml-2"><a href="{{ url('/category') }}" class="hover:font-semibold no-underline">Categories.</a></li>
+                @endcan
             </ul>
                 <br>
                 @hasrole('SuperAdmin') {{-- Laravel-permission blade helper --}}
