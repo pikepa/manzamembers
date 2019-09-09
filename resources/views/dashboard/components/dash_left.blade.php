@@ -45,15 +45,17 @@
             <div>
                 <h4 class="my-2 font-bold">Ticket Bookings</h4>
             </div>
-            @forelse($events as $event) 
+            
+            @forelse($eventswithbookings as $event) 
                 <li><a href="{{ url('/byevent/'. $event->id ) }}" class="ml-2 hover:font-semibold">{{ $event->title }}</li></a>
             @empty
                 <div class=" ml-2"> No Events Yet</div>
             @endforelse 
-        <div>
+
+            <div>
                 <h4 class="my-2 font-bold">Reservations</h4>
             </div>
-            @forelse($reservations as $reservation) 
+            @forelse($eventswithreservations as $reservation) 
                 <li><a href="{{ url('/reservation/'. $reservation->id ) }}" class="ml-2 hover:font-semibold">{{ $reservation->title }}</a></li>
             @empty
                 <div class=" ml-2"> No Reservations Yet</div>
