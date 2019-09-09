@@ -5,7 +5,7 @@
             <li><a href="{{ url('/') }}" class="my-2 font-semibold hover:font-bold no-underline">Home</a></li>
             <li class="ml-2"><a href="{{ url('/aboutus') }}" class="hover:font-semibold no-underline">About Us</a></li>
             <li class="ml-2"><a href="{{ url('/message/create') }}" class="hover:font-semibold no-underline">Contact Us</a></li>   
-            <li class="ml-2"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   
+      {{--  <li class="ml-2"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   --}}
         </ul>
     </div>
    <div class="ml-2 mb-2">
