@@ -85,7 +85,6 @@
                     <li class="ml-2"><a href="{{ url('/category') }}" class="hover:font-semibold no-underline">Categories.</a></li>
                 @endcan
             </ul>
-                <br>
                 @hasrole('SuperAdmin') {{-- Laravel-permission blade helper --}}
                     <a href="/users"><i class="fa fa-btn fa-unlock"></i>  User Admin</a>
                 @endrole 
