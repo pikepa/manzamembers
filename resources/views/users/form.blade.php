@@ -26,7 +26,7 @@
 
        <div class="field mt-4 mb-4">
           <div class="block">
-                <div class="mt-4 flex">
+                <div class="mt-4 flex flex-row flex-wrap">
                   @foreach ($roles as $role) 
                       <label class="mx-2 inline-flex items-center">
                         <input class="form-checkbox text-indigo-600"
@@ -40,7 +40,7 @@
               </div>
           </div>
     </div> 
-
+{{--  
     <div class=" field mb-6">
         <label class="block">
           <span class=" font-bold text-gray-800">Password</span>
@@ -59,7 +59,7 @@
                     value="{{old('name',$user->password)}}">
         </label>
 </div>       
-
+--}}
 
 <div class="field">
     <div class="control">
