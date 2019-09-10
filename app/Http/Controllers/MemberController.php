@@ -82,8 +82,12 @@ class MemberController extends Controller
         else
         {
             $last_no = Membership::orderBy('member_no', 'asc')->get()->last();
-
-            $newnum= $last_no->member_no + 1;
+            if(!$last_no)
+            {
+                $newnum=1;
+            }else{
+                $newnum= $last_no->member_no + 1;
+            }
         } 
 
         $membership = new Membership;
