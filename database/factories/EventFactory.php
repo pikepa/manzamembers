@@ -13,7 +13,7 @@ $factory->define(Event::class, function (Faker $faker) {
         'venue' =>$faker->paragraph,
         'v_address' =>$faker->paragraph,
         'date' => $faker->dateTimeBetween('+1 week', '+1 month'),
-        'timing' =>$faker->paragraph,
+        'timing' =>$faker->sentence,
         'status' =>$faker->randomElement(['For Sale', 'Sold', 'Not for Sale']),
         'published_at' =>$faker->date,
     ];
