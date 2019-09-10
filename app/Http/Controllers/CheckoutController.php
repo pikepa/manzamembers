@@ -36,11 +36,9 @@ class CheckoutController extends Controller
       $booking=Booking::findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost();
       $totaltickets=BookingItem::tickets();
-
+             
         try {
             \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
-
-       //     dd($customer->id);
              
             $charged= Charge::create ([
                     "amount" => $totalcost,
@@ -94,6 +92,7 @@ class CheckoutController extends Controller
       $booking=Booking::with('event')->findOrFail(session::get('booking_id'));
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
+      
       $ccmembers=['manzaoffice@gmail.com','manzawebsite@gmail.com'];
 
       session()->forget(['booking_id', 'event_id']);
