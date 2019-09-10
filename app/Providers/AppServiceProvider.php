@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Event;
 use App\Category;
+use App\Invitation;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -81,6 +82,12 @@ class AppServiceProvider extends ServiceProvider
                             ->where('type','TRM')
                             ->orderBy('category', 'asc')->get());
             });  
+
+        view()->composer(['users.index',
+            ], function ($view) {
+                $view->with('invitations', Invitation::orderBy('created_at', 'desc')
+                            ->get());
+            });
 
 
     }

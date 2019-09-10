@@ -10,6 +10,11 @@
 |
 */
 
+Route::post('invitations', 'InvitationsController@store')->middleware('auth')->name('storeInvitation');
+Route::get('invitations/{email}', 'InvitationsController@update')->middleware('auth')->name('updateInvitation');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+      ->name('register')
+      ->middleware('hasInvitation');
 
 Route::get('/', 'HomeController@index')->name('root');
 Route::get('/aboutus', function () {
