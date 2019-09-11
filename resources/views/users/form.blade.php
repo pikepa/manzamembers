@@ -1,7 +1,7 @@
 @csrf
 
 @include ('errors')
-
+{{--  
 <div class=" field mb-6">
         <label class="block">
           <span class=" font-bold text-gray-800">Name</span>
@@ -12,7 +12,7 @@
                     value="{{old('name',$user->name)}}">
         </label>
 </div>
-
+--}}
 <div class=" field mb-6">
         <label class="block">
           <span class=" font-bold text-gray-800">Email</span>

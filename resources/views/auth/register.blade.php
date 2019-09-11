@@ -17,34 +17,34 @@
                     <form class="w-full p-6" method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="flex flex-wrap mb-6">
-                            <label for="name" class="block text-grey-darker text-sm font-bold mb-2">
-                                {{ __('Name') }}:
-                            </label>
 
-                            <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('name') ? ' border-red' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                                <p class="text-red text-xs italic mt-4">
-                                    {{ $errors->first('name') }}
-                                </p>
-                            @endif
-                        </div>
 
                         <div class="flex flex-wrap mb-6">
                             <label for="email" class="block text-grey-darker text-sm font-bold mb-2">
                                 {{ __('E-Mail Address') }}:
                             </label>
-
-                            <input id="email" type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('email') ? ' border-red' : '' }}" name="email" value="{{ old('email') }}" required>
+                            <input id="email" type="hidden" class="form-control disabled" name="email" value="{{ $email }}">
+                            <input id="email" disabled type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"name="email" value="{{ $email }}" required>
 
                             @if ($errors->has('email'))
                                 <p class="text-red text-xs italic mt-4">
                                     {{ $errors->first('email') }}
                                 </p>
                             @endif
-                        </div>
+                            </div>
+                            <div class="flex flex-wrap mb-6">
+                                <label for="name" class="block text-grey-darker text-sm font-bold mb-2">
+                                    {{ __('Name') }}:
+                                </label>
 
+                                <input id="name" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline{{ $errors->has('name') ? ' border-red' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <p class="text-red text-xs italic mt-4">
+                                        {{ $errors->first('name') }}
+                                    </p>
+                                @endif
+                            </div>
                         <div class="flex flex-wrap mb-6">
                             <label for="password" class="block text-grey-darker text-sm font-bold mb-2">
                                 {{ __('Password') }}:

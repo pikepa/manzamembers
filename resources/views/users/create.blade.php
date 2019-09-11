@@ -13,8 +13,9 @@
         </h1>
         <form
             method="POST"
-            action="/users"
+            action="{{ route('storeInvitation') }}"
         >
+
             @include ('users.form', [
                 'buttonText' => 'Invite'
             ])

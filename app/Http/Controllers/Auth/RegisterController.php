@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Invitation;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +57,14 @@ class RegisterController extends Controller
         ]);
     }
 
+        public function showRegistrationForm(Request $request)
+        {
+            $invitation_token = $request->get('invitation_token');
+            $invitation = Invitation::where('invitation_token', $invitation_token)->firstOrFail();
+            $email = $invitation->email;
+
+            return view('auth.register', compact('email'));
+        }
     /**
      * Create a new user instance after a valid registration.
      *
