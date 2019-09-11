@@ -29,4 +29,14 @@ class InvitationsController extends Controller
             return redirect('/');
         }
 
+    public function destroy($id)
+        {
+                         
+            $invitation = Invitation::find($id);
+            $invitation->delete();
+
+        return redirect()->route('users.index')
+            ->with('flash_message',
+             'User invitation deleted.');        
+        }
 }

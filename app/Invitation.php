@@ -19,4 +19,11 @@ class Invitation extends Model
         return urldecode(route('register') . '?invitation_token=' . $this->invitation_token);
     }
     
+
+    //Defines a path for a booking
+    public function path()
+    {
+        return "/invitations/{$this->id}";
+    }
+
 }

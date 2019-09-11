@@ -70,15 +70,26 @@
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Email</th>
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Created at</th>
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Invitation Link</th>
+                                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light"></th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($invitations as $invite)
+                                @foreach($invitations as $invitation)
                                 <tr class="hover:bg-grey-lighter">
-                                  <td class="py-2 px-4 border border-grey-light">{{ $invite->email }}</td>
-                                  <td class="py-2 px-4 border border-grey-light">{{ $invite->created_at->format('d-m-y') }}</a></td>
-                                  <td class="py-2 px-4 border  border-grey-light text-xs"><kbd>{{ $invite->getLink() }}</kbd></td>
-                                </tr>
+                                  <td class="py-2 px-4 border border-grey-light">{{ $invitation->email }}</td>
+                                  <td class="py-2 px-4 border border-grey-light">{{ $invitation->created_at->format('d-m-y') }}</a></td>
+                                  <td class="py-2 px-4 border  border-grey-light text-xs"><kbd>{{ $invitation->getLink() }}</kbd></td>
+                                   <td class=" border text-center hover:font-semibold">
+                                          <div class=" hover:font-semibold">
+                                            <form method="POST" action="{{ $invitation->path() }}" >
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="hover:font-semibold" type="submit" ><i class="far fa-trash-alt"></i></button>
+                                            </form>
+                                          </div>
+                                        </td>
+                                      </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
