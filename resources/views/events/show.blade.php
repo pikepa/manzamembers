@@ -58,19 +58,19 @@
 
         <div class="flex flex-row p-2 justify-between items-center border-t-2 ">
             @if($event->active()) 
-              @if($event->status !== 'Sold Out') 
-                @if( $event->bookings_only  !== "Bookings Only" || $event->memb_na  == "memb_na")
-                    <div class="mb-4 text-left  font-semibold ">Ticket Prices: </div>
-                            <div class=" button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
-                @else
-                    <div class="mx-auto button btn btn-manza h-10"><a href="/reservation/create/{{ $event->id }}" >Register Now</a></div>
+                @if($event->status == 'Open')
+                      @if( $event->bookings_only === "Booking & Tickets" || $event->memb_na  === "memb_na")
+                          <div class="mb-4 text-left  font-semibold ">Ticket Prices: </div>
+                          <div class=" button btn btn-manza h-10"><a href="/eventbooking/create/{{ $event->id }}" >Book Now</a></div>
+                      @else
+                          <div class="mx-auto button btn btn-manza h-10"><a href="/reservation/create/{{ $event->id }}" >Register Now</a></div>
+                      @endif
                 @endif
-              @endif
             @endif
         </div>
 
         <div class=" card">
-          @if($event->status !== 'Sold Out') 
+          @if($event->status == 'Open') 
             @if( $event->bookings_only !== "Bookings Only" || $event->memb_na  == "memb_na")
                 @include('events.partials._pricing')
             <div class="m-2">
