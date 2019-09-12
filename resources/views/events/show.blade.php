@@ -15,15 +15,15 @@
         </div>
         <div class=" text-lg  ">
             <div class="flex flex-col md:flex-row">
-                <div class="">
+                <div class=" md:w-1/3">
                   @if(isset($event->media))
-                     <div class=" max-w-md card mx-auto">
+                     <div class="card mx-auto">
                                <img class="w-full object-cover object-centre" src="{{URL::asset( $event->featured_img)}}">  
                       </div>
                   @endif 
                 </div>
                 <div class="">
-                  <div class="p-2"> {!! $event->description !!} </div>  
+                  <div class="p-2 max-w-xl"> {!! $event->description !!} </div>  
                 </div>
             </div>
               <div class="ml-2">
