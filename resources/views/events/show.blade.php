@@ -23,7 +23,7 @@
                   @endif 
                 </div>
                 <div class="">
-                  <div class="p-2 max-w-xl"> {!! $event->description !!} </div>  
+                  <div class="p-2 max-w-xl"> {!! nl2br($event->description) !!} </div>  
                 </div>
             </div>
               <div class="ml-2">
