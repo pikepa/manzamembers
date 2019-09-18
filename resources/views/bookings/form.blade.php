@@ -23,6 +23,9 @@
                         value="{{old('email', $eventbooking->booking['email'])}}"> 
             </label>
         </div>
+        
+{{--  top of ticket section 
+
         <div class="flex flex-col md:flex-row justify-between">
             <div class="md:w-1/3 field mb-6">
                 <label class="block">
@@ -45,7 +48,6 @@
                             value="{{old('add_info', $eventbooking->booking['add_info'])}}"> 
                 </label>
             </div>
-            {{--  top of ticket section 
 
             --}}
         </div>
