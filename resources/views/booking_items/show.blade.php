@@ -14,31 +14,29 @@
         <h1 class="text-2xl font-normal mb-2 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
-          <div class="mt-2  md:w-2/3 mx-auto flex items-center">
+          <div class="mt-2  md:w-4/5 mx-auto flex items-center">
               <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
                 Qty
               </div>                    
-              <div class="flex-1 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
+              <div class="w-1/2 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
                 Orders
               </div>
-              <div class="bg-gray-400 w-2/5 md:w-1/4 text-center py-2 px-4 border border-grey-light font-semibold">Cost</div>
+              <div class="bg-gray-400 w-2/5 md:w-1/4 md:mr-8 text-center py-2 px-2 border border-grey-light font-semibold">Cost</div>
           </div>
                 @foreach($orders as $order)
-                   <div class="md:w-2/3 mx-auto  ">
-                        <div class="flex border border-grey-light items-center">
+                   <div class="md:w-4/5 mx-auto  ">
+                        <div class="flex  items-center">
                             <div class="w-1/6 py-2 px-4 text-center border border-grey-light ">{{ $order->qty}}</div>
-                            <div class="flex-1 py-2 px-4 border border-grey-light ">
-                                @if($order->priceitems['memb'] === 0)Non-Member - 
-                                @elseif($order->priceitems['memb'] === 0)Member - 
-                                @else  
-                                @endif 
-                                {{ $order->category['category']}}
-                            </div>
-                            <div class="text-right w-2/5 md:w-1/4 py-2 px-2 border border-grey-light ">{{ $order->display_cost }}</div>
-                            
+                                <div class="w-1/2 py-2 px-4 border border-grey-light ">
+                                    @if($order->priceitems['memb'] === 0)Non-Member - 
+                                    @elseif($order->priceitems['memb'] === 0)Member - 
+                                    @else  
+                                    @endif 
+                                    {{ $order->category['category']}}
+                                </div>
+                            <div class="md:mr-1 text-right w-2/5 md:w-1/4 py-2 px-2 border border-grey-light ">{{ $order->display_cost }}</div>
+                        @include('layouts.partials.icons._delete',['variable'=>$order->path()])
                         </div>
-                    @include('layouts.partials.icons._delete',['variable' => $order->path()])
-
                     </div>
                 @endforeach
 
