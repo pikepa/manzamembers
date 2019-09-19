@@ -18,6 +18,9 @@
         <h1 class="text-2xl font-normal mb-6 text-center">
             {{ $booking->name }} - Paid on {{ $booking->confirmed_at->format('M jS, Y @ H:i') }} Hrs
         </h1>
+        <h1 class="text-2xl font-normal mb-6 text-center">
+            Booking Ref :- MAN10{{ $booking->id }}
+        </h1>
           <div class="mt-2  md:w-4/5 mx-auto flex justify-between items-center">
                 <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
                     Qty
