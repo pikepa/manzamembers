@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Booking;
+use App\BookingItem;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -37,7 +38,6 @@ class BookingController extends Controller
     public function byevent($id)
     {
         $bookings=Booking::with('event','booking_items')->where('event_id',$id)->get();
-//dd($bookings);
         $event=Event::find($id);
         return view ('bookings.index', compact('bookings','event'));
     }
@@ -71,9 +71,16 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show($booking_id)
     {
-        //
+        $booking = Booking::find($booking_id);
+                                       
+            $eventbooking = Event::with('bookings')->find($booking->event_id);
+
+            $orders=BookingItem::with('priceitems')->with('category')->where('booking_id',$booking_id)->get();
+             
+            return view('bookings.show', compact('orders','eventbooking','booking'));
+
     }
 
     /**
