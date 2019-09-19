@@ -41,7 +41,7 @@ class BookingTicketsSent extends Mailable
                 'add_info'=>$this->booking['add_info'],
                 'title'=>$this->event['title'],
                 'tickets'=>$this->tickets,
-                'url'=>'https://manzamembers.org'.$this->booking->event['featured_img'],
+                'url'=>$this->booking->event['featured_img'],
             ]);
     }
 }
