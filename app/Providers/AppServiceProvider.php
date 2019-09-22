@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Event;
 use App\Category;
 use App\Invitation;
+use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -30,7 +31,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         URL::forceScheme('https');
-
+        
+        Horizon::auth(function ($request) {
+            // Always show admin if local development
+            if (env('APP_ENV') == 'local') {
+                return true;
+            }
+        });
 
         view()->composer(['dashboard.components.dash_left',
                            'events.form',

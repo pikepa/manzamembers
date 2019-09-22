@@ -19,7 +19,9 @@ as proof of ticket purchase.
 
 **Date of Purchase :** {{ $confirmed_at->format('d M Y') }}  
 **Tickets Purchased :** {{ $tickets }}    
-**{{ $add_title }} :** {{ $add_info }}  
+@component('mail::button', ['url' => $booking->receipt_url])
+View your Booking
+@endcomponent 
 
 
 Sincerely,  
