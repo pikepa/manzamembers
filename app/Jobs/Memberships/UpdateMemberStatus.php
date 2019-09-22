@@ -47,13 +47,13 @@ class UpdateMemberStatus implements ShouldQueue
               if($receipt !== null ){
                 $termid = $receipt->mship_term_id;
                 
-                if($termid == 11)
+                if($termid == 11)  // Annual Membership
                     {
-                      if (($today->gte($receipt->receipt_date->startOfYear()->subMonth(2))
+                      if (($today->gte($receipt->receipt_date->startOfYear()->subMonth(4))
                             &&
                           $today->lte($receipt->receipt_date->endOfYear()))
                         &&
-                         ($receipt->receipt_date->gte($receipt->receipt_date->startOfYear()->subMonth(2))
+                         ($receipt->receipt_date->gte($receipt->receipt_date->startOfYear()->subMonth(4))
                             &&
                           $receipt->receipt_date->lte($receipt->receipt_date->endOfYear())))
                         {
@@ -62,7 +62,7 @@ class UpdateMemberStatus implements ShouldQueue
                           $newstatus = "Expired" ;
                         }
                     }
-                if($termid == 12)
+                if($termid == 12)   //1st Half
                     {
                       if (($today->gte($receipt->receipt_date->startOfYear()->subMonth(1))
                             &&     
@@ -78,7 +78,7 @@ class UpdateMemberStatus implements ShouldQueue
                           $newstatus = "Expired" ;
                         }
                     }
-                if($termid == 13)
+                if($termid == 13)   // 2nd Half
                     {
                       if (($today->gte($receipt->receipt_date->startOfYear()->addMonth(5))
                             &&     
