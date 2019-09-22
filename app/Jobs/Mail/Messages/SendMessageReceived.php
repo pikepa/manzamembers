@@ -31,7 +31,7 @@ class SendMessageReceived implements ShouldQueue
 
         $email = new MessageReceived($this->message );
         Mail::to($this->message->email)
-            ->cc('peter@thepikes.net','manzawebsite@gmail.com')
+            ->cc(['manzaoffice@gmail.com','manzawebsite@gmail.com'])
             ->send($email);
     }
 }
