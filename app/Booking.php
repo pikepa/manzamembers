@@ -44,6 +44,12 @@ class Booking extends Model{
     public function path()
     {
         return "/booking/{$this->id}";
+    }   
+
+        //Defines the full url for a booking
+    public function fullpath()
+    {
+        return env('APP_URL').$this->path();
     }
 
 
