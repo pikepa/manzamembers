@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 use Session;
 use App\Booking;
 use Stripe\Charge;
-use Stripe\Customer;
 use App\BookingItem;
+use Stripe\Customer;
 use Illuminate\Http\Request;
-use App\Mail\BookingConfirmed;
 use App\Mail\BookingTicketsSent;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Jobs\Mail\Checkout\SendBookingConfirmedEmailJob;
 
 class CheckoutController extends Controller
 {
@@ -93,31 +93,10 @@ class CheckoutController extends Controller
       $totalcost=BookingItem::cost()/100;
       $totaltickets=BookingItem::tickets();
       
-      $ccmembers=['manzaoffice@gmail.com','manzawebsite@gmail.com'];
-
       session()->forget(['booking_id', 'event_id']);
-             
-      Mail::to($booking->email)
-            ->bcc($ccmembers)->send(new BookingConfirmed($booking ));
 
-      $text=$text=str_ireplace('<p>','',$booking->event->v_address);
-      $text=$text=str_ireplace('</p>','',$text);
-
-      $event=[
-        'title'=>$booking->event->title,
-        'add_title'=>$booking->event->add_info,
-        'venue'=>$booking->event->venue.', '.$text,
-        'timing'=>$booking->event->timing,
-        'date'=>$booking->event->date->format('M d, Y'),
-      ];
-
-      $bccmembers=['manzatourskl@gmail.com','manzaoffice@gmail.com','manzawebsite@gmail.com'];
-
-      Mail::to($booking->email)
-            ->bcc($bccmembers)
-            ->send(new BookingTicketsSent($booking,$event,$totaltickets));
-
-
+        $emailJob = new SendBookingConfirmedEmailJob($booking);
+        dispatch($emailJob);
 
        return view('stripe.success', compact('booking'));
 
