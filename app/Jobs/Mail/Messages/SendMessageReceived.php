@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Jobs\Mail;
+namespace App\Jobs\Mail\Messages;
 use Mail;
 use App\Mail\MessageReceived;
 use Illuminate\Bus\Queueable;
-//use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,7 +14,6 @@ class SendMessageReceived implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     
     public $message;
-
 
     public function __construct($message)
     {

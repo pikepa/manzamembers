@@ -14,6 +14,8 @@ class MessageReceived extends Mailable
      *
      * @return void
      */
+
+    
     public function __construct($info)
     {
         $this->info  =  $info;
