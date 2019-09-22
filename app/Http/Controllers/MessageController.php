@@ -8,7 +8,7 @@ use App\Mail\MessageReceived;
 use Mews\Purifier\Facades\Purifier;
 use Illuminate\Auth\Middleware\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Jobs\Mail\SendMessageReceived;
+use App\Jobs\Mail\Messages\SendMessageReceived;
 
 
 class MessageController extends Controller
