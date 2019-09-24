@@ -14,15 +14,16 @@
         <h1 class="text-2xl font-normal mb-2 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
-          <div class="mt-2  md:w-4/5 mx-auto flex items-center">
-              <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
-                Qty
-              </div>                    
-              <div class="w-1/2 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
-                Orders
-              </div>
-              <div class="bg-gray-400 w-2/5 md:w-1/4 md:mr-8 text-center py-2 px-2 border border-grey-light font-semibold">Cost</div>
-          </div>
+            @if($orders->count() !== 0 )
+                  <div class="mt-2  md:w-4/5 mx-auto flex items-center">
+                      <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
+                        Qty
+                      </div>                    
+                      <div class="w-1/2 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
+                        Orders
+                      </div>
+                      <div class="bg-gray-400 w-2/5 md:w-1/4 md:mr-8 text-center py-2 px-2 border border-grey-light font-semibold">Cost</div>
+                  </div>
                 @foreach($orders as $order)
                    <div class="md:w-4/5 mx-auto  ">
                         <div class="flex  items-center">
@@ -39,15 +40,19 @@
                         </div>
                     </div>
                 @endforeach
-
-                <div class="mt-8 md:w-2/3 mx-auto ">
+                <div class="mt-8 md:w-4/5 mx-auto md:flex justify-between">
                     <div class="control">
                         <a href="/checkout" class="btn btn-manza is-link mr-2">Checkout</a>
                         <a href="/" class="text-default">Cancel</a>
                     </div>
+                    @can('receipt-add')
+                        <div class="control">
+                            <a href="#" class="btn btn-manza is-link mr-2">Cash Receipt</a>
+                        </div>
+                    @endcan
                  </div>
-            </div>
-
+            @endif
+        </div>
         <div class=" mx-auto">
         </div>
         <div class=" pb-4 mx-auto flex flex-col md:flex-row justify-center card">
