@@ -58,9 +58,9 @@ class EventBookingsController extends Controller
        $booking->email = $request->email;
        $booking->add_info = $request->add_info;
 
-
        $booking->save();
 
+        session()->put('booking',$booking);             
         session(['booking_id' => $booking->id]);
         session(['event_id' => $booking->event_id]);
 

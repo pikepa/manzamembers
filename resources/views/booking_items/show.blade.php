@@ -47,7 +47,7 @@
                     </div>
                     @can('receipt-add')
                         <div class="control">
-                            <a href="#" class="btn btn-manza is-link mr-2">Cash Receipt</a>
+                            <a href="/cashreceipt/create" class="btn btn-manza is-link mr-2">Cash Receipt</a>
                         </div>
                     @endcan
                  </div>

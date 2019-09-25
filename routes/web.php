@@ -26,7 +26,9 @@ Route::get('/aboutus', function () {
 Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
 });
-
+    
+  Route::put('/cart/{orderline}', 'CartController@update');
+  
   Route::get('/membership/renew/{id}', 'MembershipController@renew')->name('priceitem.create');
   Route::get('/priceitem/create/{id}', 'PriceitemController@create')->name('priceitem.create');
   Route::get('/member/create/{id?}', 'MemberController@create')->name('fromMembership.create');
@@ -51,6 +53,7 @@ Route::get('/coming_soon', function () {
     Route::get('/membership/pending','MembershipController@pending_memberships');
     Route::get('/membership/noaddress','MembershipController@membs_without_addresses');
 
+    Route::resource('cashreceipt', 'CartController');
     Route::resource('address', 'AddressController');
     Route::resource('booking', 'BookingController');
     Route::resource('bookingitems', 'BookingItemController');
