@@ -35,7 +35,7 @@ class CartController extends Controller
         $booking = session('booking');             
         $booking->confirmed_at = now();
                      
-        $booking->receipt_url = "https://manzamembers.test/booking/".$booking->id;
+        $booking->receipt_url = env('APP_URL').'/booking/'.$booking->id;
 
         $cartreceipt->booking_id = $booking->id;
         $cartreceipt->receipt_date = $request->receipt_date;
