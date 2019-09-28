@@ -71,7 +71,7 @@
                         </div>                    @endforeach
                 @else
                     <div class="mt-10 text-center mx-auto text-2xl font-normal">
-                        <p>There are no receipts with this booking</p>
+                        <p>Your receipt was created by skype and has been sent by email</p>
                     </div>
                 @endif
                 @auth()
