@@ -3,6 +3,7 @@
 namespace App;
 
 use App\BookingItem;
+use App\Cartreceipt;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model{
@@ -24,6 +25,11 @@ class Booking extends Model{
     public function booking_items()
     {
         return $this->hasMany(BookingItem::class);
+    }
+
+    public function cartreceipts()
+    {
+        return $this->hasMany(Cartreceipt::class);
     }
 
     public function event()

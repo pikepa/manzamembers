@@ -73,13 +73,14 @@ class BookingController extends Controller
      */
     public function show($booking_id)
     {
-        $booking = Booking::find($booking_id);
+        $booking = Booking::with('cartreceipts')->find($booking_id);
                                        
             $eventbooking = Event::with('bookings')->find($booking->event_id);
 
             $orders=BookingItem::with('priceitems')->with('category')->where('booking_id',$booking_id)->get();
-             
-            return view('bookings.show', compact('orders','eventbooking','booking'));
+            
+            $cartreceipts  = $booking->cartreceipts;
+            return view('bookings.show', compact('orders','eventbooking','booking','cartreceipts'));
 
     }
 
