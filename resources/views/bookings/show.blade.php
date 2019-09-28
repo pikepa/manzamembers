@@ -75,7 +75,7 @@
                     </div>
                 @endif
                 @auth()
-                    <div class="mt-8 md:w-2/3 mx-auto ">
+                    <div class="mt-8 md:w-4/5 mx-auto ">
                         <div class="control">
                             <a href="/byevent/{{ $eventbooking->id }}" class="text-2xl font-normal">Back</a>
                         </div>
