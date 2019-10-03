@@ -24,10 +24,10 @@
             </label>
         </div>
         
-{{--  top of ticket section 
+ 
 
         <div class="flex flex-col md:flex-row justify-between">
-            <div class="md:w-1/3 field mb-6">
+            <div class="md:w-1/2 field mb-6">
                 <label class="block">
                   <span class="font-semibold text-gray-700">Memb No.</span>
                     <input  type="text" class="form-input mt-1 block w-full" 
@@ -36,6 +36,7 @@
                             value="{{old('memb_no', $eventbooking->booking['memb_no'])}}"> 
                 </label>
             </div>
+  {{--  top of ticket section          
             <div class="md:w-1/2 field mb-6">
                 <label class="block ">
                 @if($eventbooking->add_info !== null)
