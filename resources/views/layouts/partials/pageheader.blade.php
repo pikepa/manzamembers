@@ -1,4 +1,4 @@
-<div class="bg-gray-200">
+<div class="bg-pink-400 bg-gray-200">
     <div class="container md: w-4/5 mx-auto md:px-0 px-4">
         <div class="flex justify-between text-center md:text-left  py-2  text-xl">
             @if (\Route::current()->getName() == 'bycategory')

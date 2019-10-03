@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-pink-400">
 
   <div id="app">
     @include('layouts.partials.nav')

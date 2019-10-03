@@ -1,4 +1,4 @@
-<nav class=" sticky bg-gray-400 shadow py-2">
+<nav class=" sticky bg-pink-400 bg-gray-400 shadow py-2">
   <div class=" container  items-center">
     <div class="ml-8 flex justify-center">
       <a href="https://manza.org" target="_blank" rel="noopener">  <img class="" src="{{URL::asset('images/headerlogo-300x65.png')}}"  alt="Logo Pic"></a>
