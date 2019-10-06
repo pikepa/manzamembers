@@ -84,6 +84,22 @@ class BookingController extends Controller
 
     }
 
+
+    public function orders($event_id)
+    {
+   //     $booking = Booking::with('cartreceipts')->find($booking_id);
+                                       
+            $bookings = Booking::where('event_id',$event_id)->pluck('id')->toArray();
+            $eventbooking = Event::find($event_id);
+
+
+            $orders=BookingItem::with('priceitems')->with('category')
+                    ->whereIn('booking_id',$bookings)->orderBy('price_item_id')->get();
+
+            $cartreceipts  = collect([]);
+            return view('bookings.orders', compact('orders','eventbooking','cartreceipts'));
+
+    }
     /**
      * Show the form for editing the specified resource.
      *
