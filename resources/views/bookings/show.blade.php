@@ -46,7 +46,7 @@
                             <div class="md:mr-1 text-right w-2/5 md:w-1/4 py-2 px-2 border border-grey-light ">{{ $order->display_cost }}</div>
                         </div>
                 @endforeach
-                @if($cartreceipts->count() !==0 )
+                @if($cartreceipts->count() !== 0 )
                          <h1 class="mt-12 text-2xl font-normal mb-6 text-center">
                             Receipt
                         </h1>
@@ -70,9 +70,11 @@
                             <div class="md:mr-1 text-right w-2/5 md:w-1/4 py-2 px-2 border border-grey-light ">{{ $receipt->display_amount }}</div>
                         </div>                    @endforeach
                 @else
-                    <div class="mt-10 text-center mx-auto text-2xl font-normal">
-                        <p>Your receipt was created by stripe and has been sent by email</p>
-                    </div>
+                    @if(isset($booking->receipt_url))
+                        <div class="mt-10 text-center mx-auto text-2xl font-normal">
+                            <p>Your receipt was created by stripe and has been sent by email</p>
+                        </div>
+                    @endif
                 @endif
                 @auth()
                     <div class="mt-8 md:w-4/5 mx-auto ">
