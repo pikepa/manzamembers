@@ -15,7 +15,7 @@
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
             @if($orders->count() !== 0 )
-                  <div class="mt-2  md:w-4/5 mx-auto flex items-center">
+                  <div class="mt-2  md:w-4/5 mx-auto flex ">
                       <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
                         Qty
                       </div>                    
@@ -26,7 +26,7 @@
                   </div>
                 @foreach($orders as $order)
                    <div class="md:w-4/5 mx-auto  ">
-                        <div class="flex  items-center">
+                        <div class="flex ">
                             <div class="w-1/6 py-2 px-4 text-center border border-grey-light ">{{ $order->qty}}</div>
                                 <div class="w-1/2 py-2 px-4 border border-grey-light ">
                                     @if($order->priceitems['memb'] === 0)Non-Member - 
