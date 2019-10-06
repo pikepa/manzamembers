@@ -93,12 +93,12 @@ class BookingController extends Controller
             $eventbooking = Event::find($event_id);
 
 
-            $orders=BookingItem::orderBy('price_item_id')->with('priceitems')->with('category')
+            $orders=BookingItem::orderBy('price_type_id')->with('priceitems')->with('category')
                     ->whereIn('booking_id',$bookings)->get()
                     ->groupBy(function($item) {
                         return $item->price_type_id;
                     });
-         //  dd($orders);
+         //   dd($orders);
                                  
             $grouped = $orders->groupBy('price_item_id');
 
