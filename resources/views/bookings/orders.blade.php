@@ -6,7 +6,7 @@
 
 @include('layouts.partials.pageheader')
 
-<div  class="container mx-auto md:w-1/2">
+<div  class="container mx-auto md:w-2/3">
     <div class=" mx-auto mt-10 card rounded shadow">
 
         @include('messages')
@@ -15,15 +15,18 @@
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
         @foreach($orders as $priceitem => $orders_list)
-          <div class="mt-2  md:w-4/5 mx-auto flex justify-between items-center">
+          <div class="mt-2 md:w-4/5  mx-auto flex justify-between items-center">
                 <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
                     Qty
                 </div>                    
                 <div class="flex-1 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
                     Orders
                 </div>
-                <div class="bg-gray-400 w-2/5 md:w-1/4 md:mr-1 text-center py-2 px-2 border border-grey-light font-semibold">
+                <div class="bg-gray-400 w-2/5 md:w-1/5 md:mr-1 text-center py-2 px-2 border border-grey-light font-semibold">
                   Cost
+                </div>
+                <div class="bg-gray-400 w-2/5 md:w-1/5 md:mr-1 text-center py-2 px-2 border border-grey-light font-semibold">
+                  Paid
                 </div>
           </div>
                 @foreach($orders_list as $order)
@@ -36,7 +39,12 @@
                                 @endif 
                                 {{ $order->category['category']}}
                             </div>
-                            <div class="md:mr-1 text-right w-2/5 md:w-1/4 py-2 px-2 border border-grey-light ">{{ $order->display_cost }}</div>
+                            <div class="md:mr-1 text-right w-2/5 md:w-1/5 py-2 px-2 border border-grey-light ">{{ $order->display_cost }}</div>
+                            @if($order->booking->confirmed_at !== null)
+                                <div class="md:mr-1 text-right w-2/5 md:w-1/5 py-2 px-2 border border-grey-light ">{{ $order->booking->confirmed_at->format('d-m-Y') }}</div>
+                            @elseif($order->booking->confirmed_at == null)
+                                <div class="md:mr-1 text-right w-2/5 md:w-1/5 py-2 px-2 border border-grey-light ">Not Paid</div>
+                            @endif
                         </div>
                 @endforeach
                 @endforeach
@@ -51,7 +59,7 @@
                         <div class="flex-1 bg-gray-400 text-center py-2 px-2 border border-grey-light font-semibold">
                             Payee
                         </div>
-                        <div class="bg-gray-400 w-2/5 md:w-1/4 md:mr-1 text-center py-2 px-2 border border-grey-light font-semibold">
+                        <div class="bg-gray-400 w-2/5 md:w-1/5 md:mr-1 text-center py-2 px-2 border border-grey-light font-semibold">
                           Amount
                         </div>
                     </div>
