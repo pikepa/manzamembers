@@ -34,7 +34,7 @@ class ManageMembershipsTest extends TestCase
         $response = $this->get('/membership');
         $response->assertRedirect('/login');
     }
-      /** @test 
+      /** @test */
     public function a_signedIn_user_can_view_the_membership_index()
     {
         $this->withoutExceptionHandling();
