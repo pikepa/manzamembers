@@ -47,6 +47,7 @@ Route::get('/coming_soon', function () {
     Route::get('/reservation/create/{id?}', 'ReservationController@create')->name('fromReservation.create');
    
     Route::get('/byevent/{id?}', 'BookingController@byevent');
+    Route::get('/byevent/{id?}/orders', 'BookingController@orders');
     Route::get('/reservation/{id?}', 'ReservationController@index');
     Route::get('/membership/current','MembershipController@current_memberships');
     Route::get('/membership/expired','MembershipController@expired_memberships');
