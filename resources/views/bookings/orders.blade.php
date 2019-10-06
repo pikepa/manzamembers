@@ -14,7 +14,7 @@
         <h1 class="text-2xl font-normal mb-6 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
-        @foreach($orders as $priceitem => $orders_list))
+        @foreach($orders as $priceitem => $orders_list)
           <div class="mt-2  md:w-4/5 mx-auto flex justify-between items-center">
                 <div class="bg-gray-400 w-1/6 md:w-1/6 py-2 px-2 text-center border border-grey-light font-semibold">
                     Qty
@@ -26,7 +26,7 @@
                   Cost
                 </div>
           </div>
-                @foreach($orders_list  as $order)
+                @foreach($orders_list as $order)
                         <div class="md:w-4/5 mx-auto flex items-center">
                             <div class="w-1/6 py-2 px-4 text-center border border-grey-light ">{{ $order->qty}}</div>
                             <div class="flex-1 py-2 px-4 border border-grey-light ">
