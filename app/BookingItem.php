@@ -35,6 +35,12 @@ class BookingItem extends Model
         return $query->where('booking_id',session::get('booking_id',0))
         ->where('price_type_id',15 )->get()->sum('qty');
     }
+
+    public function booking()
+    { 
+        
+        return $this->belongsTo(Booking::class);
+    }
     
     public function category()
     {
