@@ -74,6 +74,10 @@
                         <div class="mt-10 text-center mx-auto text-2xl font-normal">
                             <p>Your receipt was created by stripe and has been sent by email</p>
                         </div>
+                    @else
+                        <div class="mt-10 text-center mx-auto text-2xl font-normal">
+                            <p>No Receipt found for this booking.</p>
+                        </div>
                     @endif
                 @endif
                 @auth()
