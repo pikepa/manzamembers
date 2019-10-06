@@ -34,7 +34,7 @@
           </div>
                 @foreach($orders_list as $order)
                         <div class="md:w-4/5 mx-auto flex items-center">
-                            <div class="w-1/6 py-2 px-4 text-center border border-grey-light ">{{ $order->booking->name}}</div>
+                            <div class="w-1/6 py-2 px-4 text-center border border-grey-light ">{{ substr($order->booking->name,0,16)}}</div>
                             <div class="w-12 py-2 px-4 text-center border border-grey-light ">{{ $order->qty}}</div>
                             <div class="flex-1 py-2 px-4 border border-grey-light ">
                                 @if($order->priceitems['memb'] === 0)Non-Member - 
