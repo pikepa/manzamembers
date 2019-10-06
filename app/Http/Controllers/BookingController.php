@@ -93,11 +93,20 @@ class BookingController extends Controller
             $eventbooking = Event::find($event_id);
 
 
-            $orders=BookingItem::with('priceitems')->with('category')
-                    ->whereIn('booking_id',$bookings)->orderBy('price_item_id')->get();
+            $orders=BookingItem::orderBy('price_item_id')->with('priceitems')->with('category')
+                    ->whereIn('booking_id',$bookings)->get()
+                    ->groupBy(function($item) {
+                        return $item->price_item_id;
+                    });
+                       //         dd($orders);
+                                 
+            $grouped = $orders->groupBy('price_item_id');
+
+         //   dd($grouped);
+             
 
             $cartreceipts  = collect([]);
-            return view('bookings.orders', compact('orders','eventbooking','cartreceipts'));
+            return view('bookings.orders', compact('grouped','orders','eventbooking','cartreceipts'));
 
     }
     /**
