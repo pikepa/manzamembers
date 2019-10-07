@@ -97,7 +97,8 @@ class BookingItemController extends Controller
             $booking_id =session::get('booking_id',0);
 
             $eventbooking = Event::with('bookings')->find($event_id);
-            $tickettypes =Priceitem::with('category')->members()->get();
+
+            $tickettypes =Priceitem::with('category')->members()->orderBy('price_type_id','asc')->get(); 
             $non_tickettypes =Priceitem::with('category')->nonmembers()->get();
             $other_tickettypes =Priceitem::with('category')->others()->get();
 
