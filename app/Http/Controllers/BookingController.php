@@ -37,7 +37,8 @@ class BookingController extends Controller
      */
     public function byevent($id)
     {
-        $bookings=Booking::with('event','booking_items')->where('event_id',$id)->get();
+        $bookings=Booking::with('event','booking_items')
+            ->where('event_id',$id)->orderBy('created_at','desc')->get();
         $event=Event::find($id);
         return view ('bookings.index', compact('bookings','event'));
     }
@@ -98,15 +99,15 @@ class BookingController extends Controller
                     ->groupBy(function($item) {
                         return $item->price_type_id;
                     });
-         //   dd($orders);
+       //    dd($orders);
                                  
             $grouped = $orders->groupBy('price_item_id');
 
-         //   dd($grouped);
+       //     dd($grouped);
              
 
-            $cartreceipts  = collect([]);
-            return view('bookings.orders', compact('grouped','orders','eventbooking','cartreceipts'));
+     //       $cartreceipts  = collect([]);
+            return view('bookings.orders', compact('grouped','orders','eventbooking'));
 
     }
     /**
