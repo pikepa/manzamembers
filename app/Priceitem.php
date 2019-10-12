@@ -22,17 +22,17 @@ class Priceitem extends Model
 
     public function scopeMembers($query)
     {
-        return $query->where('memb',1)->where('event_id',session::get('event_id',0));
+        return $query->where('memb',1)->where('visible','yes')->where('event_id',session::get('event_id',0));
     }
 
     public function scopeNonmembers($query)
     {
-        return $query->where('memb',0)->where('event_id',session::get('event_id',0));
+        return $query->where('memb',0)->where('visible','yes')->where('event_id',session::get('event_id',0));
     }
 
     public function scopeOthers($query)
     {
-        return $query->where('memb',2)->where('event_id',session::get('event_id',0));
+        return $query->where('memb',2)->where('visible','yes')->where('event_id',session::get('event_id',0));
     }
 
     public function owner()
