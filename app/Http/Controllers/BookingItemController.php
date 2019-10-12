@@ -78,12 +78,12 @@ class BookingItemController extends Controller
         $booking_item->price = $priceitem->price;
         $booking_item->qty = $request->qty ;
 
-/*        if(strpos($priceitem->category, 'Table of 10') !== false){
-            $booking_item->qty = $request->qty * 10;
+        if(strpos($priceitem->category, 'Table of 10') !== false){
+            $booking_item->seats = $request->qty * 10;
         }else{
-            $booking_item->qty = $request->qty ;
+            $booking_item->seats = $request->qty ;
         }
-*/
+
        $booking_item->save();
 
        return redirect($booking_item->path())->withSuccess('Order has been added.');
