@@ -14,6 +14,9 @@
         <h1 class="text-2xl font-normal mb-6 text-center">
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
+        @php
+            {{ $grand = 0; }}
+        @endphp
         @foreach($orders as $priceitem => $orders_list)
           <div class="mt-2 md:w-4/5  mx-auto flex justify-between items-center">
                 <div class="bg-gray-400 w-64  py-2 px-2 text-center border border-grey-light font-semibold">
@@ -32,6 +35,9 @@
                   Paid
                 </div>
           </div>
+                @php
+                    {{ $total = 0; }}
+                @endphp
                 @foreach($orders_list as $order)
                         <div class="md:w-4/5 mx-auto flex ">
                             <div class="w-64 curser:pointer underline py-2 px-4 text-left border border-grey-light "><a href='{{ $order->booking->path() }}'>{{ substr($order->booking->name,0,90)}}</a></div>
@@ -49,9 +55,20 @@
                                 <div class="md:mr-1 text-center w-2/5 md:w-1/5 py-2 px-2 border border-grey-light text-red-600 font-extrabold uppercase ">Not Paid</div>
                             @endif
                         </div>
+                        @if(strpos($order->priceitems['category'], "M'ship") === false)
+                            @php
+                                {{ $total = $total + $order->seats; }}
+                            @endphp
+                        @endif
                 @endforeach
+                @php
+                    {{ $grand = $grand + $total; }}
+                @endphp
+                <div class="md:w-4/5 mx-auto mt-2 pl-2">Total Seats {{ $total }}</div>
+
                 <br>
                 @endforeach
+                <div class="md:w-4/5 mx-auto mt-2 pl-2">Grand Total Seats {{ $grand }}</div>
 
                 @auth()
                     <div class="mt-8 md:w-4/5 mx-auto ">
