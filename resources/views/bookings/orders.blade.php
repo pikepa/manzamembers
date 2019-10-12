@@ -35,11 +35,7 @@
                 @foreach($orders_list as $order)
                         <div class="md:w-4/5 mx-auto flex ">
                             <div class="w-64 curser:pointer underline py-2 px-4 text-left border border-grey-light "><a href='{{ $order->booking->path() }}'>{{ substr($order->booking->name,0,90)}}</a></div>
-                            @if(strpos($order->category['category'], 'Table of 10') !== false)
-                                <div class="w-12 py-2 px-4 text-center border border-grey-light ">{{ $order->qty * 10}}</div>
-                            @else
-                                <div class="w-12 py-2 px-4 text-center border border-grey-light ">{{ $order->qty }}</div>
-                            @endif
+                            <div class="w-12 py-2 px-4 text-center border border-grey-light ">{{ $order->seats }}</div>
                             <div class="flex-1 py-2 px-4 border border-grey-light ">
                                 @if($order->priceitems['memb'] === 0)Non-Member - 
                                 @elseif($order->priceitems['memb'] === 0)Member - 
