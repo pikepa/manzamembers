@@ -108,6 +108,7 @@ class EventController extends Controller
              
         $priceitems=Priceitem::with('category')
         ->orderBy('memb','desc')
+        ->where('visible','yes')
         ->where('event_id',$event->id)->get();
         return view('events.show', compact('event','priceitems'));
     }
