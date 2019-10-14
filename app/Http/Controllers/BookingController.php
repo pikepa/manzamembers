@@ -118,7 +118,7 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        return view('bookings.edit_table', compact('booking'));
     }
 
     /**
@@ -130,8 +130,16 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+            $validatedrequest = $this->validate(request(), [
+            'table_no' => 'nullable|Min:0|notin:0',
+        ]);
+        $booking->table_no = $request->table_no;
+        $booking->save();
+
+        return redirect('byevent/'.$booking->event_id)->with('Success', 'Table has been updated');
+
     }
+                             
 
     /**
      * Remove the specified resource from storage.

@@ -32,20 +32,29 @@
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. Tables</th>  --}}
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Amount</th>
                           <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border  border-grey-light">Date Paid</th>
+                          <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border  border-grey-light">Tickets</th>
+                          <th class="py-2 bg-grey-lightest font-bold uppercase text-sm text-center text-grey-dark border  border-grey-light">Table No.</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach($bookings as $booking)
                         <tr class="hover:bg-grey-lighter">
                           <td class=" py-4 px-4 border border-grey-light">{{ $booking->getFormattedDate('created_at')}}</td>
-                          <td class="underline py-4 px-4 border border-grey-light text-center"><a href="/booking/{{ $booking->id }}"> {{ $booking->name}}</td></a>
+                          <td class="underline py-4 px-4 border border-grey-light"><a href="/booking/{{ $booking->id }}"> {{ $booking->name}}</td></a>
                           <td class="py-4 px-4 border border-grey-light text-left">{{ $booking->memb_no}}</td>
       {{--                <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('qty') }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center"></td>      --}}    
                           <td class="py-4 px-4 border border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
-                          <td class=" border  border-grey-light">
+                          <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('seats')}}</td>
+                          <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->table_no}}</td>
+                          <td class=" flex flex-row border-t border-r pt-4  border-grey-light">
                             @auth()
+                              @can('booking-edit')
+                                <div class="text-grey-lighter text-center text-sm mx-2 ">
+                                    <a href="{{ $booking->path() }}/edit"><i class="fas fa-utensils"></i></a>
+                                </div>
+                              @endcan
                             <div class="text-grey-lighter text-center text-sm mx-2 ">
                               @can('booking-delete')
                                   <form method="POST" action="{{ $booking->path() }}" >
