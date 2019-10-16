@@ -38,7 +38,7 @@ class BookingController extends Controller
     public function byevent($id)
     {
         $bookings=Booking::with('event','booking_items')
-            ->where('event_id',$id)->orderBy('created_at','desc')->get();
+            ->where('event_id',$id)->orderBy('created_at','asc')->get();
         $event=Event::find($id);
         return view ('bookings.index', compact('bookings','event'));
     }
