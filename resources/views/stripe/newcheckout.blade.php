@@ -68,9 +68,10 @@
                     @endif
 
                     <form role="form" action="/charge" method="post" class="require-validation"
-                                                     data-cc-on-file="false"
+                                                    data-cc-on-file="false"
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                                    id="payment-form">
+                                                    id="payment-form" 
+                                                    onsubmit="paynow.disabled = true;">
                         @csrf
                         <input type='hidden' name='cost' value={{$totalcost}}>
 
@@ -110,7 +111,7 @@
 
                         <div class="row">
                             <div class="col-xs-12" >
-                                <button style="background-color:#8C2E51" class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost/100}}</button>
+                                <button name = "paynow" style="background-color:#8C2E51" class="btn btn-primary btn-lg btn-block" type="submit">Pay Now RM {{$totalcost/100}}</button>
                             </div>
                         </div>
 
