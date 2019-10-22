@@ -24,6 +24,7 @@
                     <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
                       <thead>
                         <tr>
+                          <th class="py-4 px-6 text-center bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">No.</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Date Joined</th>
                           <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t border-b border-r  border-grey-light">Member No.</th>
                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-t  border-b border-r  border-grey-light">Name</th>
@@ -35,8 +36,15 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @php
+                          {{$i=0;}}
+                        @endphp
                         @foreach($memberships as $membership)
+                        @php
+                          {{$i=$i+1;}}
+                        @endphp
                         <tr class="hover:bg-grey-lighter">
+                          <td class="py-4 px-6 border text-center border-grey-light">{{ $i }}</td>
                           <td class="py-4 px-6 border border-grey-light">{{ $membership->formatted_date_joined }}</td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $membership->memb_no }}</td>
                           <td class="py-4 px-6 border border-grey-light"><a href="{{ $membership->path() }}">{{ $membership->surname }}</a></td>
