@@ -15,10 +15,12 @@ class AlterBookingitemsTable extends Migration
     {
         Schema::table('booking_items', function (Blueprint $table) {
             $table->integer('seats')->unsigned()->default(1)->after('qty');
+        });
+
+        Schema::table('booking_items', function (Blueprint $table) {
             $table->dropColumn('confirmed_at');
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -11,7 +11,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class MessageTests extends TestCase
 {
-        use DatabaseMigrations,WithFaker;
+    use DatabaseMigrations,WithFaker;
+    
     /** @test */
     public function it_has_a_path()
     {
