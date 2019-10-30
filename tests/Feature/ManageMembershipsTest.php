@@ -37,14 +37,23 @@ class ManageMembershipsTest extends TestCase
       /** @test */
     public function a_signedIn_user_can_view_the_membership_index()
     {
-        $this->withoutExceptionHandling();
-        $membership = factory(Membership::class)->create();
-        $category = factory(Category::class)->create();
+    //    $this->withoutExceptionHandling();
 
-        $this->signIn();
+        $category = factory(Category::class)->create([
+                    'type' => 'TRM'
+        ]);
+        $type_category = factory(Category::class)->create([
+                    'type' => 'MEM'
+        ]);
+
+        $membership = factory(Membership::class)->create([
+                'mship_term_id' => $category->id,
+                "mship_type_id" => $type_category->id,
+        ]);
+        $this->signIn();      
         $response = $this->get('/membership');
         $response->assertStatus(200);
     }
-*/
+
 
 }
