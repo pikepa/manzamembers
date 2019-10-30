@@ -1,6 +1,6 @@
-<main class=" flex flex-1 flex-row flex-wrap pt-2 pl-1 ">
+<main class=" flex flex-1 flex-row justify-right flex-wrap pt-2 pl-1 ">
         @foreach ($events as $event)
-            <div class="flex flex-col md:w-1/4 content-between card mb-2 ml-1">
+            <div class="flex flex-col md:w-1/4 card mb-2 ml-1">
                 <div class="h-10px mx-auto text-center">
                     @if(isset($event->featured_img))
                         <img style='height:300px' class=" rounded-lg object-cover object-centre w-full" src={{ $event->featured_img }} alt="<{{ $event->title }}>">

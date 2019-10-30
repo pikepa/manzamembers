@@ -3,7 +3,9 @@
 
 <head>
 
-  @include('layouts.partials.meta') @yield('addstyles') @include('layouts.partials.css')
+  @include('layouts.partials.meta') @yield('addstyles') 
+
+  @include('layouts.partials.css')
     
   @yield('addstyles')
 
