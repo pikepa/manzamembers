@@ -1,5 +1,5 @@
 <div class="bg-pink-400 bg-gray-200">
-    <div class="container md: w-4/5 mx-auto md:px-0 px-4">
+    <div class="container  mx-auto md:px-0 px-4">
         <div class="flex justify-between text-center md:text-left  py-2  text-xl">
             @if (\Route::current()->getName() == 'bycategory')
             <div class="class='w-1/3' -mb-2 pb-2 font-bold  min-w-0 border-b-4 border-pink-600">
