@@ -11,7 +11,7 @@
 
 </head>
 
-<body class="font-sans antialiased bg-pink-400">
+<body class="font-sans antialiased">
 
   <div id="app">
     @include('layouts.partials.nav')
