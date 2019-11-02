@@ -70,7 +70,7 @@
         </ul>
         <ul>
             @guest
-                <li class="hover:font-semibold ml-2"><a href="{{ url('login') }}">Sign In</a></li>
+                <li class="w-1/2 button btn-manza hover:font-semibold "><a href="{{ url('login') }}">Sign In</a></li>
             @endguest
         </ul> 
             @auth 
