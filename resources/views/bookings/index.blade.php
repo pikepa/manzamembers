@@ -27,7 +27,7 @@
                         <tr>
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Booking Date</th>
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Name</th>
-                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Memb No. </th>
+                          <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Org. </th>
       {{--                <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. Tickets</th>
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">No. Tables</th>  --}}
                           <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border  border-grey-light">Amount</th>
@@ -41,7 +41,7 @@
                         <tr class="hover:bg-grey-lighter">
                           <td class=" py-4 px-4 border border-grey-light">{{ $booking->getFormattedDate('created_at')}}</td>
                           <td class="underline py-4 px-4 border border-grey-light"><a href="/booking/{{ $booking->id }}"> {{ $booking->name}}</td></a>
-                          <td class="py-4 px-4 border border-grey-light text-left">{{ $booking->memb_no}}</td>
+                          <td class="py-4 px-4 border border-grey-light text-left">{{ $booking->add_info}}</td>
       {{--                <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('qty') }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center"></td>      --}}    
                           <td class="py-4 px-4 border border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
