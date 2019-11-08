@@ -1,13 +1,5 @@
 <div class="md:w-1/5 font-sans card px-2 ml-4 mt-2 md:ml-0 ">
-    
-    <div class=" ml-2 mb-2 ">
-        <ul class="">
-            <li><a href="{{ url('/') }}" class="my-2 font-semibold hover:font-bold no-underline">Home</a></li>
-            <li class="ml-2"><a href="{{ url('/aboutus') }}" class="hover:font-semibold no-underline">About Us</a></li>
-            <li class="ml-2"><a href="{{ url('/message/create') }}" class="hover:font-semibold no-underline">Contact Us</a></li>   
-      {{--  <li class="ml-2"><a href="{{ url('/coming_soon') }}" class="hover:font-semibold no-underline">Join MANZA</a></li>   --}}
-        </ul>
-    </div>
+
    <div class="ml-2 mb-2">
         @auth
         <div>
@@ -69,9 +61,7 @@
         @endauth
         </ul>
         <ul>
-            @guest
-                <li class="w-1/2 button btn-manza hover:font-semibold "><a href="{{ url('login') }}">Sign In</a></li>
-            @endguest
+
         </ul> 
             @auth 
             <div>
@@ -89,14 +79,7 @@
                     <a href="/users"><i class="fa fa-btn fa-unlock"></i>  User Admin</a>
                 @endrole 
                 <br>
-  
-                <a href="{{ route('logout') }}"
-                    class="hover:font-semibold no-underline ml-2"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                    {{ csrf_field() }}
-                </form> 
+
                 <br>
                 @endauth
 

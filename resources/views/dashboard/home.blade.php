@@ -9,7 +9,9 @@
     <div class="container mx-auto pb-4 ">
         @include('messages')
         <div class="flex flex-col md:flex-row justify-between">
-            @include('dashboard.components.dash_left')
+            @auth
+                @include('dashboard.components.dash_left')
+            @endauth
             @include('dashboard.components.dash_main')
         </div>
     </div>

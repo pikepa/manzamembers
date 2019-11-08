@@ -14,11 +14,15 @@
 <body class="font-sans antialiased">
 
   <div id="app">
-    @include('layouts.partials.nav')
-    <div class="">
-         @yield('content')
-    </div>
+    
+        @include('layouts.partials.nav')
+
+        <div class="">
+             @yield('content')
+        </div>
   </div>
-</body>
+
 @include('layouts.partials.scripts')
+
+</body>
 </html>
