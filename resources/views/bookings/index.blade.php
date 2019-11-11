@@ -69,7 +69,7 @@
                             </div>
                             @endauth
                           </td>
-                          @if($booking->confirmed_at != null)
+                          @if($booking->getFormattedDate('confirmed_at') !== null)
                             @php
                             {{ $total = $total + booking_items->sum('seats'); }}
                             @endphp
