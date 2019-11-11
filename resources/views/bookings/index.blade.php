@@ -72,7 +72,8 @@
                       </tbody>
                     </table>
                   </div>
-                  <p>No. of Bookings:-{{ $bookings->count() }}</p>
+                  <p>No. of Bookings:-{{ $bookings->count() }}</p><br>
+                  <p>No. of Paid Seats:-{{ $bookings->booking_items->sum('qty') }}</p>
                 </div>
                 </div>
             </div>
