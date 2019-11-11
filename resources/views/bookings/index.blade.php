@@ -71,7 +71,7 @@
                           </td>
                           @if($booking->getFormattedDate('confirmed_at') !== null)
                             @php
-                            {{ $total = $total + booking_items->sum('seats'); }}
+                            {{ $total = $total + $booking->booking_items->sum('seats'); }}
                             @endphp
                            @endif
                         </tr>
