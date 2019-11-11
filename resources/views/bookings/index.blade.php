@@ -37,6 +37,9 @@
                         </tr>
                       </thead>
                       <tbody>
+                      @php
+                      {{ $total = 0;}}
+                      @endphp
                         @foreach($bookings as $booking)
                         <tr class="hover:bg-grey-lighter">
                           <td class=" py-4 px-4 border border-grey-light">{{ $booking->getFormattedDate('created_at')}}</td>
@@ -66,6 +69,11 @@
                             </div>
                             @endauth
                           </td>
+                          @if($booking->confirmed_at != null)
+                            @php
+                            {{ $total = $total + booking_items->sum('seats'); }}
+                            @endphp
+                           @endif
                         </tr>
                         @endforeach
  
@@ -73,7 +81,7 @@
                     </table>
                   </div>
                   <p>No. of Bookings:-{{ $bookings->count() }}</p><br>
-                  <p>No. of Paid Seats:-</p>
+                  <p>No. of Paid Seats:-{{ $total }}</p>
                 </div>
                 </div>
             </div>
