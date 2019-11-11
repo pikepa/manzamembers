@@ -92,6 +92,11 @@
         <div class="mt-10 text-center mx-auto text-2xl font-normal">
             <p>Please print details of your order</p>
         </div>
+        @auth
+            <div class="mt-10 text-center mx-auto text-xl font-normal">
+                <p>Email address is {{ $booking->email}}</p>
+            </div>
+        @endauth
    
     </div>
 
