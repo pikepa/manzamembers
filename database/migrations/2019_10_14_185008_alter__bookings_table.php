@@ -26,7 +26,7 @@ class AlterBookingsTable extends Migration
     public function down()
     {
         Schema::table('bookings', function (Blueprint $table) {
-                $table->dropColumn('add_info');
+                $table->dropColumn('table_no');
         });
     }
 }

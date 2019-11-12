@@ -22,8 +22,8 @@ class BookingTest extends TestCase
     {
         $this->assertTrue( 
           Schema::hasColumns('bookings', [
-            'id','event_id', 'email', 'name', 'memb_no', 'add_info', 'confirmed_at', 'receipt_url', 'deleted_at'
-        ]), 1);
+            'id','event_id', 'email', 'name', 'memb_no','add_info',
+            'table_no','confirmed_at','receipt_url',]), 1);
     }
 
     /** @test */

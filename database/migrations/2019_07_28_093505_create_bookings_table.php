@@ -20,6 +20,7 @@ class CreateBookingsTable extends Migration
             $table->string('name');
             $table->string('memb_no')->nullable();
             $table->string('add_info')->nullable();
+            $table->string('receipt_url')->nullable();
             $table->timestamp('confirmed_at')->nullable();
             $table->timestamps();
         });
