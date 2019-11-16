@@ -48,7 +48,11 @@
       {{--                <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('qty') }}</td>
                           <td class="py-4 px-4 border border-grey-light text-center"></td>      --}}    
                           <td class="py-4 px-4 border border-grey-light text-center">RM {{number_format($booking->booking_items->sum('cost')/100,2,'.', ',') }}</td>
-                          <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
+                          @if($booking->confirmed_at !== null)
+                              <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->getFormattedDate('confirmed_at')}}</td>
+                           @elseif($booking->confirmed_at == null)
+                              <td class="text-center py-2 px-2 border border-grey-light text-red-600 font-extrabold uppercase ">Not Paid</td>
+                            @endif
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->booking_items->sum('seats')}}</td>
                           <td class="py-4 px-4 border border-grey-light text-center">{{ $booking->table_no}}</td>
                           <td class=" flex flex-row border-t border-r pt-4  border-grey-light">
