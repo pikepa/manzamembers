@@ -10,7 +10,7 @@
               <span class="font-semibold text-gray-700">Guest Names</span>
                 <input  type="text" class="form-input mt-1  w-full"
                         name='name'
-                        placeholder="Please give us your guest names. (ie Mary and Tom Jones)"
+                        placeholder="Please give us your guest names. (ie Tom Smith and Susan Jones)"
                         value="{{old('name', $eventbooking->booking['name'])}}">
             </label>
         </div>
