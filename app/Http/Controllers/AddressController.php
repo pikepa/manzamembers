@@ -17,9 +17,12 @@ class AddressController extends Controller
     {   $report_title='Address Listing';
         $rows=Address::selectRaw('memberships.mailing_label, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
             ->join('memberships','memberships.id', '=', 'addresses.membership_id' )
+            ->where('status','Current')
+            ->orWhere('mship_type_id',26)
             ->orderBy('addr1','ASC')->get();
+            dd($rows);
         return view('addresses.index', compact('rows','report_title'));
-         
+
     }
 
     /**
@@ -89,7 +92,7 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
        $membership=Membership::find($address->membership_id);
-        return view('addresses.edit', compact('address','membership'));  
+        return view('addresses.edit', compact('address','membership'));
     }
 
     /**
@@ -123,7 +126,7 @@ class AddressController extends Controller
         $address->update();
 
         return redirect('membership/'.$address->membership_id)->with('message', 'Address '.$address->id.' has been updated');
-        
+
    }
 
     /**
