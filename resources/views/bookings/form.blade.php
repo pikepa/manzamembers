@@ -7,23 +7,23 @@
 <div class="mx-auto">
         <div class="field mb-6">
             <label class="block">
-              <span class="font-semibold text-gray-700">Name</span>
-                <input  type="text" class="form-input mt-1  w-full" 
+              <span class="font-semibold text-gray-700">Guest Names</span>
+                <input  type="text" class="form-input mt-1  w-full"
                         name='name'
-                        placeholder="Enter your name please."
-                        value="{{old('name', $eventbooking->booking['name'])}}"> 
+                        placeholder="Please give us your guest names. (ie Mary and Tom Jones)"
+                        value="{{old('name', $eventbooking->booking['name'])}}">
             </label>
         </div>
         <div class="field mb-6">
             <label class="block">
               <span class="font-semibold text-gray-700">Email</span>
-                <input  type="email" class="form-input mt-1  w-full" 
+                <input  type="email" class="form-input mt-1  w-full"
                         name='email'
                         placeholder="Enter your email please."
-                        value="{{old('email', $eventbooking->booking['email'])}}"> 
+                        value="{{old('email', $eventbooking->booking['email'])}}">
             </label>
         </div>
-        
+
          <div class="w-1/2  block mb-6">
               <span class=" font-bold text-gray-800">Select Organisation</span>
               <div class="mt-1">
@@ -41,20 +41,20 @@
                   </div>
                 </div>
               </div>
-{{-- 
+{{--
         <div class="flex flex-col md:flex-row justify-between">
             <div class="md:w-1/2 field mb-6">
                 <label class="block">
                   <span class="font-semibold text-gray-700">Memb No.</span>
-                    <input  type="text" class="form-input mt-1 block w-full" 
+                    <input  type="text" class="form-input mt-1 block w-full"
                             name='memb_no'
                             placeholder="For Mbr Discount."
-                            value="{{old('memb_no', $eventbooking->booking['memb_no'])}}"> 
+                            value="{{old('memb_no', $eventbooking->booking['memb_no'])}}">
                 </label>
             </div>
 
 
-    top of ticket section          
+    top of ticket section
             <div class="md:w-1/2 field mb-6">
                 <label class="block ">
                 @if($eventbooking->add_info !== null)
@@ -62,15 +62,15 @@
                 @else
                   <span class="font-semibold text-gray-700">Additional Info</span>
                 @endif
-                    <input  type="text" class="form-input mt-1 block w-full" 
+                    <input  type="text" class="form-input mt-1 block w-full"
                             name='add_info'
-                            value="{{old('add_info', $eventbooking->booking['add_info'])}}"> 
+                            value="{{old('add_info', $eventbooking->booking['add_info'])}}">
                 </label>
             </div>
 
             --}}
         </div>
-        
+
 
         <div class="field">
             <div class="control">
@@ -80,6 +80,3 @@
             </div>
         </div>
 </div>
-
-
-
