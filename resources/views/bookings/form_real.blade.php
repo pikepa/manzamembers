@@ -7,16 +7,17 @@
 <div class="mx-auto">
         <div class="field mb-6">
             <label class="block">
-              <span class="font-semibold text-gray-700">Guest Names</span>
+              <span class="font-semibold text-gray-700">Guest Names.</span>
                 <input  type="text" class="form-input mt-1  w-full"
                         name='name'
                         placeholder="Please give us your guest names. (ie Tom Smith and Susan Jones)"
+                        
                         value="{{old('name', $eventbooking->booking['name'])}}">
             </label>
         </div>
         <div class="field mb-6">
             <label class="block">
-              <span class="font-semibold text-gray-700">Email</span>
+              <span class="font-semibold text-gray-700">Email.</span>
                 <input  type="email" class="form-input mt-1  w-full"
                         name='email'
                         placeholder="Enter your email please."
@@ -25,7 +26,7 @@
         </div>
 
          <div class="w-1/2  block mb-6">
-              <span class=" font-bold text-gray-800">Select Organisation</span>
+              <span class=" font-bold text-gray-800">Select Organisation.</span>
               <div class="mt-1">
                 <div class=" flex flex-wrap ">
                   <div class="inline-block relative w-full">
