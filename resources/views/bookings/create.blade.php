@@ -16,9 +16,9 @@
                 method="POST"
                 action="/eventbooking"
         >
-            @include ('bookings.form_real', [
+            @include ('bookings.form', [
                 'buttonText' => 'Continue'
-            ]) 
+            ])
         </form>
     </div>
     </div>
