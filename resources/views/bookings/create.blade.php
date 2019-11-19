@@ -12,11 +12,11 @@
             {{ $eventbooking->title }} - {{ $eventbooking->date_of_event }}
         </h1>
 
-        <form 
+        <form
                 method="POST"
                 action="/eventbooking"
         >
-            @include ('bookings.form', [
+            @include ('bookings.form_real', [
                 'buttonText' => 'Continue'
             ]) 
         </form>
