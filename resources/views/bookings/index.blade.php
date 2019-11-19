@@ -17,6 +17,7 @@
                 <div class="text-center">
                   @include('messages')
                     <h1 class="font-bold text-3xl m-2 ">{{$event->title}} Bookings</h1>
+                    <h1 class="font-bold text-3xl m-2  >Today is 19th November 2019</h1>
                     <p><a href='{{ $event->id }}/orders'>View Orders</a></p>
                 </div>
                 <div class="flex flex-col ">
