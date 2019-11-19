@@ -20,7 +20,7 @@ class AddressController extends Controller
             ->where('status','Current')
             ->orWhere('mship_type_id',26)
             ->orderBy('addr1','ASC')->get();
-            dd($rows);
+
         return view('addresses.index', compact('rows','report_title'));
 
     }
