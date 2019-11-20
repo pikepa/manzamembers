@@ -11,7 +11,7 @@
                 <input  type="text" class="form-input mt-1  w-full"
                         name='name'
                         placeholder="Please give us your guest names. (ie Tom Smith and Susan Jones)"
-                        
+
                         value="{{old('name', $eventbooking->booking['name'])}}">
             </label>
         </div>
@@ -24,8 +24,8 @@
                         value="{{old('email', $eventbooking->booking['email'])}}">
             </label>
         </div>
-
-         <div class="w-1/2  block mb-6">
+        <div class="w-1/2  block mb-6">
+            @if($eventbooking->id !== 20)
               <span class=" font-bold text-gray-800">Select Organisation.</span>
               <div class="mt-1">
                 <div class=" flex flex-wrap ">
@@ -42,6 +42,7 @@
                   </div>
                 </div>
               </div>
+            @else
 {{--
         <div class="flex flex-col md:flex-row justify-between">
             <div class="md:w-1/2 field mb-6">
@@ -54,8 +55,8 @@
                 </label>
             </div>
 
+--}}
 
-    top of ticket section
             <div class="md:w-1/2 field mb-6">
                 <label class="block ">
                 @if($eventbooking->add_info !== null)
@@ -68,10 +69,8 @@
                             value="{{old('add_info', $eventbooking->booking['add_info'])}}">
                 </label>
             </div>
-
-            --}}
+            @endif
         </div>
-
 
         <div class="field">
             <div class="control">
