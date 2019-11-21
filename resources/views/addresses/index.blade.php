@@ -37,7 +37,7 @@
                       <tbody>
                         @foreach($rows as $key=>$row)
                         <tr class="hover:bg-grey-lighter">
-                          <td class="py-4 px-6 border border-grey-light text-center">{{ $row->member_no }}</td>
+                          <td class="py-4 px-6 border underline border-grey-light text-center"><a href="/membership/{{ $row->member_id }}">{{ $row->member_no }}</a></td>
                           <td class="py-4 px-6 border border-grey-light text-center">{{ $row->mailing_label }}</td>
                           <td class="py-4 px-6 border border-grey-light">{{ $row->addr1 }}</td>
                           <td class="py-4 px-6 border border-grey-light">{{ $row->addr2 }}</a></td>

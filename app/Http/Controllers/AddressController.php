@@ -15,13 +15,14 @@ class AddressController extends Controller
      */
     public function index()
     {   $report_title='Address Listing';
-        $rows=Address::selectRaw('memberships.mailing_label, memberships.member_no, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
+        $rows=Address::selectRaw('memberships.mailing_label, memberships.id as member_id, memberships.member_no, addresses.addr1, addresses.addr2, addresses.addr3, addresses.city, addresses.postcode, addresses.country')
             ->join('memberships','memberships.id', '=', 'addresses.membership_id' )
             ->where('status','Current')
             ->orWhere('mship_type_id',26)
             ->orderBy('addr1','ASC')->get();
-        return view('addresses.index', compact('rows','report_title'));
+        //    dd($rows);
 
+        return view('addresses.index', compact('rows','report_title'));
     }
 
     /**
