@@ -29,6 +29,8 @@ class EventBookingsController extends Controller
         $bookings = Booking::where('event_id',$id)->get();
         $eventbooking = Event::with('bookings')->findOrFail($id);
 
+      //  dd($eventbooking);
+
         return view('bookings.create', compact('bookings','eventbooking','eventtickettypes'));
     }
 
@@ -40,6 +42,8 @@ class EventBookingsController extends Controller
             'event_id' => 'required|numeric|min:0|not_in:0',
             'name' => 'required',
             'email' => 'required',
+            'add_info' => 'required|in:["MANZA","MNZCC","MABC"]',
+
          //   'memb_no' => 'required',
         ]);
         $memb=$request->memb_no;
