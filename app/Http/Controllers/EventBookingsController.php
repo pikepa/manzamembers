@@ -31,7 +31,7 @@ class EventBookingsController extends Controller
 
       //  dd($eventbooking);
 
-        return view('bookings.create', compact('bookings','eventbooking','eventtickettypes'));
+        return view('bookings.create', compact('eventbooking','eventtickettypes'));
     }
 
 
@@ -42,8 +42,8 @@ class EventBookingsController extends Controller
             'event_id' => 'required|numeric|min:0|not_in:0',
             'name' => 'required',
             'email' => 'required',
-            'add_info' => 'required|in:["MANZA","MNZCC","MABC"]',
-
+            'add_info' => 'required',
+          //  |in(["MANZA","MNZCC","MABC"])
          //   'memb_no' => 'required',
         ]);
         $memb=$request->memb_no;
