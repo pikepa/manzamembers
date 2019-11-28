@@ -42,7 +42,7 @@ class EventBookingsController extends Controller
             'event_id' => 'required|numeric|min:0|not_in:0',
             'name' => 'required',
             'email' => 'required',
-            'add_info' => 'required',
+            'add_info' => 'required|in:MANZA,MNZCC,MABC',
           //  |in(["MANZA","MNZCC","MABC"])
          //   'memb_no' => 'required',
         ]);
