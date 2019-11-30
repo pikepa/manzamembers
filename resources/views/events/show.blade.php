@@ -5,6 +5,8 @@
 @section('content')
 
 @include('layouts.partials.pageheader')
+<br>
+@include('messages')
 
 <div  class="container  mx-auto lg:w-1/2">    {{-- container taken from here --}}
     <div class="card mt-6  mx-auto  rounded shadow">

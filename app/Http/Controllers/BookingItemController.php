@@ -64,11 +64,23 @@ class BookingItemController extends Controller
      */
     public function store(Request $request)
     {
-         $validatedrequest = $this->validate(request(), [
+        $validatedrequest = $this->validate(request(), [
             'qty' => 'required|Min:0|notin:0',
             'type' => 'required',
-         //   'memb_no' => 'required',
         ]);
+        //recover session from initial name collection
+        $bookinginwaiting = session::get('booking');
+        $event=Event::find(session::get('event_id'));
+
+        $ticketbalance = $event->bookings_bal - $request->qty;
+        if ($ticketbalance < 0){
+          //  dd('NO Tickets',$request->qty,$ticketbalance);
+            $bookinginwaiting->delete();
+            return redirect($event->path())
+                ->withError('Sorry You Ordered '.$request->qty.' tickets but there\'s only '. $event->bookings_bal.' left.' );
+        };
+       // dd($ticketbalance);
+
        $priceitem=Priceitem::with('category')->findOrFail($request->type) ;
        $booking_item = new BookingItem;
 
@@ -84,9 +96,11 @@ class BookingItemController extends Controller
             $booking_item->seats = $request->qty ;
         }
 
-       $booking_item->save();
-
-       return redirect($booking_item->path())->withSuccess('Order has been added.');
+        $event->bookings_bal = $event->bookings_bal - $booking_item->qty;
+        $booking_item->save();
+        $event->save();
+        
+        return redirect($booking_item->path())->withSuccess('Order has been added.');
 
 
     }

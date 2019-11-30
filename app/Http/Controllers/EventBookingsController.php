@@ -26,12 +26,10 @@ class EventBookingsController extends Controller
     public function create($id)
     {
 
-        $bookings = Booking::where('event_id',$id)->get();
-        $eventbooking = Event::with('bookings')->findOrFail($id);
+        $bookings = Booking::with('booking_items')->where('event_id',$id)->get();
+        $eventbooking = Event::findOrFail($id);
 
-      //  dd($eventbooking);
-
-        return view('bookings.create', compact('eventbooking','eventtickettypes'));
+        return view('bookings.create', compact('eventbooking'));
     }
 
 
@@ -62,9 +60,9 @@ class EventBookingsController extends Controller
        $booking->email = $request->email;
        $booking->add_info = $request->add_info;
 
-       $booking->save();
+        $booking->save();
 
-        session()->put('booking',$booking);             
+        session()->put('booking',$booking);
         session(['booking_id' => $booking->id]);
         session(['event_id' => $booking->event_id]);
 
