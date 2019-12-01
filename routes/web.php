@@ -52,6 +52,7 @@ Route::get('/coming_soon', function () {
    
     Route::get('/byevent/{id?}', 'BookingController@byevent');
     Route::get('/byevent/{id?}/door', 'BookingController@byeventdoor');
+    Route::get('/byevent/{id?}/unpaid', 'BookingController@byeventunpaid');
     Route::get('/byevent/{id?}/orders', 'BookingController@orders');
     Route::get('/reservation/{id?}', 'ReservationController@index');
     Route::get('/membership/current','MembershipController@current_memberships');

@@ -62,11 +62,27 @@ class BookingController extends Controller
 
         $event=Event::find($id);
 
-       //  dd($bookings);
-
         return view ('bookings.index', compact('bookings','event'));
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function byeventunpaid($id)
+    {
+        $bookings=Booking::with('event','booking_items')
+            ->where('event_id',$id)
+            ->whereNull('confirmed_at')
+            ->orderBy('add_info','asc')
+            ->get(); 
+
+        $event=Event::find($id);
+
+        return view ('bookings.index', compact('bookings','event'));
+    }
 
     /**
      * Show the form for creating a new resource.
