@@ -56,13 +56,13 @@ class BookingController extends Controller
     {
         $bookings=Booking::with('event','booking_items')
             ->where('event_id',$id)
-            ->orderBy('confirmed_at','asc')
+            ->whereNotNull('confirmed_at')
             ->orderBy('add_info','asc')
-            ->get();
-            
+            ->get(); 
+
         $event=Event::find($id);
 
-        // dd($bookings);
+       //  dd($bookings);
 
         return view ('bookings.index', compact('bookings','event'));
     }
