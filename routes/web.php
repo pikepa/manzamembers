@@ -22,6 +22,10 @@ Route::get('/aboutus', function () {
     return view('homepages.aboutus');
 });
 
+Route::get('/counter', function () {
+    return view('homepages.counter.html');
+});
+
 
 Route::get('/coming_soon', function () {
     return view('homepages.comingsoon');
@@ -47,6 +51,7 @@ Route::get('/coming_soon', function () {
     Route::get('/reservation/create/{id?}', 'ReservationController@create')->name('fromReservation.create');
    
     Route::get('/byevent/{id?}', 'BookingController@byevent');
+    Route::get('/byevent/{id?}/door', 'BookingController@byeventdoor');
     Route::get('/byevent/{id?}/orders', 'BookingController@orders');
     Route::get('/reservation/{id?}', 'ReservationController@index');
     Route::get('/membership/current','MembershipController@current_memberships');

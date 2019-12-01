@@ -40,8 +40,34 @@ class BookingController extends Controller
         $bookings=Booking::with('event','booking_items')
             ->where('event_id',$id)->orderBy('created_at','asc')->get();
         $event=Event::find($id);
+
+      //  dd($bookings);
+
         return view ('bookings.index', compact('bookings','event'));
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function byeventdoor($id)
+    {
+        $bookings=Booking::with('event','booking_items')
+            ->where('event_id',$id)
+            ->orderBy('confirmed_at','asc')
+            ->orderBy('add_info','asc')
+            ->get();
+            
+        $event=Event::find($id);
+
+        // dd($bookings);
+
+        return view ('bookings.index', compact('bookings','event'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +77,7 @@ class BookingController extends Controller
     { 
         $booking = new Booking;
         $event = Event::find($id);
-
+dd($event);
         return view('bookings.create', compact('booking','event'));    
     }
 
